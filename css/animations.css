@@ -1,0 +1,139 @@
+/* transition, keyframe, transforms */
+
+.side-bar{
+  transform: translateX(-120%);
+  transition: all 0.3s ease-in-out;
+}
+
+.side-bar.active{
+  transform: translateX(0);
+}
+
+.s-b-items a{
+  transition: all 0.3s ease-in-out;
+}
+
+.s-b-items:hover{
+  background-color: #d8d6d6;
+  color: rgb(255, 255, 255);
+}
+
+.add-trns-div{
+  transform: translateY(-32px);
+}
+
+.add-trans-icon{
+  transition: all 0.3s ease-in-out;
+}
+
+.add-trans-icon.active{
+  width: 55px;
+  height: 55px;
+}
+
+.nav-bar-hamburger-line{
+transition: all 0.3s ease-in-out;
+}
+
+  /* Top line */
+.nav-bar-hamburger.active .nav-bar-hamburger-line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+/* Middle line */
+.nav-bar-hamburger.active .nav-bar-hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+/* Bottom line */
+.nav-bar-hamburger.active .nav-bar-hamburger-line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.main-page{
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  z-index: 0;
+}
+
+.main-page.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.main-page.inactive{
+  filter: blur(3px);
+}
+
+.main-page.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-background{
+  transform: translateX(-15px) translateY(-15px);
+}
+
+.card-background-img{
+  transform: rotate(40deg) translateY(-40px);
+}
+
+.sub-pages{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.sub-pages.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toggle-switch {
+  transition: 0.4s;
+}
+
+.f-o-backgr-toggle{
+  transition: all 0.1s ease-in-out;
+}
+
+.f-o-backgr-toggle.active{
+  background: linear-gradient(150deg, rgb(207, 71, 71), rgb(170, 2, 2));
+  transform: translateX(100%);
+}
+
+.toggle-switch::before {
+  transition: 0.4s;
+}
+
+.toggle-wrapper input:checked + .toggle-switch::before {
+  transform: translateX(24px);
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.3s ease;
+}
+
+.notification-container{
+  opacity: 0;
+  transform: translateX(-50%) translateY(-100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-container.active{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  z-index: 30;
+}

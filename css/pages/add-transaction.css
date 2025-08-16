@@ -1,0 +1,233 @@
+
+
+.add-trans-icon{
+  width: 60px;
+  height: 60px;
+}
+
+.expenditure-wrapper, .income-wrapper{
+  /* background-color: rgb(248, 248, 248); */
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 170px;
+}
+
+.income-wrapper{
+  display: flex;
+}
+
+.expenditure-wrapper{
+  display: none;
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+.form-container{
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin-top: 15px;
+  position: relative;
+
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  /* left: 0;
+  top: 0; */
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+}
+
+.investment-group, .crypto-options-group, .crypto-units-div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.submit-form-container{
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(248, 248, 248)
+}
+
+
+.form-options-container{
+  border: 3px solid rgba(0, 0, 0, 0.158);
+  width: 60%;
+  height: 35px;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  background-color: rgb(161, 161, 161);
+  position: relative;
+}
+
+#income-option, #expense-option, .f-o-backgr-toggle{
+  width: 50%;
+  height: 100%;
+}
+
+.form-opt-title{
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-o-backgr-toggle{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(150deg, rgb(52, 160, 61), rgb(12, 107, 20));
+}
+
+.f-o-backgr-toggle.active{
+  background: linear-gradient(150deg, rgb(207, 71, 71), rgb(170, 2, 2));
+}
+
+
+
+/* #add-income-form{
+  background-color: rgb(255, 153, 0);
+  display: flex;
+}
+#add-expenditure-form{
+  background-color: yellow;
+  display: none;
+} */
+
+.transaction-form label, .investment-group label, .crypto-units-div label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #08491e;
+}
+
+.transaction-form input,
+.transaction-form select, .investment-group input, .investment-group select, .crypto-units-div input{
+  padding: 15px 12px;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(128, 128, 128, 0.082);
+  border-radius: 8px;
+  background-color: rgba(201, 199, 199, 0.292);
+  filter: blur(20%);
+  transition: border 0.2s;
+  margin-bottom: 15px;
+}
+
+
+.form-fieldset {
+  display: grid;
+  /* display: none; */
+  grid-template-columns: auto 1fr; /* checkbox, then label */
+  gap: 0.5rem 1rem; /* row gap, column gap */
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: rgba(201, 199, 199, 0.292);
+  filter: blur(20%); 
+  width: 100%;
+}
+
+.form-fieldset legend {
+  font-weight: bold;
+  margin-bottom: 0.5rem; 
+}
+
+.form-fieldset input[type="checkbox"] {
+  margin: 0; /* remove default extra margin */
+}
+
+
+.transaction-form input:focus,
+.transaction-form select:focus, .investment-group input:focus, .investment-group select:focus, .crypto-units-div input:focus {
+  border: 1px solid #59585a;
+  outline: none;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.toggle-label {
+  font-size: 16px;
+}
+
+.toggle-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-wrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.toggle-wrapper input:checked + .toggle-switch {
+  background-color: #7b57ff;
+}
+
+#inc-frequency-group, #exp-frequency-group, #budget-frequency-group{
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+#recurring-exp-frequency, #recurring-inc-frequency, #recurring-budget-frequency{
+  width: 100%;
+}

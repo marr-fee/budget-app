@@ -1,0 +1,233 @@
+.dashb-total-balance-div{
+  width: 100%;
+  height: 100px;
+  background-color: rgba(201, 199, 199, 0.192);
+  filter: blur(20%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.budget-title-add-budgt-contr{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px ;
+}
+
+.budget-title-add-budgt-contr h3{
+  font-size: 16px;
+}
+
+#overview-page-add-budget-link{
+  font-size: 12px;
+  font-weight: 600;
+  color: orangered;
+}
+
+.budget-summary-grid-container{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);width: 100%;
+  gap: 10px;
+}
+
+.budget-summary-grid-item{
+  width: 100%;
+  background-color: rgba(201, 199, 199, 0.192);
+  filter: blur(20%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 15px;  
+  margin-bottom: 15px;
+}
+
+.title-month-div, .spent-amt-div, .budget-amt-div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category-div{
+  font-size: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.month-div{
+  font-size: 12px;
+  color: rebeccapurple;
+}
+
+.line-bar-div{
+  width: 100%;
+  height: 20px;
+  border: 1px solid rgba(255, 68, 0, 0.281);
+  overflow: hidden;
+  background-color: rgba(128, 128, 128, 0.322);
+  margin: 10px auto;
+}
+
+.bar-fill{
+  height: 100%;
+  /* width: 30%; */
+  background-color: orangered;
+}
+
+.budget-amt-div{
+  text-align: right;
+}
+
+.spent-budget-amt-div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.t-bal{
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.overview-cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.card{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  aspect-ratio: 2 / 1.5;
+  border-radius: 15px;
+  padding: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.inc-exp-icon > img{
+  width: 24px;
+  height: 24px;
+}
+
+.inc-exp-display{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+}
+
+.inc-exp-display > h2{
+  font-size: 16px;
+}
+
+.card-background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.card-background-img{
+  width: 130px;
+  position: relative;
+  opacity: 0.1;
+}
+
+.inc-card-bcgrd{
+  background: linear-gradient(150deg, rgb(134, 63, 226), rgb(58, 36, 156));
+}
+
+.exp-card-bcgrd{
+  background: linear-gradient(150deg, rgb(238, 159, 11), rgb(216, 90, 7));
+}
+
+.recent-transaction-div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.transaction-grid-container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  flex-direction: column-reverse;
+}
+
+.trans-grid-item{
+  width: 100%;
+  background-color: rgb(248, 248, 248);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.137);
+}
+
+.transaction-icon{
+  width: 22px;
+  height: 22px;
+}
+
+.description-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.description-div > h2{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.amount-date-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.amount-div{
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(185, 3, 3);
+}
+
+#show-more-trans, #show-more-budget{
+  text-align: right;
+  padding: 5px;
+  margin-right: 5px;
+  text-decoration: underline;
+  display: none;
+}
+
+
+
+.no-transactions-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0 ;
+  background-color: rgba(201, 199, 199, 0.192);
+  filter: blur(20%);
+  border-radius: 10px;
+}

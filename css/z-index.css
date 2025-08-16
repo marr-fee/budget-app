@@ -1,0 +1,48 @@
+/* Z index stack */
+.bottom-navbar{
+  z-index: 5;
+}
+
+.side-bar{
+  z-index: 3;
+}
+
+.header{
+  z-index: 15;
+}
+
+.card{
+  z-index: 2;
+}
+
+.inc-exp-icon > img{
+  z-index: 2;
+}
+
+.inc-exp-display{
+  z-index: 2;
+}
+
+.card-background{
+  z-index: -1;
+}
+
+/* .add-trasaction-div{
+  z-index: 10;
+} */
+
+#income-option, #expense-option{
+  z-index: 3;
+}
+
+.f-o-backgr-toggle{
+  z-index: 1;
+}
+
+.notification-container{
+  z-index: 1;
+}
+
+.sub-pages-dd-btn{
+  z-index: 10;
+}

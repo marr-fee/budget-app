@@ -1,0 +1,130 @@
+/* app layout ( navbar, header, sidebar, containers, grids) */
+
+.app-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+}
+
+.side-bar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fffcfc;
+  /* background: linear-gradient(150deg, rgb(248, 248, 248) , rgb(216, 214, 214) , white); */
+  border-radius: 0 0 0 10px;
+  padding-top: 64px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.s-b-items{
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;  
+}
+
+.s-b-items a{
+  /* color: black; */
+  padding: 20px 25px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  border-bottom: 1px solid #cccccc6b;
+  justify-content: flex-start;
+  align-items: center;  
+  /* background-image: linear-gradient(to right, #fd5032, #1489ff); 
+  -webkit-background-clip: text; 
+  color: transparent;  */
+}
+
+.nav-item-img{
+  margin-right: 15px;
+}
+
+.bottom-navbar{
+  justify-content: space-around;
+  gap: 10px;
+  bottom: 0;
+}
+
+.header, .bottom-navbar{
+  width: 100%;
+  position: fixed;
+  padding: 0 15px;
+}
+
+.add-trns-div{
+  border-radius: 50%;
+  width: 64px;
+  justify-content: center;
+}
+
+.bottom-navbar, .add-trns-div{
+  box-shadow: 0 -2px px rgba(59, 58, 58, 0.1);
+}
+
+.bottom-navbar, .add-trns-div, .header{
+  display: flex;
+  align-items: center;
+  height: 64px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* HAMBURGER NAV BAR */
+.nav-bar-hamburger{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-bar-hamburger-line{
+width: 28px;
+height: 3px;
+background-color: rgb(0, 0, 0);
+margin-bottom: 5px;
+border-radius: 50px;
+transition: all 0.3s ease-in-out;
+}
+
+.nav-bar-hamburger-line:first-child{
+  margin-top: 5px;
+}
+
+#back-button{
+  display: none;
+}
+
+.header-div > h1{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* MAIN PAGES */
+.main-pages{
+  width: 100%;
+  height: 100%;
+  padding: 64px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.header{
+  justify-content: space-between;
+  top: 0;
+  box-shadow: 0 2px 8px rgba(59, 58, 58, 0.082);
+}
+
+
+
