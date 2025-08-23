@@ -1,12 +1,13 @@
 
 
-.investments-wrapper{
+/* .investments-wrapper{
   width: 100%;
   height: 100%;
+  background-color: aqua;
   padding-bottom: 84px;
   overflow-y: scroll;
   scrollbar-width: none;
-}
+} */
 
 .crypto-investment-btns{
   width: 100%;
@@ -18,12 +19,13 @@
 }
 
 .crypto-investment-btns button{
-  width: 150px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
   padding: 15px;
+  border: none;
   border-radius: 30px;
   color: white;
-  font-size: 14px;
+  font-size: 10px;
   background: linear-gradient(150deg, rgb(75, 74, 74), black);
   margin: 15px 0;
 }
@@ -50,8 +52,8 @@
   transform-origin: 50% 50%;
 } */
 .portfolio-card-wrapper{
-  width: 85%;
-  height: 160px;
+  width: 88%;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,14 +120,6 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  color: white;
-}
-
-.portfolio-value-card h1{
-  width: 100%;
-  text-align: center;
-  font-size: 34px;
-  font-weight: 600;
   color: white;
 }
 

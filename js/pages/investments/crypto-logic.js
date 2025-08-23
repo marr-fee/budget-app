@@ -185,4 +185,4 @@ export async function monitorPortfolio() {
 // Call monitorPortfolio() once immediately…
 monitorPortfolio();
 // …and then every 60 seconds (60 * 1000 ms) thereafter.
-setInterval(monitorPortfolio, 60 * 1000);
+// setInterval(monitorPortfolio, 60 * 1000);

@@ -12,8 +12,9 @@ import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
 
 
 
-
+export const subPagesWrapper = document.querySelector('.sub-contents-wrapper')
 export const mainPages = document.querySelectorAll('.main-page');
+export const subPages = document.querySelectorAll('.sub-pages');
 export const dashboardPage = document.getElementById("dashboard-page");
 
 // BOTTOM NAVIGATION 
@@ -94,10 +95,12 @@ export function showPage(pageName) {
   }
   if (pageName === "dashboard" || pageName === "statsPage" || pageName === "investmentPage" || pageName === "profilePage") {
     appState.pageStack = [pageName];
-    bottomNav.style.display = "flex";
+    subPagesWrapper.classList.remove("active");
+    // bottomNav.style.display = "flex";
   } else if (appState.pageStack[appState.pageStack.length - 1] !== pageName) {
     appState.pageStack.push(pageName);
-    bottomNav.style.display = "none";
+    // bottomNav.style.display = "none";
+    subPagesWrapper.classList.add("active");
   }
   
   pageTitle.innerText = targetPage.title;
@@ -105,18 +108,26 @@ export function showPage(pageName) {
   hamNavBtn.style.display = appState.pageStack.length === 1 ? "flex" : "none";
   backButton.style.display = appState.pageStack.length > 1 ? "flex" : "none";
   
+  requestAnimationFrame(() => {
+    subPages.forEach((p) => {
+      p.scrollTop = 0;
+    })
+    mainPages.forEach((p) => {
+      p.scrollTop = 0;
+    })
+  });
 }
 
 export function goBack() {
   if (appState.pageStack.length > 1){
 
-  let lastPage = appState.pageStack.pop();
-  if (lastPage === "addTranscPage" || lastPage === "addBudgetPage") {
-    resetForms();
-    
-  }
-  const previousPage = appState.pageStack[appState.pageStack.length - 1]
-  showPage(previousPage);
+    let lastPage = appState.pageStack.pop();
+    if (lastPage === "addTranscPage" || lastPage === "addBudgetPage") {
+      resetForms();
+      
+    }
+    const previousPage = appState.pageStack[appState.pageStack.length - 1]
+    showPage(previousPage);
   }
 }
 
@@ -139,8 +150,9 @@ mainPages.forEach((page) =>{
 document.querySelectorAll("[data-page-link]").forEach(link => {
   link.addEventListener('click', () => {
     const page = link.dataset.pageLink;
+    
     if (appState.isSideBarOpen) {
-      
+      closeSidebar();
       return;
     } else {
       showPage(page);

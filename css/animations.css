@@ -5,6 +5,14 @@
   transition: all 0.3s ease-in-out;
 }
 
+.sub-contents-wrapper{
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.sub-contents-wrapper.active{
+  transform: translateX(0);
+}
 .side-bar.active{
   transform: translateX(0);
 }
@@ -63,7 +71,7 @@ transition: all 0.3s ease-in-out;
   z-index: 1;
 }
 
-.main-page.inactive{
+.main-page.inactive, .bottom-nav-container.inactive{
   filter: blur(3px);
 }
 

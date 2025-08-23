@@ -24,7 +24,7 @@
       <!-- Log in page -->
       <!-- <main id="auth-page">
         <h1 class="app-name">App Name</h1>
-        <!-- Tabs -->
+         Tabs -->
       <!-- <div class="auth-tabs">
           <button id="tab-login" class="auth-tab active">Log in</button>
           <button id="tab-signup" class="auth-tab">Sign up</button>
@@ -79,115 +79,33 @@
         </form>
       </main> -->
 
-      <!-- ============== SIDEBAR =============== -->
-      <ul class="side-bar">
-        <li class="s-b-items">
-          <a href="#"
-            ><img
-              src="./assets/icons/setting.png"
-              alt="Settings"
-              class="nav-item-img clickable-icons"
-            />Settings</a
-          >
-        </li>
-        <li class="s-b-items">
-          <a href="#"
-            ><img
-              src="./assets/icons/connection.png"
-              alt="Export / Import"
-              class="nav-item-img clickable-icons"
-            />Export / Import</a
-          >
-        </li>
-        <li class="s-b-items">
-          <a href="#"
-            ><img
-              src="./assets/icons/refresh.png"
-              alt="Reset App Data"
-              class="nav-item-img clickable-icons"
-            />Reset App Data</a
-          >
-        </li>
-        <li class="s-b-items">
-          <a href="#"
-            ><img
-              src="./assets/icons/info.png"
-              alt="About"
-              class="nav-item-img clickable-icons"
-            />About</a
-          >
-        </li>
-        <li class="s-b-items">
-          <a href="#"
-            ><img
-              src="./assets/icons/support.png"
-              alt="Help"
-              class="nav-item-img clickable-icons"
-            />Help</a
-          >
-        </li>
-      </ul>
-
-      <!-- ============== BOTTOM NAVBAR =============== -->
-      <div class="bottom-navbar" id="bottom-nav">
-        <div class="b-n-icon-div" id="home-btn" data-page="dashboard">
-          <img
-            src="./assets/icons/home(1).png"
-            alt="Dashboard"
-            class="clickable-icons"
-          />
-        </div>
-        <div class="b-n-icon-div" id="stats-page-btn" data-page="statsPage">
-          <img
-            src="./assets/icons/diagram.png"
-            alt="Stats"
-            class="clickable-icons"
-          />
-        </div>
-        <div class="add-trns-div">
-          <img
-            src="./assets/icons/add.png"
-            alt="Add"
-            class="add-trans-icon"
-            id="add-t-btn"
-          />
-        </div>
-        <div class="b-n-icon-div" id="overview-btn" data-page="investmentPage">
-          <img
-            src="./assets/icons/criminal-record.png"
-            alt="Overview"
-            class="clickable-icons"
-          />
-        </div>
-        <div class="b-n-icon-div" id="user-profile-btn" data-page="profilePage">
-          <img
-            src="./assets/icons/user(2).png"
-            alt="Profile"
-            class="clickable-icons"
-          />
-        </div>
-      </div>
-
       <!-- ============== MAIN PAGES =============== -->
-      <div class="main-pages">
-        <!-- ============== TOP NAVBAR =============== -->
-        <div class="header">
+      <div class="main-pages-wrapper">
+        <!-- top nav  -->
+        <div class="top-nav-container">
+          <!-- hanburge menu icon -->
           <div class="nav-bar-hamburger" id="nav-btn">
             <div class="nav-bar-hamburger-line"></div>
             <div class="nav-bar-hamburger-line"></div>
             <div class="nav-bar-hamburger-line"></div>
           </div>
-          <div id="back-button" class="header-div">
+
+          <!-- back button -->
+          <div id="back-button">
             <img
               src="./assets/icons/left-arrow(1).png"
               alt="back"
               class="clickable-icons"
             />
           </div>
-          <div class="header-div">
-            <h1 id="page-title">Dashboard</h1>
+
+          <!-- page title div -->
+          <div>
+            <h1 id="page-title" class="text-M"></h1>
           </div>
-          <div class="header-div">
+
+          <!-- notification icon -->
+          <div>
             <img
               src="./assets/icons/dots.png"
               alt=""
@@ -197,634 +115,717 @@
           </div>
         </div>
 
-        <!-- ============== DASHBOARD PAGE (HOME) =============== -->
+        <!-- page contents container -->
+        <div class="pages-content-container">
+          <!-- side bar -->
+          <ul class="side-bar">
+            <li class="s-b-items">
+              <a href="#"
+                ><img
+                  src="./assets/icons/setting.png"
+                  alt="Settings"
+                  class="nav-item-img clickable-icons"
+                />Settings</a
+              >
+            </li>
+            <li class="s-b-items">
+              <a href="#"
+                ><img
+                  src="./assets/icons/connection.png"
+                  alt="Export / Import"
+                  class="nav-item-img clickable-icons"
+                />Export / Import</a
+              >
+            </li>
+            <li class="s-b-items">
+              <a href="#"
+                ><img
+                  src="./assets/icons/refresh.png"
+                  alt="Reset App Data"
+                  class="nav-item-img clickable-icons"
+                />Reset App Data</a
+              >
+            </li>
+            <li class="s-b-items">
+              <a href="#"
+                ><img
+                  src="./assets/icons/info.png"
+                  alt="About"
+                  class="nav-item-img clickable-icons"
+                />About</a
+              >
+            </li>
+            <li class="s-b-items">
+              <a href="#"
+                ><img
+                  src="./assets/icons/support.png"
+                  alt="Help"
+                  class="nav-item-img clickable-icons"
+                />Help</a
+              >
+            </li>
+          </ul>
 
-        <div class="dashb main-page" id="dashboard-page">
-          <!-- overview chart -->
-          <div class="overview-page-canvas-container graph-background">
-            <canvas id="overview-page-canvas"> </canvas>
-          </div>
+          <!-- main content wrapper -->
+          <div class="main-contents-wrapper">
+            <!-- dashboard page -->
+            <div class="main-page" id="dashboard-page">
+              <!-- overview chart -->
+              <div class="overview-page-canvas-container graph-background">
+                <canvas id="overview-page-canvas"> </canvas>
+              </div>
 
-          <!-- budget overview -->
-          <div class="budget-title-add-budgt-contr">
-            <h3>Budget</h3>
-            <p
-              id="overview-page-add-budget-link"
-              data-page-link="addBudgetPage"
-            >
-              New budget
-            </p>
-          </div>
-          <div class="budget-contr">
-            <div class="budget-summary-grid-container"></div>
-          </div>
-          <p class="caption" id="show-more-budget" data-page-link="budgetPage">
-            Show More
-          </p>
+              <!-- budget overview -->
+              <div class="budget-title-add-budgt-contr">
+                <h3>Budget</h3>
+                <p
+                  id="overview-page-add-budget-link"
+                  data-page-link="addBudgetPage"
+                >
+                  New budget
+                </p>
+              </div>
+              <div class="budget-contr">
+                <div class="budget-summary-grid-container"></div>
+              </div>
+              <p
+                class="caption"
+                id="show-more-budget"
+                data-page-link="budgetPage"
+              >
+                Show More
+              </p>
 
-          <!-- TOTAL BALANCE -->
-          <!-- <div class="dashb-total-balance-div">
-            <div class="total-balnc-div">
-              <p class="caption">Total Balance</p>
-              <h1 class="t-bal">
-                <span id="dashb-t-bal-currency-span">$</span
-                ><span id="dashb-t-bal-amount-span">0.00</span>
-              </h1>
-            </div>
-            <div class="estimated-t-b-div"></div>
-          </div> -->
-
-          <!-- CARDS -->
-          <div class="overview-cards">
-            <!-- INCOME CARD -->
-            <div
-              class="card income-card"
-              id="income-page"
-              data-page-link="incomePage"
-            >
-              <div class="card-background inc-card-bcgrd">
-                <img
-                  src="./assets/icons/download.png"
-                  alt="arrow down"
-                  class="card-background-img"
-                />
-              </div>
-              <div class="inc-exp-icon">
-                <img
-                  src="./assets/icons/download.png"
-                  alt="arrow down"
-                  class="card-icon"
-                />
-              </div>
-              <div class="inc-exp-display">
-                <p class="caption">Income</p>
-                <h2 class="monthly-inc-total">
-                  <span id="mon-inc-currency-span">$</span
-                  ><span id="mon-inc-total-span"></span>
-                </h2>
-              </div>
-            </div>
-            <!-- EXPENSE CARD -->
-            <div
-              class="card expense-card"
-              id="expenditure-page"
-              data-page-link="expenditurePage"
-            >
-              <div class="card-background exp-card-bcgrd">
-                <img
-                  src="./assets/icons/arrow.png"
-                  alt="arrow up"
-                  class="card-background-img"
-                />
-              </div>
-              <div class="inc-exp-icon">
-                <img
-                  src="./assets/icons/arrow.png"
-                  alt="arrow up"
-                  class="card-icon"
-                />
-              </div>
-              <div class="inc-exp-display">
-                <p class="caption-2">Expenses</p>
-                <h2 class="monthly-exp-total">
-                  <span id="mon-exp-currency-span">$</span
-                  ><span id="mon-exp-total-span"></span>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <!-- RECENT TRANSACTIONS -->
-          <div class="recent-transaction-div">
-            <p class="caption">Recent Transactions</p>
-            <div class="transaction-grid-container">
-              <!-- <div class="trans-grid-item">
-                <div class="description-div">
-                  <img
-                    src="./assets/icons/download.png"
-                    alt="icon"
-                    class="transaction-icon"
-                  />
-                  <h2 id="tran-category">Transaction</h2>
+              <!-- TOTAL BALANCE -->
+              <!-- <div class="dashb-total-balance-div">
+                <div class="total-balnc-div">
+                  <p class="caption">Total Balance</p>
+                  <h1 class="t-bal">
+                    <span id="dashb-t-bal-currency-span">$</span
+                    ><span id="dashb-t-bal-amount-span">0.00</span>
+                  </h1>
                 </div>
-                <div class="amount-date-div">
-                  <div class="amount-div">$300.34</div>
-                  <div class="date-div caption">03-02-2025</div>
-                </div>
+                <div class="estimated-t-b-div"></div>
               </div> -->
-            </div>
-            <p class="caption" id="show-more-trans">Show More</p>
-            <!-- <div class="no-transactions-div">
-              <p class="caption">No Transactions To Show</p>
-            </div> -->
-          </div>
-        </div>
 
-        <!-- ============== STATS PAGE =============== -->
+              <!-- CARDS -->
+              <div class="overview-cards">
+                <!-- INCOME CARD -->
+                <div
+                  class="card income-card"
+                  id="income-page"
+                  data-page-link="incomePage"
+                >
+                  <div class="card-background inc-card-bcgrd">
+                    <img
+                      src="./assets/icons/download.png"
+                      alt="arrow down"
+                      class="card-background-img"
+                    />
+                  </div>
+                  <div class="inc-exp-icon">
+                    <img
+                      src="./assets/icons/download.png"
+                      alt="arrow down"
+                      class="card-icon"
+                    />
+                  </div>
+                  <div class="inc-exp-display">
+                    <p class="caption">Income</p>
+                    <h2 class="monthly-inc-total">
+                      <span id="mon-inc-currency-span">$</span
+                      ><span id="mon-inc-total-span"></span>
+                    </h2>
+                  </div>
+                </div>
+                <!-- EXPENSE CARD -->
+                <div
+                  class="card expense-card"
+                  id="expenditure-page"
+                  data-page-link="expenditurePage"
+                >
+                  <div class="card-background exp-card-bcgrd">
+                    <img
+                      src="./assets/icons/arrow.png"
+                      alt="arrow up"
+                      class="card-background-img"
+                    />
+                  </div>
+                  <div class="inc-exp-icon">
+                    <img
+                      src="./assets/icons/arrow.png"
+                      alt="arrow up"
+                      class="card-icon"
+                    />
+                  </div>
+                  <div class="inc-exp-display">
+                    <p class="caption-2">Expenses</p>
+                    <h2 class="monthly-exp-total">
+                      <span id="mon-exp-currency-span">$</span
+                      ><span id="mon-exp-total-span"></span>
+                    </h2>
+                  </div>
+                </div>
+              </div>
 
-        <div id="stats-page" class="main-page">
-          <main class="stats-page-wrapper">
-            <canvas
-              class="mon-total-comparison-chart graph-background"
-              id="comparison-chart"
-            ></canvas>
-          </main>
-        </div>
-
-        <!-- ============== INVESTMENT PAGE =============== -->
-
-        <div id="investment-page" class="main-page">
-          <main class="investments-wrapper">
-            <div class="portfolio-card-wrapper">
-              <div class="bend-card"></div>
-              <div class="portfolio-value-card">
-                <p>Portfolio Value</p>
-                <h1 id="total-portfolio-value"></h1>
+              <!-- RECENT TRANSACTIONS -->
+              <div class="recent-transaction-div">
+                <p class="caption">Recent Transactions</p>
+                <div class="transaction-grid-container">
+                  <!-- <div class="trans-grid-item">
+                  <div class="description-div">
+                    <img
+                      src="./assets/icons/download.png"
+                      alt="icon"
+                      class="transaction-icon"
+                    />
+                    <h2 id="tran-category">Transaction</h2>
+                  </div>
+                  <div class="amount-date-div">
+                    <div class="amount-div">$300.34</div>
+                    <div class="date-div caption">03-02-2025</div>
+                  </div>
+                </div> -->
+                </div>
+                <p class="caption" id="show-more-trans">Show More</p>
+                <!-- <div class="no-transactions-div">
+                <p class="caption">No Transactions To Show</p>
+              </div> -->
               </div>
             </div>
 
-            <div class="crypto-investment-btns">
-              <button id="add-crypto-button">Add Crypto</button>
-              <button id="swap-crypto-button">Swap Crypto</button>
+            <!-- stats page -->
+            <div id="stats-page" class="main-page">
+              <main class="stats-page-wrapper">
+                <canvas
+                  class="mon-total-comparison-chart graph-background"
+                  id="comparison-chart"
+                ></canvas>
+              </main>
             </div>
 
-            <h4 class="holdings-label">My coins</h4>
-            <div class="crypto-holdings-cntr"></div>
+            <!-- investments page -->
+            <div id="investment-page" class="main-page">
+              <div class="portfolio-card-wrapper">
+                <div class="bend-card"></div>
+                <div class="portfolio-value-card">
+                  <p>Portfolio Value</p>
+                  <h1 id="total-portfolio-value" class="text-XL"></h1>
+                </div>
+              </div>
 
-            <div class="coin-labels">
-              <p class="caption">Name</p>
-              <p class="caption">Current Value</p>
+              <div class="crypto-investment-btns">
+                <button id="add-crypto-button">Add Crypto</button>
+                <button id="swap-crypto-button">Swap Crypto</button>
+              </div>
+
+              <h4 class="holdings-label">My coins</h4>
+              <div class="crypto-holdings-cntr"></div>
+
+              <div class="coin-labels">
+                <p class="caption">Name</p>
+                <p class="caption">Current Value</p>
+              </div>
+              <div class="crypto-market-prices-cntr"></div>
             </div>
-            <div class="crypto-market-prices-cntr"></div>
-          </main>
-        </div>
 
-        <!-- ============== USER PROFILE PAGE =============== -->
-
-        <div id="user-profile-page" class="main-page"></div>
-
-        <!-- ============== ADD TRANSACTION PAGE =============== -->
-
-        <div class="add-trasaction-div sub-pages" id="add-trans-page">
-          <div class="form-options-container">
-            <div id="income-option"><p class="form-opt-title">Income</p></div>
-            <div id="expense-option">
-              <p class="form-opt-title">Expenditure</p>
+            <!-- user profile page -->
+            <div id="user-profile-page" class="main-page"></div>
+          </div>
+          <!-- bottom nav -->
+          <div class="bottom-nav-container" id="bottom-nav">
+            <div class="b-n-icon-div" id="home-btn" data-page-link="dashboard">
+              <img
+                src="./assets/icons/home(1).png"
+                alt="Dashboard"
+                class="clickable-icons"
+              />
             </div>
-            <div class="f-o-backgr-toggle"></div>
+            <div
+              class="b-n-icon-div"
+              id="stats-page-btn"
+              data-page-link="statsPage"
+            >
+              <img
+                src="./assets/icons/diagram.png"
+                alt="Stats"
+                class="clickable-icons"
+              />
+            </div>
+            <div class="add-trns-div">
+              <img
+                src="./assets/icons/add.png"
+                alt="Add"
+                class="add-trans-icon"
+                id="add-t-btn"
+                data-page-link="addTranscPage"
+              />
+            </div>
+            <div
+              class="b-n-icon-div"
+              id="overview-btn"
+              data-page-link="investmentPage"
+            >
+              <img
+                src="./assets/icons/criminal-record.png"
+                alt="Overview"
+                class="clickable-icons"
+              />
+            </div>
+            <div
+              class="b-n-icon-div"
+              id="user-profile-btn"
+              data-page-link="profilePage"
+            >
+              <img
+                src="./assets/icons/user(2).png"
+                alt="Profile"
+                class="clickable-icons"
+              />
+            </div>
           </div>
 
-          <!-- expenditure form -->
-          <div class="expenditure-wrapper">
-            <div class="form-container">
-              <form id="add-expenditure-form" class="transaction-form">
-                <!-- Category Dropdown -->
-                <label for="exp-category">Category</label>
-                <select id="exp-category" name="exp-category" required>
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="rent">Rent</option>
-                  <option value="food and groceries">Food & Groceries</option>
-                  <option value="internet">Internet Bill</option>
-                  <option value="electricity">Electricity Bill</option>
-                  <option value="transport">Transport</option>
-                  <option value="savings">Savings</option>
-                  <option value="investment">Investment</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="others">Others</option>
-                </select>
+          <!-- sub content wrapper -->
+          <div class="sub-contents-wrapper">
+            <!-- add transaction page -->
+            <div class="add-trasaction-div sub-pages" id="add-trans-page">
+              <div class="form-options-container">
+                <div id="income-option">
+                  <p class="form-opt-title">Income</p>
+                </div>
+                <div id="expense-option">
+                  <p class="form-opt-title">Expenditure</p>
+                </div>
+                <div class="f-o-backgr-toggle"></div>
+              </div>
 
-                <!-- Investment options -->
-                <div class="investment-group" style="display: none">
-                  <label for="investment-category">Investment type</label>
-                  <select
-                    id="investment-category"
-                    name="investment-category"
-                    required
-                  >
-                    <option value="" disabled selected>
-                      Select Investment
-                    </option>
-                    <option value="crypto">Cryptocurrency</option>
-                  </select>
+              <!-- expenditure form -->
+              <div class="expenditure-wrapper">
+                <div class="form-container">
+                  <form id="add-expenditure-form" class="transaction-form">
+                    <!-- Category Dropdown -->
+                    <label for="exp-category">Category</label>
+                    <select id="exp-category" name="exp-category" required>
+                      <option value="" disabled selected>
+                        Select expense category
+                      </option>
+                      <option value="rent">Rent</option>
+                      <option value="food and groceries">
+                        Food & Groceries
+                      </option>
+                      <option value="internet">Internet Bill</option>
+                      <option value="electricity">Electricity Bill</option>
+                      <option value="transport">Transport</option>
+                      <option value="savings">Savings</option>
+                      <option value="investment">Investment</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="others">Others</option>
+                    </select>
 
-                  <!-- Crypto options -->
-                  <div class="crypto-options-group" style="display: none">
-                    <fieldset class="form-fieldset">
-                      <legend>Select Crypto</legend>
-                      <!-- bitcoin -->
-                      <input
-                        type="checkbox"
-                        value="BTC"
-                        name="bitcoin"
-                        id="bitcoin"
-                        data-group="cryptos"
-                      />
-                      <label for="bitcoin">Bitcoin (BTC)</label>
-                      <!-- Etherium -->
-                      <input
-                        type="checkbox"
-                        value="ETH"
-                        name="ether"
-                        id="ether"
-                        data-group="cryptos"
-                      />
-                      <label for="ether">Etherium (ETH)</label>
-                      <!-- xrp -->
-                      <input
-                        type="checkbox"
-                        value="XRP"
-                        name="xrp"
-                        id="xrp"
-                        data-group="cryptos"
-                      />
-                      <label for="xrp">Ripple (XRP)</label>
-                      <!-- solana -->
-                      <input
-                        type="checkbox"
-                        value="SOL"
-                        name="solana"
-                        id="solana"
-                        data-group="cryptos"
-                      />
-                      <label for="solana">Solana (SOL)</label>
-                      <!-- ada -->
-                      <input
-                        type="checkbox"
-                        value="ADA"
-                        name="ada"
-                        id="ada"
-                        data-group="cryptos"
-                      />
-                      <label for="bitcoin">Cardona (ADA)</label>
-                      <!-- usdc -->
-                      <input
-                        type="checkbox"
-                        value="USDC"
-                        name="usdc"
-                        id="usdc"
-                        data-group="cryptos"
-                      />
-                      <label for="usdc">USDC</label>
-                    </fieldset>
-                  </div>
-                  <!-- Crypto units amount Input -->
-                  <div class="crypto-units-div" style="display: none">
-                    <label for="crypto-units">Units Bought</label>
+                    <!-- Investment options -->
+                    <div class="investment-group" style="display: none">
+                      <label for="investment-category">Investment type</label>
+                      <select
+                        id="investment-category"
+                        name="investment-category"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select Investment
+                        </option>
+                        <option value="crypto">Cryptocurrency</option>
+                      </select>
+
+                      <!-- Crypto options -->
+                      <div class="crypto-options-group" style="display: none">
+                        <fieldset class="form-fieldset">
+                          <legend>Select Crypto</legend>
+                          <!-- bitcoin -->
+                          <input
+                            type="checkbox"
+                            value="BTC"
+                            name="bitcoin"
+                            id="bitcoin"
+                            data-group="cryptos"
+                          />
+                          <label for="bitcoin">Bitcoin (BTC)</label>
+                          <!-- Etherium -->
+                          <input
+                            type="checkbox"
+                            value="ETH"
+                            name="ether"
+                            id="ether"
+                            data-group="cryptos"
+                          />
+                          <label for="ether">Etherium (ETH)</label>
+                          <!-- xrp -->
+                          <input
+                            type="checkbox"
+                            value="XRP"
+                            name="xrp"
+                            id="xrp"
+                            data-group="cryptos"
+                          />
+                          <label for="xrp">Ripple (XRP)</label>
+                          <!-- solana -->
+                          <input
+                            type="checkbox"
+                            value="SOL"
+                            name="solana"
+                            id="solana"
+                            data-group="cryptos"
+                          />
+                          <label for="solana">Solana (SOL)</label>
+                          <!-- ada -->
+                          <input
+                            type="checkbox"
+                            value="ADA"
+                            name="ada"
+                            id="ada"
+                            data-group="cryptos"
+                          />
+                          <label for="bitcoin">Cardona (ADA)</label>
+                          <!-- usdc -->
+                          <input
+                            type="checkbox"
+                            value="USDC"
+                            name="usdc"
+                            id="usdc"
+                            data-group="cryptos"
+                          />
+                          <label for="usdc">USDC</label>
+                        </fieldset>
+                      </div>
+                      <!-- Crypto units amount Input -->
+                      <div class="crypto-units-div" style="display: none">
+                        <label for="crypto-units">Units Bought</label>
+                        <input
+                          type="number"
+                          id="crypto-units"
+                          name="crypto-units"
+                          min="0"
+                          inputmode="decimal"
+                          pattern="[0-9]*"
+                          placeholder="e.g. 0.18439"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Amount Input -->
+                    <label for="exp-amount">Amount</label>
                     <input
                       type="number"
-                      id="crypto-units"
-                      name="crypto-units"
+                      id="exp-amount"
+                      name="exp-amount"
                       min="0"
                       inputmode="decimal"
                       pattern="[0-9]*"
-                      placeholder="e.g. 0.18439"
+                      placeholder="Enter amount"
+                      required
                     />
-                  </div>
-                </div>
 
-                <!-- Amount Input -->
-                <label for="exp-amount">Amount</label>
-                <input
-                  type="number"
-                  id="exp-amount"
-                  name="exp-amount"
-                  min="0"
-                  inputmode="decimal"
-                  pattern="[0-9]*"
-                  placeholder="Enter amount"
-                  required
-                />
+                    <!-- Date Picker -->
+                    <label for="exp-date">Date</label>
+                    <input type="date" id="exp-date" name="exp-date" required />
 
-                <!-- Date Picker -->
-                <label for="exp-date">Date</label>
-                <input type="date" id="exp-date" name="exp-date" required />
+                    <!-- Recurring? -->
+                    <!-- TOGGLE: Recurring -->
+                    <div class="input-group toggle-group">
+                      <span class="toggle-label">Recurring?</span>
+                      <label class="toggle-wrapper">
+                        <input type="checkbox" id="recurring-exp" />
+                        <span class="toggle-switch"></span>
+                      </label>
+                    </div>
 
-                <!-- Recurring? -->
-                <!-- TOGGLE: Recurring -->
-                <div class="input-group toggle-group">
-                  <span class="toggle-label">Recurring?</span>
-                  <label class="toggle-wrapper">
-                    <input type="checkbox" id="recurring-exp" />
-                    <span class="toggle-switch"></span>
-                  </label>
-                </div>
+                    <!-- SELECT: Frequency (Hidden by default) -->
+                    <div
+                      class="input-group"
+                      id="exp-frequency-group"
+                      style="display: none"
+                    >
+                      <label for="recurring-exp-frequency">Frequency</label>
+                      <select id="recurring-exp-frequency" required>
+                        <option value="" disabled selected hidden>
+                          Select Frequency
+                        </option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                      </select>
+                    </div>
 
-                <!-- SELECT: Frequency (Hidden by default) -->
-                <div
-                  class="input-group"
-                  id="exp-frequency-group"
-                  style="display: none"
-                >
-                  <label for="recurring-exp-frequency">Frequency</label>
-                  <select id="recurring-exp-frequency" required>
-                    <option value="" disabled selected hidden>
-                      Select Frequency
-                    </option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                  </select>
-                </div>
-
-                <!-- Note Input -->
-                <label for="exp-note">Add Note</label>
-                <input
-                  type="text"
-                  id="exp-note"
-                  name="exp-note"
-                  placeholder="e.g. Grocery shopping"
-                />
-              </form>
-            </div>
-            <div class="submit-form-container">
-              <button
-                id="submit-exp-form-btn"
-                class="wide-button"
-                type="submit"
-                form="add-expenditure-form"
-              >
-                ADD TRANSACTION
-              </button>
-            </div>
-          </div>
-
-          <!-- add income form -->
-          <div class="income-wrapper">
-            <div class="form-container">
-              <form id="add-income-form" class="transaction-form">
-                <!-- Category Dropdown -->
-                <label for="inc-category">Category</label>
-                <select id="inc-category" name="inc-category" required>
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="salary">Salary</option>
-                  <option value="freelance">Freelance</option>
-                  <option value="tax refund">Tax Refund</option>
-                  <option value="investment returns">Investment Returns</option>
-                  <option value="gifts">Gifts</option>
-                  <option value="others">Others</option>
-                </select>
-
-                <!-- Amount Input -->
-                <label for="inc-amount">Amount</label>
-                <input
-                  type="number"
-                  id="inc-amount"
-                  name="inc-amount"
-                  min="0"
-                  inputmode="decimal"
-                  pattern="[0-9]*"
-                  placeholder="Enter amount"
-                  required
-                />
-
-                <!-- Date Picker -->
-                <label for="inc-date">Date</label>
-                <input type="date" id="inc-date" name="inc-date" required />
-
-                <!-- Recurring? -->
-                <!-- TOGGLE: Recurring -->
-                <div class="input-group toggle-group">
-                  <span class="toggle-label">Recurring?</span>
-                  <label class="toggle-wrapper">
-                    <input type="checkbox" id="recurring-inc" />
-                    <span class="toggle-switch"></span>
-                  </label>
-                </div>
-
-                <!-- SELECT: Frequency (Hidden by default) -->
-                <div
-                  class="input-group"
-                  id="inc-frequency-group"
-                  style="display: none"
-                >
-                  <label for="recurring-inc-frequency">Frequency</label>
-                  <select id="recurring-inc-frequency" required>
-                    <option value="" disabled selected hidden>
-                      Select Frequency
-                    </option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                  </select>
-                </div>
-
-                <!-- Note Input -->
-                <label for="inc-note">Add Note</label>
-                <input
-                  type="text"
-                  id="inc-note"
-                  name="inc-note"
-                  placeholder="e.g. Grocery shopping"
-                />
-              </form>
-            </div>
-            <div class="submit-form-container">
-              <button
-                id="submit-inc-form-btn"
-                class="wide-button"
-                type="submit"
-                form="add-inc-form"
-              >
-                ADD TRANSACTION
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ============= ADD BUDGET PAGE  ============ -->
-        <div class="add-budget-div sub-pages" id="add-budget-page">
-          <div class="budget-form-wrapper">
-            <div class="form-container">
-              <form id="add-budget-form" class="transaction-form">
-                <!-- Category Dropdown -->
-                <label for="budget-category">Category</label>
-                <select id="budget-category" name="budget-category" required>
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="rent">Rent</option>
-                  <option value="food and groceries">Food & Groceries</option>
-                  <option value="internet">Internet Bill</option>
-                  <option value="electricity">Electricity Bill</option>
-                  <option value="transport">Transport</option>
-                  <option value="savings">Savings</option>
-                  <option value="investment">Investment</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="others">Others</option>
-                </select>
-
-                <!-- Amount Input -->
-                <label for="budget-amount">Amount</label>
-                <input
-                  type="number"
-                  id="budget-amount"
-                  name="budget-amount"
-                  min="0"
-                  inputmode="decimal"
-                  pattern="[0-9]*"
-                  placeholder="Enter amount"
-                  required
-                />
-
-                <!-- Date Picker -->
-                <label for="budget-date">Date</label>
-                <input
-                  type="date"
-                  id="budget-date"
-                  name="budget-date"
-                  required
-                />
-
-                <!-- Recurring? -->
-                <!-- TOGGLE: Recurring -->
-                <div class="input-group toggle-group">
-                  <span class="toggle-label">Recurring?</span>
-                  <label class="toggle-wrapper">
-                    <input type="checkbox" id="recurring-budget" />
-                    <span class="toggle-switch"></span>
-                  </label>
-                </div>
-
-                <!-- SELECT: Frequency (Hidden by default) -->
-                <div
-                  class="input-group"
-                  id="budget-frequency-group"
-                  style="display: none"
-                >
-                  <label for="recurring-budget-frequency">Frequency</label>
-                  <select id="recurring-budget-frequency" required>
-                    <option value="" disabled selected hidden>
-                      Select Frequency
-                    </option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-            <div class="submit-form-container">
-              <button
-                id="submit-budget-form-btn"
-                class="wide-button"
-                type="submit"
-                form="add-budget-form"
-              >
-                ADD BUDGET
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ============== INCOME PAGE =============== -->
-        <div id="income-page-div" class="sub-pages">
-          <div class="income-summary">
-            <div class="month-total-income">
-              <p class="income-tag caption">Month's Income Total</p>
-              <div class="income-page-total-div">
-                $<span id="income-totl">0</span>
-              </div>
-            </div>
-            <canvas
-              class="mon-total-inc-chart graph-background"
-              id="income-chart"
-            ></canvas>
-          </div>
-          <div class="add-trns-div sub-pages-add-btn">
-            <img
-              src="./assets/icons/add.png"
-              alt="Add"
-              class="add-trans-icon"
-              id="inc-page-add-t-btn"
-            />
-          </div>
-          <div class="income-page-tran-div">
-            <div class="recent-transaction-div" id="income-page-tran-div">
-              <p class="caption">Recent Transactions</p>
-              <div class="income-page-trans-grid-container">
-                <!-- <div class="income-page-trans-grid-item">
-                  <div class="description-div">
-                    <img
-                      src="./assets/icons/download.png"
-                      alt="icon"
-                      class="transaction-icon"
+                    <!-- Note Input -->
+                    <label for="exp-note">Add Note</label>
+                    <input
+                      type="text"
+                      id="exp-note"
+                      name="exp-note"
+                      placeholder="e.g. Grocery shopping"
                     />
-                    <h2 id="tran-category">Transaction</h2>
-                  </div>
-                  <div class="amount-date-div">
-                    <div class="amount-div">$300.34</div>
-                    <div class="date-div caption">03-02-2025</div>
-                  </div>
-                </div> -->
-              </div>
-              <!-- <div class="no-transactions-div">
-                <p class="caption">No Transactions To Show</p>
-              </div> -->
-            </div>
-          </div>
-        </div>
 
-        <!-- ============== EXPENDITURE PAGE =============== -->
-        <div id="expenditure-page-div" class="sub-pages">
-          <div class="expenditure-summary">
-            <div class="month-total-expense">
-              <p class="expense-tag caption">Month's Expenditure Total</p>
-              <div class="expense-page-total-div">
-                $<span id="expense-totl">0</span>
+                    <button
+                      id="submit-exp-form-btn"
+                      class="button-L-colored"
+                      type="submit"
+                      form="add-expenditure-form"
+                    >
+                      ADD TRANSACTION
+                    </button>
+                  </form>
+                </div>
               </div>
-            </div>
-            <canvas
-              class="mon-total-exp-chart graph-background"
-              id="expense-chart"
-            ></canvas>
-          </div>
-          <div class="add-trns-div sub-pages-add-btn">
-            <img
-              src="./assets/icons/add.png"
-              alt="Add"
-              class="add-trans-icon"
-              id="exp-page-add-t-btn"
-            />
-          </div>
-          <div class="expense-page-tran-div">
-            <div class="recent-transaction-div" id="expense-page-tran-div">
-              <p class="caption">Recent Transactions</p>
-              <div class="expense-page-trans-grid-container">
-                <!-- <div class="expense-page-trans-grid-item">
-                  <div class="description-div">
-                    <img
-                      src="./assets/icons/download.png"
-                      alt="icon"
-                      class="transaction-icon"
+
+              <!-- add income form -->
+              <div class="income-wrapper">
+                <div class="form-container">
+                  <form id="add-income-form" class="transaction-form">
+                    <!-- Category Dropdown -->
+                    <label for="inc-category">Category</label>
+                    <select id="inc-category" name="inc-category" required>
+                      <option value="" disabled selected>
+                        Select income category
+                      </option>
+                      <option value="salary">Salary</option>
+                      <option value="freelance">Freelance</option>
+                      <option value="tax refund">Tax Refund</option>
+                      <option value="investment returns">
+                        Investment Returns
+                      </option>
+                      <option value="gifts">Gifts</option>
+                      <option value="others">Others</option>
+                    </select>
+
+                    <!-- Amount Input -->
+                    <label for="inc-amount">Amount</label>
+                    <input
+                      type="number"
+                      id="inc-amount"
+                      name="inc-amount"
+                      min="0"
+                      inputmode="decimal"
+                      pattern="[0-9]*"
+                      placeholder="Enter amount"
+                      required
                     />
-                    <h2 id="tran-category">Transaction</h2>
-                  </div>
-                  <div class="amount-date-div">
-                    <div class="amount-div">$300.34</div>
-                    <div class="date-div caption">03-02-2025</div>
-                  </div>
-                </div> -->
-              </div>
-              <!-- <div class="no-transactions-div">
-                <p class="caption">No Transactions To Show</p>
-              </div> -->
-            </div>
-          </div>
-        </div>
 
-        <!-- ============== budget page =============== -->
-        <div id="budget-page-div" class="sub-pages">
-          <div class="budget-page-wrapper">
-            <div class="budget-page-grid-container"></div>
+                    <!-- Date Picker -->
+                    <label for="inc-date">Date</label>
+                    <input type="date" id="inc-date" name="inc-date" required />
+
+                    <!-- Recurring? -->
+                    <!-- TOGGLE: Recurring -->
+                    <div class="input-group toggle-group">
+                      <span class="toggle-label">Recurring?</span>
+                      <label class="toggle-wrapper">
+                        <input type="checkbox" id="recurring-inc" />
+                        <span class="toggle-switch"></span>
+                      </label>
+                    </div>
+
+                    <!-- SELECT: Frequency (Hidden by default) -->
+                    <div
+                      class="input-group"
+                      id="inc-frequency-group"
+                      style="display: none"
+                    >
+                      <label for="recurring-inc-frequency">Frequency</label>
+                      <select id="recurring-inc-frequency" required>
+                        <option value="" disabled selected hidden>
+                          Select Frequency
+                        </option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                      </select>
+                    </div>
+
+                    <!-- Note Input -->
+                    <label for="inc-note">Add Note</label>
+                    <input
+                      type="text"
+                      id="inc-note"
+                      name="inc-note"
+                      placeholder="e.g. From Tax returns"
+                    />
+
+                    <button
+                      id="submit-inc-form-btn"
+                      class="button-L-dark"
+                      type="submit"
+                      form="add-inc-form"
+                    >
+                      ADD TRANSACTION
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- add budget page -->
+            <div class="add-budget-div sub-pages" id="add-budget-page">
+              <div class="budget-form-wrapper">
+                <div class="form-container">
+                  <form id="add-budget-form" class="transaction-form">
+                    <!-- Category Dropdown -->
+                    <label for="budget-category">Category</label>
+                    <select
+                      id="budget-category"
+                      name="budget-category"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select a category
+                      </option>
+                      <option value="rent">Rent</option>
+                      <option value="food and groceries">
+                        Food & Groceries
+                      </option>
+                      <option value="internet">Internet Bill</option>
+                      <option value="electricity">Electricity Bill</option>
+                      <option value="transport">Transport</option>
+                      <option value="savings">Savings</option>
+                      <option value="investment">Investment</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="others">Others</option>
+                    </select>
+
+                    <!-- Amount Input -->
+                    <label for="budget-amount">Amount</label>
+                    <input
+                      type="number"
+                      id="budget-amount"
+                      name="budget-amount"
+                      min="0"
+                      inputmode="decimal"
+                      pattern="[0-9]*"
+                      placeholder="Enter amount"
+                      required
+                    />
+
+                    <!-- Date Picker -->
+                    <label for="budget-date">Date</label>
+                    <input
+                      type="date"
+                      id="budget-date"
+                      name="budget-date"
+                      required
+                    />
+
+                    <!-- Recurring? -->
+                    <!-- TOGGLE: Recurring -->
+                    <div class="input-group toggle-group">
+                      <span class="toggle-label">Recurring?</span>
+                      <label class="toggle-wrapper">
+                        <input type="checkbox" id="recurring-budget" />
+                        <span class="toggle-switch"></span>
+                      </label>
+                    </div>
+
+                    <!-- SELECT: Frequency (Hidden by default) -->
+                    <div
+                      class="input-group"
+                      id="budget-frequency-group"
+                      style="display: none"
+                    >
+                      <label for="recurring-budget-frequency">Frequency</label>
+                      <select id="recurring-budget-frequency" required>
+                        <option value="" disabled selected hidden>
+                          Select Frequency
+                        </option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                      </select>
+                    </div>
+
+                    <button
+                      id="submit-budget-form-btn"
+                      class="button-L-dark"
+                      type="submit"
+                      form="add-budget-form"
+                    >
+                      ADD BUDGET
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- budget page -->
+            <div id="budget-page-div" class="sub-pages">
+              <div class="budget-page-wrapper">
+                <div class="budget-page-grid-container"></div>
+              </div>
+            </div>
+
+            <!-- income page -->
+            <div id="income-page-div" class="sub-pages">
+              <div class="income-summary">
+                <div class="month-total-income">
+                  <p class="income-tag caption">Month's Income Total</p>
+                  <div class="income-page-total-div">
+                    $<span id="income-totl">0</span>
+                  </div>
+                </div>
+                <canvas
+                  class="mon-total-inc-chart graph-background"
+                  id="income-chart"
+                ></canvas>
+              </div>
+              <div class="add-trns-div sub-pages-add-btn">
+                <img
+                  src="./assets/icons/add.png"
+                  alt="Add"
+                  class="add-trans-icon"
+                  id="inc-page-add-t-btn"
+                />
+              </div>
+              <div class="income-page-tran-div">
+                <div class="recent-transaction-div" id="income-page-tran-div">
+                  <p class="caption">Recent Transactions</p>
+                  <div class="income-page-trans-grid-container"></div>
+                  <!-- <div class="no-transactions-div">
+                      <p class="caption">No Transactions To Show</p>
+                    </div> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- expense page -->
+            <div id="expenditure-page-div" class="sub-pages">
+              <div class="expenditure-summary">
+                <div class="month-total-expense">
+                  <p class="expense-tag caption">Month's Expenditure Total</p>
+                  <div class="expense-page-total-div">
+                    $<span id="expense-totl">0</span>
+                  </div>
+                </div>
+                <canvas
+                  class="mon-total-exp-chart graph-background"
+                  id="expense-chart"
+                ></canvas>
+              </div>
+              <div class="add-trns-div sub-pages-add-btn">
+                <img
+                  src="./assets/icons/add.png"
+                  alt="Add"
+                  class="add-trans-icon"
+                  id="exp-page-add-t-btn"
+                />
+              </div>
+              <div class="expense-page-tran-div">
+                <div class="recent-transaction-div" id="expense-page-tran-div">
+                  <p class="caption">Recent Transactions</p>
+                  <div class="expense-page-trans-grid-container"></div>
+                  <!-- <div class="no-transactions-div">
+                    <p class="caption">No Transactions To Show</p>
+                  </div> -->
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
-      <!-- ==============  =============== -->
     </div>
 
     <script type="module" src="./js/app.js"></script>

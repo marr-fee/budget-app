@@ -1,19 +1,22 @@
 
 
+
 .add-trans-icon{
   width: 60px;
   height: 60px;
 }
 
 .expenditure-wrapper, .income-wrapper{
-  /* background-color: rgb(248, 248, 248); */
   width: 100%;
   height: 100%;
-  padding: 0;
-  margin: 0;
+  padding: 10px;
+  margin: 20px 0 0 0;
   overflow: hidden;
   position: relative;
-  padding-bottom: 170px;
+  background-color: #ffffff;
+  border-radius: 35px 35px 0 0;
+  box-shadow: -2px -2px 10px rgba(128, 128, 128, 0.082);
+
 }
 
 .income-wrapper{
@@ -35,6 +38,7 @@
   scrollbar-width: none;
   margin-top: 15px;
   position: relative;
+  padding-bottom: 25px;
 
 }
 
@@ -43,11 +47,8 @@
   flex-direction: column;
   gap: 5px;
   padding: 15px;
-  /* left: 0;
-  top: 0; */
   height: 100%;
   width: 100%;
-  /* position: absolute; */
 }
 
 .investment-group, .crypto-options-group, .crypto-units-div{
@@ -57,31 +58,20 @@
   width: 100%;
 }
 
-.submit-form-container{
-  width: 100%;
-  height: 100px;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background-color: rgb(248, 248, 248)
-}
-
 
 .form-options-container{
-  border: 3px solid rgba(0, 0, 0, 0.158);
-  width: 60%;
-  height: 35px;
-  border-radius: 5px;
+  border: none;
+  width: 50%;
+  height: 25px;
+  border-radius: 7px;
+  overflow: hidden;
   padding: 0;
   margin: 0 auto;
   display: flex;
   gap: 0;
   background-color: rgb(161, 161, 161);
   position: relative;
+  font-size: 12px;
 }
 
 #income-option, #expense-option, .f-o-backgr-toggle{
@@ -104,11 +94,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(150deg, rgb(52, 160, 61), rgb(12, 107, 20));
+  background: #0e1424;
 }
 
 .f-o-backgr-toggle.active{
-  background: linear-gradient(150deg, rgb(207, 71, 71), rgb(170, 2, 2));
+  background: #76220b;
 }
 
 
@@ -125,7 +115,7 @@
 .transaction-form label, .investment-group label, .crypto-units-div label {
   font-size: 14px;
   font-weight: 500;
-  color: #08491e;
+  color: #090c11;
 }
 
 .transaction-form input,

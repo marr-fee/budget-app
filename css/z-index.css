@@ -1,14 +1,18 @@
 /* Z index stack */
-.bottom-navbar{
-  z-index: 5;
-}
-
-.side-bar{
+.bottom-nav-container{
   z-index: 3;
 }
 
-.header{
-  z-index: 15;
+.side-bar{
+  z-index: 6;
+}
+
+.sub-contents-wrapper{
+  z-index: 5;
+}
+
+.top-nav-container{
+  z-index: 6;
 }
 
 .card{
