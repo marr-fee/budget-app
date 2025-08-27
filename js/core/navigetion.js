@@ -5,11 +5,12 @@ import { closeSidebar, sideNavbar } from "../components/sidebar.js";
 import { appState } from "./state.js";
 // import { resetForms } from "../pages/addTransaction.js";
 import { resetForms } from "../pages/add-transaction/addTran-utils.js";
-import { getExpenseDataByMonth, getIncomeDataByMonth, overviewPageCanvas, renderComparisonChart, renderExpenseChart, renderIncomeChart, statsPageCanvas } from "../pages/stats.js";
+import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart, statsPageCanvas } from "../pages/stats.js";
 import { addBudgetPage } from "../pages/dashboard.js";
 import { budgetPage } from "../pages/add-budget/add-budget-dom.js";
 import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
-
+import { loanForm, loansPage } from "../pages/loans.js";
+// overviewPageCanvas
 
 
 export const subPagesWrapper = document.querySelector('.sub-contents-wrapper')
@@ -43,7 +44,7 @@ export const expenditurePageTapDiv = document.getElementById('expenditure-page')
 export const appPages = {
   dashboard: {
     element: dashboardPage,
-    title: "Dashboard"
+    title: ""
   },
   addTranscPage: {
     element: addTransactionPage,
@@ -76,6 +77,14 @@ export const appPages = {
   budgetPage: {
     element: budgetPage,
     title: "Budgets"
+  },
+  loansPage: {
+    element: loansPage,
+    title: "Loans"
+  },
+  addLoansPage: {
+    element: loanForm,
+    title: "Add New Loan"
   }
 }
 
@@ -91,7 +100,7 @@ export function showPage(pageName) {
     renderComparisonChart(statsPageCanvas); 
   }
   if (pageName === "dashboard") {
-    renderComparisonChart(overviewPageCanvas); 
+    // renderComparisonChart(overviewPageCanvas); 
   }
   if (pageName === "dashboard" || pageName === "statsPage" || pageName === "investmentPage" || pageName === "profilePage") {
     appState.pageStack = [pageName];
@@ -122,7 +131,7 @@ export function goBack() {
   if (appState.pageStack.length > 1){
 
     let lastPage = appState.pageStack.pop();
-    if (lastPage === "addTranscPage" || lastPage === "addBudgetPage") {
+    if (lastPage === "addTranscPage" || lastPage === "addBudgetPage" || lastPage === "addLoansPage") {
       resetForms();
       
     }
@@ -148,6 +157,7 @@ mainPages.forEach((page) =>{
 // })
 
 document.querySelectorAll("[data-page-link]").forEach(link => {
+  
   link.addEventListener('click', () => {
     const page = link.dataset.pageLink;
     
@@ -170,5 +180,18 @@ document.querySelectorAll("[data-page-link]").forEach(link => {
     }
   })
 })
+
+document.querySelectorAll("[data-sidebar-link]").forEach(link => {
+  
+  link.addEventListener('click', () => {
+    const page = link.dataset.sidebarLink;
+    
+    if (appState.isSideBarOpen) {
+      closeSidebar();
+      showPage(page);
+    }
+  })
+})
+
 
 showPage('dashboard');

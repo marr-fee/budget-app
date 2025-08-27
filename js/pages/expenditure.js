@@ -2,7 +2,7 @@
 import { displayGridItems } from "../components/modal.js";
 import { showPage } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
-import { openExpenseForm } from "./add-transaction/addTran-utils.js";
+import { openExpenseForm, renderItems } from "./add-transaction/addTran-utils.js";
 import { totalMonthlyExpElem } from "./dashboard.js";
 
 export const expPageTotalExpElem = document.getElementById('expense-totl');
@@ -22,32 +22,49 @@ export function updateTotalMonthlyExpense(){
 }
 
 export function renderExpenseItems() {
-  let expenseGridItems = '';
-  appState.expenditure.forEach((exp) => {
-    expenseGridItems += `
-         <div class="trans-grid-item" data-id="${exp.id}">
-      <div class="description-div">
-        <img src="./assets/icons/download.png" alt="icon" class="transaction-icon" />
-        <h2 class="tran-category">${exp.category}</h2>
-      </div>
-      <div class="amount-date-div">
-        <div class="amount-div">$${Number(exp.amount.toFixed(2)).toLocaleString("en-US")}</div>
-        <div class="date-div caption">${exp.date}</div>
-      </div>
-    </div> 
-    `;
-  })
-  
-  displayGridItems(expencePageTranDiv, "Recent Transactions",expPageExpGridContr, expenseGridItems, false, "No Transactions To Show", appState.transactions.length);
 
-  // expPageExpGridContr.innerHTML = gridItems;
-  expPageTotalExpElem.innerHTML = Number(updateTotalMonthlyExpense()).toLocaleString("en-US");
+    renderItems({
+      container: expencePageTranDiv,
+      gridContainer: expPageExpGridContr,
+      items: appState.expenditure,
+      caption: "Expenses",
+      showMore: false,
+      message: "No Transactions To Show",
+      totalElem: expPageTotalExpElem,
+      totalCalcFn: updateTotalMonthlyExpense
+    });
+
+  // let expenseGridItems = '';
+  // appState.expenditure.forEach((exp) => {
+  //   const randomIndex = Math.floor(Math.random() * backgroundColors.length);
+  //   let randomBackgroundColor = backgroundColors[randomIndex];
+
+  //   expenseGridItems += `
+  //        <div class="trans-grid-item" data-id="${exp.id}">
+  //     <div class="description-div">
+  //       <div class="trans-category-img-contr" style="background-color: ${randomBackgroundColor}">
+  //         <img src="assets/icons/freelancer.png" alt="icon" class="transaction-icon" />
+  //       </div>
+  //       <h2 class="tran-category">${exp.category}</h2>
+  //     </div>
+  //     <div class="amount-date-div">
+  //       <div class="amount-div">$${Number(exp.amount.toFixed(2)).toLocaleString("en-US")}</div>
+  //       <div class="date-div caption">${exp.date}</div>
+  //     </div>
+  //   </div> 
+  //   `;
+  // })
+  
+  // displayGridItems(expencePageTranDiv, "Recent Transactions",expPageExpGridContr, expenseGridItems, false, "No Transactions To Show", appState.transactions.length);
+
+  // // expPageExpGridContr.innerHTML = gridItems;
+  // expPageTotalExpElem.innerHTML = Number(updateTotalMonthlyExpense()).toLocaleString("en-US");
 }
 
-addExpTranBtn.addEventListener('click', () => {
-  showPage('addTranscPage');
-  openExpenseForm();
-})
+// addExpTranBtn.addEventListener('click', () => {
+//   showPage('addTranscPage');
+//   openExpenseForm();
+// })
 
 updateTotalMonthlyExpense();
 

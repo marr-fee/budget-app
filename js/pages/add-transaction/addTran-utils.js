@@ -2,7 +2,8 @@ import { addIncomeForm, addExpeditureForm, incFrequencyGroup, expFrequencyGroup,
 
 import { appState } from "../../core/state.js";
 import { addBudgetForm, budgetFrequencyGroup } from "../add-budget/add-budget-dom.js";
-import { displayGridItems } from "../../components/modal.js";
+import { backgroundColors, displayGridItems } from "../../components/modal.js";
+import { loanPaymentGroup, loanSubCategory } from "../loans.js";
 // import { addBudgetForm, budgetFrequencyGroup } from "../add-budget.js";
 
 
@@ -85,6 +86,59 @@ export function clearErrorHighlights(form) {
   });
 }
 
+export function createGridItem(item) {
+  const color = assignColor(item);
+
+  let sign = "";
+  let colorClass = "";
+  if (item.type === "income") {
+    sign = "+";
+    colorClass = "amount-income";
+  } else if (item.type === "expenditure") {
+    sign = "−";
+    colorClass = "amount-expense";
+  }
+
+  return `
+    <div class="trans-grid-item" data-id="${item.id}">
+      <div class="description-div">
+        <div class="trans-category-img-contr" style="background-color: ${color}">
+          <img src="assets/icons/freelancer.png" alt="icon" class="transaction-icon" />
+        </div>
+        <h2 class="tran-category">${item.category}</h2>
+      </div>
+      <div class="amount-date-div">
+        <div class="amount-div ${colorClass}">${sign}$${Number(item.amount.toFixed(2)).toLocaleString("en-US")}</div>
+        <div class="date-div caption">${item.date}</div>
+      </div>
+    </div>`;
+}
+
+export function renderItems({ container, gridContainer, items, caption, showMore, message, totalElem, totalCalcFn }) {
+  // build grid items HTML
+  let gridItems = '';
+  items.forEach((item) => {
+    gridItems += createGridItem(item);
+  });
+
+  // send it to your existing display function
+  displayGridItems(container, caption, gridContainer, gridItems, showMore, message, items.length);
+
+  // update totals if provided
+  if (totalElem && totalCalcFn) {
+    totalElem.innerHTML = Number(totalCalcFn()).toLocaleString("en-US");
+  }
+}
+
+export function assignColor(item) {
+  if (!item.color) {
+    const randomIndex = Math.floor(Math.random() * backgroundColors.length);
+    item.color = backgroundColors[randomIndex];
+  }
+  return item.color;
+}
+
+
 export function renderRecentTransactions() {
   // UI toggles
   // emptyTransactions.style.display = appState.transactions.length === 0 ? "flex" : "none";
@@ -93,25 +147,43 @@ export function renderRecentTransactions() {
   // take first 3 (newest)
   const latestTransactions = appState.transactions.slice(0, 3);
 
-  // build HTML (newest will be first element, so it appears at the top)
-  const transactionGridItems = latestTransactions.map(transaction => `
-    <div class="trans-grid-item" data-id="${transaction.id}">
-      <div class="description-div">
-        <img src="./assets/icons/download.png" alt="icon" class="transaction-icon" />
-        <h2 class="tran-category">${transaction.category}</h2>
-      </div>
-      <div class="amount-date-div">
-        <div class="amount-div">$${Number(transaction.amount.toFixed(2)).toLocaleString("en-US")}</div>
-        <div class="date-div caption">${transaction.date}</div>
-      </div>
-    </div>
-  `).join("");
+  renderItems({
+    container: recentTransDiv,
+    gridContainer: transactionGridContainer,
+    items: latestTransactions,
+    caption: "Recent Transactions",
+    showMore: appState.transactions.length > 3,
+    message: "No Transactions To Show"
+  });
 
-  const showMore = appState.transactions.length > 3 ? true : false;
+  // let transactionGridItems = "";
+  // // build HTML (newest will be first element, so it appears at the top)
+  // latestTransactions.forEach((tr) => {
+  //   const randomIndex = Math.floor(Math.random() * backgroundColors.length);
+  //   let randomBackgroundColor = backgroundColors[randomIndex];
 
-  // transactionGridContainer.innerHTML = transactionGridItems;
+  //   transactionGridItems += `
+  //   <div class="trans-grid-item" data-id="${tr.id}">
+  //     <div class="description-div">
+  //       <div class="trans-category-img-contr" style="background-color: ${randomBackgroundColor}">
+  //         <img src="assets/icons/freelancer.png" alt="icon" class="transaction-icon" />
+  //       </div>
+  //       <h2 class="tran-category">${tr.category}</h2>
+  //     </div>
+  //     <div class="amount-date-div">
+  //       <div class="amount-div">$${Number(tr.amount.toFixed(2)).toLocaleString("en-US")}</div>
+  //       <div class="date-div caption">${tr.date}</div>
+  //     </div>
+  //   </div>
+  // `
+  // })
+  
 
-  displayGridItems(recentTransDiv, "Recent Transactions",transactionGridContainer, transactionGridItems, showMore, "No Transactions To Show", appState.transactions.length);
+  // const showMore = appState.transactions.length > 3 ? true : false;
+
+  // // transactionGridContainer.innerHTML = transactionGridItems;
+
+  // displayGridItems(recentTransDiv, "Recent Transactions",transactionGridContainer, transactionGridItems, showMore, "No Transactions To Show", appState.transactions.length);
 }
 
 export function resetSubForms(){
@@ -122,6 +194,8 @@ export function resetSubForms(){
   cryptoUnitsDiv.style.display = "none";
   investmentGroup.style.display = "none";
   investmentCategory.value = "";
+  loanPaymentGroup.style.display = "none";
+  loanSubCategory.value = "";
 };
 
 export function resetForms() {

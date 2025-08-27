@@ -6,12 +6,13 @@ import { openExpenseForm, openIncomeForm, renderRecentTransactions, resetForms, 
 import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, recurringExpCheckbox, recurringIncCheckbox } from "./addTrans-dom.js";
 import { showNotification, updateTotalMonthlyBalance } from "../../core/utils.js";
 import { goBack } from "../../core/navigetion.js";
-import { getExpenseDataByMonth, getIncomeDataByMonth, overviewPageCanvas, renderComparisonChart, renderExpenseChart, renderIncomeChart } from "../stats.js";
+import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart } from "../stats.js";
 // import { renderBudgetOverview } from "../add-budget.js";
 import { highlightErrors } from "../../core/utils.js";
 import { renderBudgetOverview } from "../add-budget/add-budget-util.js";
 import { monitorPortfolio } from "../investments/crypto-logic.js";
-
+import { handleAddTransaction, loanSubCategory } from "../loans.js";
+// overviewPageCanvas
 
 export function addTransaction(newTx) {
   // put newest at index 0
@@ -23,6 +24,7 @@ export function addTransaction(newTx) {
     appState.transactions.pop(); // remove oldest at the end
   }
   
+  handleAddTransaction(newTx);
   // saveAppState();
   renderRecentTransactions();
 }
@@ -68,7 +70,7 @@ export function addIncome(){
   renderIncomeItems();
   renderIncomeChart(getIncomeDataByMonth());
   addIncomeForm.reset();
-
+  
   // saveAppState();
   goBack();
 }
@@ -78,6 +80,7 @@ export function addExpenditure(){
   let isCryptoInvestment = isInvestment && investmentCategory.value === "crypto";
   let passedCryptoValidation = false;
   let isRecurring = recurringExpCheckbox.checked ? true : false;
+  let isLoanPayment = expenseCategory.value === "Loan Payment";
   
 
   const requiredFields = [expenseCategory, expenseAmount];
@@ -87,6 +90,7 @@ export function addExpenditure(){
     }
 
     if (isInvestment) requiredFields.push(investmentCategory);
+    if (isLoanPayment) requiredFields.push(loanSubCategory);
 
     // crypto group validation
     if (isCryptoInvestment) {
@@ -132,6 +136,8 @@ export function addExpenditure(){
     frequency: expenseFrequency.value,
     note: expenseNote.value
   }
+
+
 
   if (isCryptoInvestment && passedCryptoValidation) {
     const imageObj = {
@@ -192,13 +198,13 @@ incomeFormOption.addEventListener('click', () => {
 addIncomeBtn.addEventListener('click', (event) => {
   event.preventDefault();
   addIncome();
-  renderComparisonChart(overviewPageCanvas);
+  // renderComparisonChart(overviewPageCanvas);
 })
 
 addExpenditureBtn.addEventListener('click', (event) => {
   event.preventDefault();
   addExpenditure();
-  renderComparisonChart(overviewPageCanvas);
+  // renderComparisonChart(overviewPageCanvas);
 
 })
 

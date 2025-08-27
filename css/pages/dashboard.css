@@ -10,23 +10,167 @@
   padding: 10px;
 }
 
+.user-info-div{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-image-container{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  overflow: hidden;
+  margin-left: 5px;
+}
+
+.user-image-container img{
+  width: 100%;
+  height: 100%;
+}
+
+.hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0 5px 0;
+  border-bottom: 1px solid rgba(116, 114, 114, 0.185);
+  padding-bottom: 10px;
+}
+
+.card-image{
+  position: absolute;
+  top: -20px;
+  right: 0;
+}
+.card-image img{
+  width: 50px;
+  height: 50px;
+}
+
+.balance-card {
+  background: #e1e2e2;
+  border-radius: 15px;
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.balance-main {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.balance-label {
+  font-size: 12px;
+  color: #543884;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.balance-amount {
+  font-weight: 700;
+  color: #000000;
+}
+
+.networth-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(223, 223, 218, 0.37);
+  border-radius: 10px;
+  position: relative;
+}
+.networth-info{
+  position: relative;
+}
+.networth-label {
+  display: block;
+  color: #543884;
+}
+
+.amount-cover{
+  width: 100%;
+  display: none;
+}
+.amount-cover.active{
+  display: flex;
+}
+
+.networth-amount {
+  color: #000000;
+  display: block;
+}
+.networth-amount.hide, .networth-changes-cntr.hide{
+  display: none;
+}
+
+
+
+.hide-net-worth-change-contr{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.networth-eye{
+  background-color: #ffffff;
+  border: none;
+}
+
+.networth-changes-cntr{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* states for net worth change */
+.networth-change.negative, .networth-amt-change.negative {
+  color: #d10202;
+}
+
+.networth-change.positive, .networth-amt-change.positive {
+  color: #119400;
+}
+
+.dashboard-add-btns-cntr{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .budget-title-add-budgt-contr{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px ;
+  padding: 10px 0 ;
 }
 
 .budget-title-add-budgt-contr h3{
   font-size: 16px;
 }
 
-#overview-page-add-budget-link{
+/* #overview-page-add-budget-link{
   font-size: 12px;
   font-weight: 600;
-  color: orangered;
-}
+  color: #e45f00;
+} */
 
 .budget-summary-grid-container{
   display: grid;
@@ -36,8 +180,9 @@
 
 .budget-summary-grid-item{
   width: 100%;
-  background-color: rgba(201, 199, 199, 0.192);
-  filter: blur(20%);
+  background: linear-gradient(170deg, rgb(248, 248, 248) , rgb(216, 214, 214) , white);
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.102);
+  filter: blur(10%);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -57,11 +202,12 @@
   font-size: 600;
   text-transform: uppercase;
   font-size: 12px;
+  color: #543884;
 }
 
 .month-div{
   font-size: 12px;
-  color: rgb(0, 0, 0);
+  color: #543884;
 }
 
 .line-bar-div{
@@ -76,7 +222,7 @@
 
 .bar-fill{
   height: 100%;
-  background-color: orangered;
+  background-color: #e45f00;
 }
 
 .budget-amt-div{
@@ -148,11 +294,11 @@
 }
 
 .inc-card-bcgrd{
-  background: linear-gradient(150deg, rgb(134, 63, 226), #543884);
+  background:  #0c111a;
 }
 
 .exp-card-bcgrd{
-  background: linear-gradient(150deg, rgb(238, 159, 11), rgb(216, 90, 7));
+  background: #f18436;
 }
 
 .recent-transaction-div{
@@ -166,25 +312,33 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 10px;
+  gap: 15px;
   flex-direction: column-reverse;
 }
 
 .trans-grid-item{
   width: 100%;
   background-color: rgb(248, 248, 248);
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 65px;
   padding: 0 15px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.137);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.103);
 }
-
+.trans-category-img-contr{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .transaction-icon{
-  width: 22px;
-  height: 22px;
+  width: 100%;
+  height: 100%;
 }
 
 .description-div{
@@ -194,7 +348,7 @@
   gap: 8px;
 }
 .description-div > h2{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
 }
 
@@ -212,8 +366,9 @@
 }
 
 #show-more-trans, #show-more-budget{
+  width: 100%;
   text-align: right;
-  padding: 5px;
+  padding-bottom: 5px;
   margin-right: 5px;
   text-decoration: underline;
   display: none;
@@ -223,11 +378,26 @@
 
 .no-transactions-div{
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 50px 0 ;
-  background-color: rgba(201, 199, 199, 0.192);
-  filter: blur(20%);
+  padding: 15px 0 ;
+  background: #f4f5f557;
+  /* background: linear-gradient(150deg, rgb(248, 248, 248) , rgb(216, 214, 214) , white); */
+  filter: blur(10%);
   border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.placeholder-img{
+  width: 60px;
+  height: 60px;
+}
+
+.highlight{
+  color: #653899 !important;
+  font-weight: 700 !important;
+  scale: 1.2;
 }

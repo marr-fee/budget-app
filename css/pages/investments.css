@@ -9,6 +9,30 @@
   scrollbar-width: none;
 } */
 
+
+/* .circle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring__circle { */
+  /* stroke-dasharray: 326; Circumference = 2 * π * r (2 * 3.14 * 52 ≈ 326) */
+  /* stroke-dashoffset: 326; Start hidden */
+  /* transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+} */
+.portfolio-card-wrapper{
+  width: 88%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  position: relative;
+}
+
 .crypto-investment-btns{
   width: 100%;
   margin: 0 auto;
@@ -38,31 +62,10 @@
   text-transform: uppercase;
   font-size: 12px;
 }
-/* .circle-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.progress-ring__circle { */
-  /* stroke-dasharray: 326; Circumference = 2 * π * r (2 * 3.14 * 52 ≈ 326) */
-  /* stroke-dashoffset: 326; Start hidden */
-  /* transition: stroke-dashoffset 0.35s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-} */
-.portfolio-card-wrapper{
-  width: 88%;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  position: relative;
-}
 .portfolio-value-card{
   width: 100%;
-  height: 100%;
+  height: 150px;
   background: 
     linear-gradient(
       135deg, 
@@ -71,9 +74,9 @@
     ),
     linear-gradient(
       135deg, 
-      rgb(24, 40, 72),   /* deep navy */
-      rgb(36, 59, 85),   /* soft blue-gray */
-      rgb(12, 27, 51)    /* almost black */
+      rgb(24, 40, 72), 
+      rgb(36, 59, 85),   
+      rgb(12, 27, 51)   
     );
   box-shadow: 
     0 8px 20px rgba(0, 0, 0, 0.3),
@@ -116,7 +119,7 @@
 .portfolio-value-card p{
   width: 100%;
   text-align: left;
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
   top: 15px;
   left: 15px;
@@ -136,14 +139,14 @@
 
 .crypto-holdings-cntr{
   width: 100%;
+  min-height: 160px;
   display: grid;
   grid-auto-flow: column; /* Make items go in one row */
   grid-auto-columns: 220px;
   gap: 15px;
   overflow-x: auto; /* Allow horizontal scroll */
   scroll-behavior: smooth;
-  padding-bottom: 10px;
-  margin: 15px auto;
+  margin: 10px auto
 }
 
 .crypto-holdings-cntr::-webkit-scrollbar {
@@ -158,87 +161,58 @@
 .crypto-holdings-grid-items{
   /* width: 250px; */
   aspect-ratio: 2 / 1;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.301);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  gap: 15px;
+  gap: 5px;
   position: relative;
-  color: rgb(80, 80, 80);
+  color: rgb(29, 29, 29);
 }
 
+
 .bitcoin-background{
-  background: linear-gradient(150deg, rgb(182, 161, 40), rgb(248, 230, 131), rgb(146, 125, 6));
+  background-color: #eeaa57;
 }
 
 /* Ethereum - silver & blue shimmer */
 .ethereum-background {
-  background: linear-gradient(
-    150deg,
-    rgb(190, 190, 190),
-    rgb(230, 230, 255),
-    rgb(120, 144, 180)
-  );
+  background-color: #7e94eb;
 }
 
 /* Cardano - deep blue & teal glow */
 .cardano-background {
-  background: linear-gradient(
-    150deg,
-    rgb(0, 82, 204),
-    rgb(102, 204, 255),
-    rgb(0, 153, 153)
-  );
+  background-color: #466cc4;
   color: rgb(39, 16, 16);
 }
 
 /* XRP - black & silver shine */
 .ripple-background {
-  background: linear-gradient(
-    150deg,
-    rgb(30, 30, 30),
-    rgb(100, 100, 100),
-    rgb(200, 200, 200)
-  );
+  background-color: #474c52;
   color: rgba(245, 245, 245, 0.884);
 }
 
 /* BNB - gold with warm glow */
 .bnb-background {
-  background: linear-gradient(
-    150deg,
-    rgb(255, 215, 0),
-    rgb(255, 235, 100),
-    rgb(180, 140, 0)
-  );
+  background-color: #e6b845;
 }
 
 /* USDC - bright blue & white accents */
 .usdc-background {
-  background: linear-gradient(
-    150deg,
-    rgb(0, 122, 255),
-    rgb(102, 204, 255),
-    rgb(0, 82, 204)
-  );
+  background-color: #4d739c;
 }
 
 /* Solana - neon purple, green, & blue shimmer */
 .solana-background {
-  background: linear-gradient(
-    150deg,
-    rgb(142, 68, 173),
-    rgb(0, 255, 163),
-    rgb(56, 182, 255)
-  );
+  background-color: #2ed18d;
 }
 
 
 .blured-coin-logo{
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -257,6 +231,22 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.holdings-coin-logo{
+  width: 20px;
+}
+
+.holdings-coin-name{
+  font-size: 10px;
+}
+
+.holdings-coin-value{
+  font-size: 14px;
+}
+
+.coin-changes p{
+  font-size: 10px;
 }
 
 .coin-labels{
@@ -287,13 +277,17 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.199);
 }
 
+.crypto-market-grid-items:last-of-type{
+  border-bottom: none;
+}
+
 .coin-progress-graph-div {
   width: 100px;
   height: 40px;
 }
 .coin-progress-graph-div canvas {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
 }
 
 .coin-value{

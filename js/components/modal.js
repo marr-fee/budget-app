@@ -3,6 +3,8 @@
 import { appState } from "../core/state.js";
 import { recentTransDiv, transactionGridContainer } from "../pages/add-transaction/addTrans-dom.js";
 
+export const backgroundColors = ["skyblue", "pink", "greenyellow"]
+
 export function highlightErrors(inputs) {
   let hasError = false;
 
@@ -38,7 +40,11 @@ export function displayGridItems(container, containerCaption, gridContainer, gri
   emptyTransactions.classList.add('no-transactions-div');
   const messageContr = document.createElement('p');
   messageContr.classList.add('caption');
+  const placeholderImg = document.createElement('img');
+  placeholderImg.classList.add('placeholder-img');
+  placeholderImg.src = "assets/icons/bitcoin-placeholder.png";
   messageContr.textContent = message;
+  emptyTransactions.appendChild(placeholderImg);
   emptyTransactions.appendChild(messageContr);
 
   // show more

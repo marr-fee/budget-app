@@ -9,6 +9,7 @@ export const swapCryptoBtn = document.getElementById('add-crypto-button');
 // export const cryptoHoldingCardCoinPercChangeElem = document.querySelector('.coin-percent-change');
 // export const cryptoHoldingCardImg = document.querySelector('.coin-percent-change');
 // export const cryptoHoldingCardImgBlur = document.querySelector('.holdings-coin-logo');
+export const myCryptoCardsCntr = document.querySelector('.my-crypto-cards-cntr');
 export const coinHoldingsGridCntr = document.querySelector('.crypto-holdings-cntr');
 export const coinMarketGridCntr = document.querySelector('.crypto-market-prices-cntr');
 

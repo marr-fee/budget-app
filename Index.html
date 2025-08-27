@@ -105,13 +105,16 @@
           </div>
 
           <!-- notification icon -->
-          <div>
+          <div class="notification-div">
             <img
-              src="./assets/icons/dots.png"
+              src="assets/icons/bell.png"
               alt=""
               id="dot-menu-btn"
               class="clickable-icons"
             />
+            <div class="notification-red-dot">
+              <span id="notification-number"></span>
+            </div>
           </div>
         </div>
 
@@ -128,13 +131,13 @@
                 />Settings</a
               >
             </li>
-            <li class="s-b-items">
+            <li class="s-b-items" data-sidebar-link="loansPage">
               <a href="#"
                 ><img
                   src="./assets/icons/connection.png"
                   alt="Export / Import"
                   class="nav-item-img clickable-icons"
-                />Export / Import</a
+                />Loans</a
               >
             </li>
             <li class="s-b-items">
@@ -170,21 +173,91 @@
           <div class="main-contents-wrapper">
             <!-- dashboard page -->
             <div class="main-page" id="dashboard-page">
-              <!-- overview chart -->
-              <div class="overview-page-canvas-container graph-background">
-                <canvas id="overview-page-canvas"> </canvas>
+              <div class="user-info-div">
+                <div class="user-image-container">
+                  <img src="assets/icons/user(1).png" alt="User image" />
+                </div>
+
+                <div class="user-name-email-container">
+                  <p id="user-name" class="text-M bold-600">
+                    Lillie-May Mcdonnell
+                  </p>
+                  <p id="user-email" class="text-XS">hello@gmail.com</p>
+                </div>
+              </div>
+              <!-- hero section -->
+              <section class="hero-section">
+                <div class="balance-main">
+                  <h2 class="balance-label">Available Balance</h2>
+                  <span
+                    id="dashb-t-bal-currency-span"
+                    class="balance-amount text-XXL"
+                    >$</span
+                  ><span
+                    id="dashb-t-bal-amount-span"
+                    class="balance-amount text-XXL"
+                    >0.00</span
+                  >
+                </div>
+
+                <div class="networth-section">
+                  <div class="networth-info">
+                    <span class="networth-label text-XXS"
+                      >Current Net Worth</span
+                    >
+                    <span
+                      id="networth-amount"
+                      class="networth-amount text-L hide"
+                      >$280,900.00</span
+                    >
+                    <div class="amount-cover text-L active">******</div>
+                  </div>
+                  <div class="hide-net-worth-change-contr">
+                    <!-- Eye toggle button -->
+                    <button id="toggle-networth" class="networth-eye">
+                      👁️
+                    </button>
+                    <div class="amount-cover text-XS active">******</div>
+                    <div class="networth-changes-cntr hide">
+                      <div
+                        id="networth-change"
+                        class="networth-change text-XXS positive"
+                      >
+                        +5.6%
+                      </div>
+                      <div
+                        id="networth-amount-change"
+                        class="networth-amt-change text-XS positive"
+                      >
+                        +$2,300
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="dashboard-add-btns-cntr">
+                <button
+                  id="add-t-btn"
+                  data-page-link="addTranscPage"
+                  class="button-M-colored"
+                >
+                  Add Transaction
+                </button>
+                <button
+                  id="overview-page-add-budget-link"
+                  data-page-link="addBudgetPage"
+                  class="button-M-dark"
+                >
+                  New Budget
+                </button>
               </div>
 
               <!-- budget overview -->
               <div class="budget-title-add-budgt-contr">
-                <h3>Budget</h3>
-                <p
-                  id="overview-page-add-budget-link"
-                  data-page-link="addBudgetPage"
-                >
-                  New budget
-                </p>
+                <p class="caption">Budgets</p>
               </div>
+
               <div class="budget-contr">
                 <div class="budget-summary-grid-container"></div>
               </div>
@@ -319,8 +392,10 @@
                 <button id="swap-crypto-button">Swap Crypto</button>
               </div>
 
-              <h4 class="holdings-label">My coins</h4>
-              <div class="crypto-holdings-cntr"></div>
+              <!-- <h4 class="holdings-label">My coins</h4> -->
+              <div class="my-crypto-cards-cntr">
+                <div class="crypto-holdings-cntr"></div>
+              </div>
 
               <div class="coin-labels">
                 <p class="caption">Name</p>
@@ -336,10 +411,11 @@
           <div class="bottom-nav-container" id="bottom-nav">
             <div class="b-n-icon-div" id="home-btn" data-page-link="dashboard">
               <img
-                src="./assets/icons/home(1).png"
+                src="assets/icons/home(1).png"
                 alt="Dashboard"
                 class="clickable-icons"
               />
+              <p class="b-n-icon-tag highlight">Home</p>
             </div>
             <div
               class="b-n-icon-div"
@@ -347,30 +423,32 @@
               data-page-link="statsPage"
             >
               <img
-                src="./assets/icons/diagram.png"
+                src="assets\icons\diagram.png"
                 alt="Stats"
                 class="clickable-icons"
               />
+              <p class="b-n-icon-tag">Stats</p>
             </div>
-            <div class="add-trns-div">
+            <!-- <div class="add-trns-div">
               <img
-                src="./assets/icons/add.png"
+                src="assets/icons/add(1).png"
                 alt="Add"
                 class="add-trans-icon"
                 id="add-t-btn"
                 data-page-link="addTranscPage"
               />
-            </div>
+            </div> -->
             <div
               class="b-n-icon-div"
               id="overview-btn"
               data-page-link="investmentPage"
             >
               <img
-                src="./assets/icons/criminal-record.png"
+                src="assets\icons\criminal-record.png"
                 alt="Overview"
                 class="clickable-icons"
               />
+              <p class="b-n-icon-tag">Investments</p>
             </div>
             <div
               class="b-n-icon-div"
@@ -378,15 +456,59 @@
               data-page-link="profilePage"
             >
               <img
-                src="./assets/icons/user(2).png"
+                src="assets/icons/user(2).png"
                 alt="Profile"
                 class="clickable-icons"
               />
+              <p class="b-n-icon-tag">Profile</p>
             </div>
           </div>
 
           <!-- sub content wrapper -->
           <div class="sub-contents-wrapper">
+            <!-- Loans Container -->
+            <div class="loans-div sub-pages" id="loans-page">
+              <div id="loans-container"></div>
+              <div
+                id="add-loan-btn"
+                class="button-L-colored"
+                data-page-link="addLoansPage"
+              >
+                Add New Loan
+              </div>
+            </div>
+
+            <!-- Hidden Loan Form -->
+            <div id="loan-form" class="sub-pages form-container">
+              <form class="transaction-form loan-form">
+                <label> Loan Category </label>
+                <select id="loan-category-input">
+                  <option value="" disabled selected>Select category</option>
+                  <option value="Car Loan">Car Loan</option>
+                  <option value="Phone Payments">Phone Payments</option>
+                  <option value="Mortgage">Mortgage</option>
+                  <option value="Student Loan">Student Loan</option>
+                  <option value="Personal Loan">Personal Loan</option>
+                </select>
+                <label> Total Loan Amount Left To Pay </label>
+                <input
+                  type="number"
+                  id="loan-total-amount"
+                  placeholder="e.g. 10000"
+                  required
+                />
+                <label> Monthly Payment </label>
+                <input
+                  type="number"
+                  id="loan-monthly-payment"
+                  placeholder="e.g. 500"
+                  required
+                />
+
+                <div id="submit-loan-btn" class="button-L-dark">Add Loan</div>
+              </form>
+            </div>
+
             <!-- add transaction page -->
             <div class="add-trasaction-div sub-pages" id="add-trans-page">
               <div class="form-options-container">
@@ -509,6 +631,15 @@
                           placeholder="e.g. 0.18439"
                         />
                       </div>
+                    </div>
+
+                    <div class="loan-options-group" style="display: none">
+                      <label for="loan category">Loan Category</label>
+                      <select
+                        name="loan-subcategory"
+                        id="loan-subcategory"
+                        required
+                      ></select>
                     </div>
 
                     <!-- Amount Input -->
@@ -760,6 +891,14 @@
 
             <!-- income page -->
             <div id="income-page-div" class="sub-pages">
+              <!-- <div class="add-trns-div sub-pages-add-btn">
+                <img
+                  src="./assets/icons/add.png"
+                  alt="Add"
+                  class="add-trans-icon"
+                  id="inc-page-add-t-btn"
+                />
+              </div> -->
               <div class="income-summary">
                 <div class="month-total-income">
                   <p class="income-tag caption">Month's Income Total</p>
@@ -772,14 +911,7 @@
                   id="income-chart"
                 ></canvas>
               </div>
-              <div class="add-trns-div sub-pages-add-btn">
-                <img
-                  src="./assets/icons/add.png"
-                  alt="Add"
-                  class="add-trans-icon"
-                  id="inc-page-add-t-btn"
-                />
-              </div>
+
               <div class="income-page-tran-div">
                 <div class="recent-transaction-div" id="income-page-tran-div">
                   <p class="caption">Recent Transactions</p>
@@ -805,14 +937,14 @@
                   id="expense-chart"
                 ></canvas>
               </div>
-              <div class="add-trns-div sub-pages-add-btn">
+              <!-- <div class="add-trns-div sub-pages-add-btn">
                 <img
                   src="./assets/icons/add.png"
                   alt="Add"
                   class="add-trans-icon"
                   id="exp-page-add-t-btn"
                 />
-              </div>
+              </div> -->
               <div class="expense-page-tran-div">
                 <div class="recent-transaction-div" id="expense-page-tran-div">
                   <p class="caption">Recent Transactions</p>

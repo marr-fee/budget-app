@@ -2,7 +2,7 @@
 
 import { appState } from "../core/state.js";
 
-  export const overviewPageCanvas = document.getElementById("overview-page-canvas").getContext("2d");
+  // export const overviewPageCanvas = document.getElementById("overview-page-canvas").getContext("2d");
   export const statsPageCanvas = document.getElementById("comparison-chart").getContext("2d");
 
 
@@ -91,7 +91,7 @@ export function renderIncomeChart(incomeData) {
         {
           label: "Income",
           data: incomeData.values, // amounts
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          backgroundColor: "#543884",
           categoryPercentage: 0.6,
           barPercentage: 0.6
         },
@@ -129,7 +129,7 @@ export function renderExpenseChart(expenseData) {
         {
           label: "Expenditure",
           data: expenseData.values, // amounts
-          backgroundColor: "rgba(192, 75, 75, 0.6)",
+          backgroundColor: "#e45f00",
           categoryPercentage: 0.6,
           barPercentage: 0.6
         },
@@ -215,12 +215,12 @@ export function renderComparisonChart(canvas) {
         {
           label: "Income",
           data: incomeData.values,
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          backgroundColor: "#543884",
         },
         {
           label: "Expenses",
           data: expenseData.values,
-          backgroundColor: "rgba(255, 99, 132, 0.6)",
+          backgroundColor: "#e45f00",
         },
       ],
     },
@@ -238,4 +238,4 @@ export function renderComparisonChart(canvas) {
   });
 }
 
-renderComparisonChart(overviewPageCanvas);
+// renderComparisonChart(overviewPageCanvas);

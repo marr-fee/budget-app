@@ -7,5 +7,13 @@ export const appState = {
   expenditure: [],
   transactions: [],
   myCryptos : [],
-  budgets: []
+  budgets: [],
+  loans: [],
+  assets: {
+    cash: 0,
+    investments: 0
+  },
+  liabilities: {
+    loans: 0
+  }
 }

@@ -31,7 +31,7 @@ export function updateTotalMonthlyBalance() {
 
   let difference = ((Number(totalIncome) - Number(totalExpense)).toFixed(2));
 
-  // totalMonthlyBalance.textContent = Number(difference).toLocaleString("en-US");
+  totalMonthlyBalance.textContent = Number(difference).toLocaleString("en-US");
 }
 
 updateTotalMonthlyBalance();

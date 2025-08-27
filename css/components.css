@@ -28,7 +28,33 @@
   padding: 15px;
 }
 
-.wide-button{
+.button-M-colored{
+  width: 40%;
+  margin: 20px auto;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #e99856;
+  color: #090c11;
+  border: none;
+  border-radius: 35px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.button-M-dark{
+  width: 40%;
+  margin: 20px auto;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #090c11;
+  color: #e99856;
+  border: none;
+  border-radius: 35px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+/* .wide-button{
   width: 100%;
   height: 50px;
   padding: 28px;
@@ -41,18 +67,33 @@
   border-radius: 10px;
   background-color: rgb(30, 30, 163);
   color: white;  
-}
+} */
 
 .clickable-icons{
   width: 28px;
   height: 28px;
 }
 
+.text-XXS{
+  font-size: 10px;
+}
+.text-XS{
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.text-S{
+  font-size: 14px;
+  font-weight: normal;
+}
+
 .text-M{
   font-size: 16px;
   font-weight: normal;
 }
-
+.text-L{
+  font-size: 24px;
+}
 .text-XL{
   width: 100%;
   text-align: center;
@@ -61,16 +102,27 @@
   color: white;
 }
 
+.text-XXL{
+  font-size: 38px;
+  font-weight: normal;
+}
+
+.bold-600{
+  font-weight: 600;
+}
+
 .caption{
   font-size: 12px;
   font-weight: 300;
   color: rgb(151, 151, 151);
+  padding-bottom: 5px;
 }
 
 .caption-2{
   font-size: 12px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.507);
+  padding-bottom: 5px;
 }
 
 
@@ -101,7 +153,7 @@
 }
 
 .graph-background{
-  background-color: rgba(201, 199, 199, 0.192);
+  background-color: #dfe2e1;
   filter: blur(20%);
   padding: 10px;
   margin-bottom: 15px;

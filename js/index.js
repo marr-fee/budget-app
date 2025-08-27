@@ -25,5 +25,8 @@ export * from "./pages/investments/crypto-dom.js";
 export * from "./pages/investments/crypto-logic.js";
 export * from "./pages/investments/crypto-APIs.js";
 export * from "./core/log-in.js";
+export * from "./pages/networth.js";
+// export * from "";
+// export * from "";
 // export * from "";
 // export * from "";
