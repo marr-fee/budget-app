@@ -3,6 +3,7 @@ import { goBack } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
 import { showNotification } from "../core/utils.js";
 import { expenseAmount, expenseCategory } from "./add-transaction/addTrans-dom.js";
+import { updateFinances } from "./networth.js";
 
 
 
@@ -93,6 +94,7 @@ submitLoanBtn.addEventListener("click", () => {
   loanMonthlyPayment.value = "";
 
   updateExpenseCategories();
+  updateFinances();
   goBack()
 });
 
@@ -166,6 +168,7 @@ export function handleAddTransaction(transaction) {
       loan.amountLeft -= transaction.amount;
       if (loan.amountLeft < 0) loan.amountLeft = 0;
       renderLoans();
+      updateFinances();
     }
   }
 }

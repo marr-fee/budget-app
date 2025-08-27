@@ -12,6 +12,7 @@ import { highlightErrors } from "../../core/utils.js";
 import { renderBudgetOverview } from "../add-budget/add-budget-util.js";
 import { monitorPortfolio } from "../investments/crypto-logic.js";
 import { handleAddTransaction, loanSubCategory } from "../loans.js";
+import { updateFinances } from "../networth.js";
 // overviewPageCanvas
 
 export function addTransaction(newTx) {
@@ -27,6 +28,7 @@ export function addTransaction(newTx) {
   handleAddTransaction(newTx);
   // saveAppState();
   renderRecentTransactions();
+  updateFinances();
 }
 
 export function addIncome(){

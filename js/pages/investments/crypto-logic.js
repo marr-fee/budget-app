@@ -1,5 +1,6 @@
 import { displayGridItems } from "../../components/modal.js";
 import { appState } from "../../core/state.js";
+import { updateFinances } from "../networth.js";
 import { fetchCurrentPrices } from "./crypto-APIs.js";
 
 import { coinHoldingsGridCntr, coinMarketGridCntr, myCryptoCardsCntr, totalPortfolioValueElem } from "./crypto-dom.js";
@@ -242,6 +243,7 @@ export async function monitorPortfolio() {
     updateHoldings(prices);
     renderPortfolio(prices);
     renderHoldings(prices);
+    updateFinances();
     // console.log('updated');
     
   } catch (err) {
@@ -276,6 +278,7 @@ setInterval(async () => {
     const prices = await fetchCurrentPrices();
     updatePortfolio(prices); // just update numbers
     updateHoldings(prices);  // just update numbers
+    updateFinances();
   } catch (err) {
     console.error("Error refreshing portfolio:", err.message);
   }

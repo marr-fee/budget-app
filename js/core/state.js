@@ -15,5 +15,10 @@ export const appState = {
   },
   liabilities: {
     loans: 0
-  }
+  },
+  netWorth: 0,
+  netWorthChange: 0,
+  netWorthPercentChange: 0,
+  previousNetWorth: 0,
+  networthHistory: [0]
 }
