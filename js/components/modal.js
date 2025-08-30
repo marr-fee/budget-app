@@ -1,8 +1,5 @@
 // RESUSABLE MODAL MANAGEMENT {pop ups}
 
-import { appState } from "../core/state.js";
-import { recentTransDiv, transactionGridContainer } from "../pages/add-transaction/addTrans-dom.js";
-
 export const backgroundColors = ["skyblue", "pink", "greenyellow"]
 
 export function highlightErrors(inputs) {
@@ -11,8 +8,8 @@ export function highlightErrors(inputs) {
   inputs.forEach(input => {
     if (!input.value.trim()) {
       input.classList.add('input-error');
-       // Shake only if there's an error
-      input.classList.remove('shake'); // remove old animation
+
+      input.classList.remove('shake');
       void input.offsetWidth; // force reflow
       input.classList.add('shake'); // restart animation
       hasError = true;
@@ -21,7 +18,7 @@ export function highlightErrors(inputs) {
     }
   });
 
-  return !hasError; // returns true if all are valid
+  return !hasError; 
 }
 
 
@@ -48,29 +45,28 @@ export function displayGridItems(container, containerCaption, gridContainer, gri
   emptyTransactions.appendChild(messageContr);
 
   // show more
-  const showMoreTrans = document.createElement('p');
-  showMoreTrans.id = "show-more-trans";
-  showMoreTrans.classList.add('caption');
-  showMoreTrans.textContent = "Show More";
-  showMoreTrans.style.display = "none";
+  // const showMoreTrans = document.createElement('p');
+  // showMoreTrans.id = "show-more-trans";
+  // showMoreTrans.classList.add('caption');
+  // showMoreTrans.textContent = "Show More";
+  // showMoreTrans.style.display = "none";
 
   // append elements
   container.appendChild(transactionCaption);
   container.appendChild(gridContainer);
-  container.appendChild(showMoreTrans);
+  // container.appendChild(showMoreTrans);
   container.appendChild(emptyTransactions);
 
   // UI toggles (use the correct dataset length)
   emptyTransactions.style.display = dataLength === 0 ? "flex" : "none";
   gridContainer.style.display = dataLength > 0 ? "grid" : "none";
-  if (showMore && dataLength > 3) {
-    showMoreTrans.style.display = "flex";
-  }
+  // if (showMore && dataLength > 3) {
+  //   showMoreTrans.style.display = "flex";
+  // }
 
   // fill grid
   gridContainer.innerHTML = gridItems;
 }
 
-displayGridItems(recentTransDiv, "Recent Transactions",transactionGridContainer, "", false, "No Transactions To Show", appState.transactions.length);
 
   

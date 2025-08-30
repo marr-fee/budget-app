@@ -1,9 +1,11 @@
 import { displayGridItems } from "../../components/modal.js";
+import { showPage } from "../../core/navigetion.js";
 import { appState } from "../../core/state.js";
-import { updateFinances } from "../networth.js";
+import { openExpenseForm } from "../add-transaction/addTran-utils.js";
+import { updateNetWorth } from "../networth.js";
 import { fetchCurrentPrices } from "./crypto-APIs.js";
 
-import { coinHoldingsGridCntr, coinMarketGridCntr, myCryptoCardsCntr, totalPortfolioValueElem } from "./crypto-dom.js";
+import { addCryptoBtn, coinHoldingsGridCntr, coinMarketGridCntr, myCryptoCardsCntr, totalPortfolioValueElem } from "./crypto-dom.js";
 
 export const cryptoList = [
   { symbol: "BTC", image: 'assets/icons/bitcoin.png' },
@@ -76,10 +78,10 @@ export function updatePortfolio(prices) {
     // update price
     const priceElem = coinDiv.querySelector("[data-price]");
     if (priceElem) {
-      priceElem.textContent = `$${p.price.toLocaleString("en-US", {
+      priceElem.textContent = `${p.price.toLocaleString("en-US", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      })}`;
+      })} kr`;
     }
 
     // update 24h change
@@ -120,7 +122,7 @@ export function renderHoldings(prices) {
         <img src="${c.image}" alt="coin image" class="holdings-coin-logo" />
         <p class="holdings-coin-name">${getCoinFullName(c.symbol)}</p>
         <h4 class="holdings-coin-value" data-holding-value>
-          $${currentValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          ${currentValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} kr
         </h4>
       </div>
       <div class="coin-changes-div">
@@ -130,7 +132,7 @@ export function renderHoldings(prices) {
         <div class="coin-percent-change">
           <div class="coin-changes">
             <p data-change-value style="color:${valueChange >= 0 ? "#059c05ff" : "#ff0000"};">
-              ${valueChange >= 0 ? "+" : ""}$${valueChange.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              ${valueChange >= 0 ? "+" : ""}${valueChange.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} kr
             </p>
             <p data-change-percent style="color:${percentChange >= 0 ? "#059c05ff" : "#ff0000"};">
               ${percentChange >= 0 ? "+" : ""}${percentChange}%
@@ -180,10 +182,10 @@ export function updateHoldings(prices) {
     // update current value
     const valueElem = holdingsDiv.querySelector("[data-holding-value]");
     if (valueElem)
-      valueElem.textContent = `$${currentValue.toLocaleString("en-US", {
+      valueElem.textContent = `${currentValue.toLocaleString("en-US", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      })}`;
+      })} kr`;
 
     // update units
     const unitsElem = holdingsDiv.querySelector("[data-units]");
@@ -197,7 +199,7 @@ export function updateHoldings(prices) {
     const changeValElem = holdingsDiv.querySelector("[data-change-value]");
     if (changeValElem) {
       changeValElem.textContent =
-        (valueChange >= 0 ? "+" : "") + `$${valueChange.toFixed(2)}`;
+        (valueChange >= 0 ? "+" : "") + `${valueChange.toFixed(2)} kr`;
       changeValElem.style.color = valueChange >= 0 ? "#125a12ff" : "#810d0dff";
     }
 
@@ -212,10 +214,10 @@ export function updateHoldings(prices) {
   });
 
   // update portfolio total value
-  totalPortfolioValueElem.textContent = `$${totalValue.toLocaleString("en-US", {
+  totalPortfolioValueElem.textContent = `${totalValue.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  })}`;
+  })} kr`;
 }
 
 
@@ -237,13 +239,13 @@ function getCoinFullName(symbol) {
 export async function monitorPortfolio() {
   try {
     // 5.1) Fetch fresh prices
-    const prices = await fetchCurrentPrices();
+    const prices = await fetchCurrentPrices("sek");
     // 5.2) Update the portfolio with those prices
     updatePortfolio(prices);
     updateHoldings(prices);
     renderPortfolio(prices);
     renderHoldings(prices);
-    updateFinances();
+    updateNetWorth();
     // console.log('updated');
     
   } catch (err) {
@@ -251,20 +253,6 @@ export async function monitorPortfolio() {
     console.error("Error updating portfolio:", err.message);
   }
 }
-
-// export function getSegmentColors(prices) {
-//   return prices.map((p, i) => {
-//     if (i === 0) return 'rgba(0,0,0,0)'; // no color for first point
-//     return p >= prices[i - 1] ? '#00ff00' : '#ff0000';
-//   });
-// }
-
-// Initialize for all market items
-// document.querySelectorAll('.crypto-market-grid-items').forEach(async item => {
-//   let coinName = item.dataset.coin; // e.g., 'solana', 'bitcoin', 'ethereum'
-//   await renderCoinGraph(item.querySelector('.coin-progress-graph-div'), coinName);
-// });
-
 
 
 // === 6) Schedule periodic updates ===
@@ -275,10 +263,10 @@ monitorPortfolio();
 // Then periodically
 setInterval(async () => {
   try {
-    const prices = await fetchCurrentPrices();
+    const prices = await fetchCurrentPrices("sek");
     updatePortfolio(prices); // just update numbers
     updateHoldings(prices);  // just update numbers
-    updateFinances();
+    updateNetWorth();
   } catch (err) {
     console.error("Error refreshing portfolio:", err.message);
   }
@@ -287,3 +275,9 @@ setInterval(async () => {
 // setInterval(monitorPortfolio, 60 * 1000);
 // displayGridItems(myCryptoCardsCntr, "",coinHoldingsGridCntr, "", false, "No Cryptos held yet", appState.myCryptos.length);
 
+addCryptoBtn.addEventListener('click', ()=>{
+    showPage("addTranscPage");
+    openExpenseForm();
+    // expenseCategory.value === "investment";
+    // investmentCategory.value === "crypto";
+})

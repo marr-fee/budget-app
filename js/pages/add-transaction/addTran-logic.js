@@ -1,18 +1,17 @@
 import { appState } from "../../core/state.js";
-import { renderIncomeItems, updateTotalMonthlyIncome } from "../income.js";
-import { renderExpenseItems, updateTotalMonthlyExpense } from "../expenditure.js";
+import { renderIncomeItems, updateTotalIncome } from "../income.js";
+import { renderExpenseItems, updateTotalExpense } from "../expenditure.js";
 import { openExpenseForm, openIncomeForm, renderRecentTransactions, resetForms, setDefaultToday, showForm } from "./addTran-utils.js";
 
-import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, recurringExpCheckbox, recurringIncCheckbox } from "./addTrans-dom.js";
-import { showNotification, updateTotalMonthlyBalance } from "../../core/utils.js";
+import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, recurringExpCheckbox, recurringIncCheckbox, showMoreTrans } from "./addTrans-dom.js";
+import { showNotification, updateTotalAvailableBalance } from "../../core/utils.js";
 import { goBack } from "../../core/navigetion.js";
 import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart } from "../stats.js";
-// import { renderBudgetOverview } from "../add-budget.js";
 import { highlightErrors } from "../../core/utils.js";
 import { renderBudgetOverview } from "../add-budget/add-budget-util.js";
 import { monitorPortfolio } from "../investments/crypto-logic.js";
 import { handleAddTransaction, loanSubCategory } from "../loans.js";
-import { updateFinances } from "../networth.js";
+import {updateNetWorth } from "../networth.js";
 // overviewPageCanvas
 
 export function addTransaction(newTx) {
@@ -28,7 +27,9 @@ export function addTransaction(newTx) {
   handleAddTransaction(newTx);
   // saveAppState();
   renderRecentTransactions();
-  updateFinances();
+  updateNetWorth();
+  updateTotalAvailableBalance();
+  goBack();
 }
 
 export function addIncome(){
@@ -37,7 +38,6 @@ export function addIncome(){
 
   const requiredFields = [incomeCategory, incomeAmount];
 
-   // If recurring, frequency is also required
   if (isRecurring) {
     requiredFields.push(incomeFrequency);
   } 
@@ -58,6 +58,8 @@ export function addIncome(){
     category: incomeCategory.value.trim(),
     amount: parseFloat(incomeAmount.value),
     date: incomeDate.value || new Date().toISOString().split("T")[0],
+    transactionDay: new Date(expenseDate.value || new Date()).getDate(),
+    transactionMonth: new Date(incomeDate.value || new Date()).toLocaleString("default", { month: "long" }),
     isRecurring: isRecurring,
     frequency: incomeFrequency.value,
     note: incomeNote.value
@@ -66,15 +68,10 @@ export function addIncome(){
   appState.income.push(newIncome);
   addTransaction(newIncome);
   showNotification("Transaction Added ✔", false);
-  updateTotalMonthlyIncome();
-  updateTotalMonthlyBalance();
-  renderRecentTransactions();
-  renderIncomeItems();
-  renderIncomeChart(getIncomeDataByMonth());
-  addIncomeForm.reset();
-  
+  updateTotalIncome();
+  renderIncomeItems();  
   // saveAppState();
-  goBack();
+
 }
 
 export function addExpenditure(){
@@ -134,12 +131,13 @@ export function addExpenditure(){
     category: expenseCategory.value,
     amount: parseFloat(expenseAmount.value),
     date: expenseDate.value || new Date().toISOString().split("T")[0],
+    transactionDay: new Date(expenseDate.value || new Date()).getDate(),
+    transactionMonth: new Date(expenseDate.value || new Date()).toLocaleString("default", { month: "long" }),
     isRecurring: isRecurring,
     frequency: expenseFrequency.value,
-    note: expenseNote.value
+    note: expenseNote.value,
+    loanCategory: isLoanPayment ? loanSubCategory.value : null
   }
-
-
 
   if (isCryptoInvestment && passedCryptoValidation) {
     const imageObj = {
@@ -175,17 +173,13 @@ export function addExpenditure(){
   appState.expenditure.unshift(newExpense);
   addTransaction(newExpense);
   showNotification("Transaction Added ✔", false);
-  renderRecentTransactions();
   renderExpenseItems();
-  updateTotalMonthlyBalance();
-  updateTotalMonthlyExpense();
-  renderExpenseChart(getExpenseDataByMonth());
-  addExpeditureForm.reset();
+  updateTotalExpense();
   renderBudgetOverview();
   monitorPortfolio();
 
   // saveAppState();
-  goBack();
+
 }
 
 expenseFormOption.addEventListener('click', () => {
@@ -195,6 +189,7 @@ expenseFormOption.addEventListener('click', () => {
 incomeFormOption.addEventListener('click', () => {
   openIncomeForm();
 })
+
 
 
 addIncomeBtn.addEventListener('click', (event) => {
@@ -231,10 +226,8 @@ document.querySelectorAll('input[type="checkbox"][data-group]').forEach(checkbox
         if (cb !== clicked) {
           cb.checked = false;
         }
-
       })
     }
-
     
   })
 

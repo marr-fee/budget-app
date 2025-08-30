@@ -8,7 +8,6 @@ export const sideNavbar = document.querySelector(".side-bar");
 
 export function closeSidebar(){
   sideNavbar.classList.remove("active");
-  dashboardPage.classList.remove("inactive");
   hamNavBtn.classList.remove("active");
   appState.isSideBarOpen = false;
   bottomNav.classList.remove("inactive");

@@ -1,5 +1,9 @@
 // DASHBOARD SPECIFIC RENDERING AND INTERACTIVITY
 
+import { displayGridItems } from "../components/modal.js";
+import { appState } from "../core/state.js";
+import { recentTransDiv, transactionGridContainer } from "./add-transaction/addTrans-dom.js";
+
 export const userImageElem = document.querySelectorAll('.user-image-container'); 
 export const dashboardUserNameElem = document.getElementById('user-name'); 
 export const dashboardUserEmail = document.getElementById('user-email');
@@ -21,3 +25,7 @@ export const notificationMessageDiv = document.querySelector(".notifiation-conte
 export const addBudgetLink = document.getElementById('overview-page-add-budget-link');
 
 export const addBudgetPage = document.getElementById('add-budget-page');
+
+displayGridItems(recentTransDiv, "Recent Transactions",transactionGridContainer, "", false, "No Transactions To Show", appState.transactions.length);
+
+

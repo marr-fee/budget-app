@@ -14,7 +14,7 @@ export const addIncTranBtn = document.getElementById('inc-page-add-t-btn');
 export const incomePageTransactionsDiv = document.getElementById('income-page-tran-div');
 
 
-export function updateTotalMonthlyIncome(){
+export function updateTotalIncome(){
   let totalMonthlyIncome = 0;
   appState.income.forEach((inc) =>{
     totalMonthlyIncome += Number(inc.amount);
@@ -35,45 +35,11 @@ export function renderIncomeItems() {
     showMore: false,
     message: "No Transactions To Show",
     totalElem: incPageTotalIncElem,
-    totalCalcFn: updateTotalMonthlyIncome
+    totalCalcFn: updateTotalIncome
   });
-
-  
-  // let incomeGridItems = '';
-  // appState.income.forEach((inc) => {
-  //   const randomIndex = Math.floor(Math.random() * backgroundColors.length);
-  //   let randomBackgroundColor = backgroundColors[randomIndex];
-
-  //   incomeGridItems += `
-  //        <div class="trans-grid-item" data-id="${inc.id}">
-  //     <div class="description-div">
-  //       <div class="trans-category-img-contr" style="background-color: ${randomBackgroundColor}">
-  //         <img src="assets/icons/freelancer.png" alt="icon" class="transaction-icon" />
-  //       </div>
-  //       <h2 class="tran-category">${inc.category}</h2>
-  //     </div>
-  //     <div class="amount-date-div">
-  //       <div class="amount-div">$${Number(inc.amount.toFixed(2)).toLocaleString("en-US")}</div>
-  //       <div class="date-div caption">${inc.date}</div>
-  //     </div>
-  //   </div> 
-  //   `;
-  // })
-
-  // // incPageIncGridContr.innerHTML = gridItems;
-
-  // displayGridItems(incomePageTransactionsDiv, "Recent Transactions",incPageIncGridContr, incomeGridItems, false, "No Transactions To Show", appState.transactions.length);
-
-  // incPageTotalIncElem.innerHTML = Number(updateTotalMonthlyIncome()).toLocaleString("en-US");
 }
 
-// addIncTranBtn.addEventListener('click', () => {
-//   showPage('addTranscPage');
-//   openIncomeForm();
-// })
-
-
-updateTotalMonthlyIncome();
+updateTotalIncome();
 
 displayGridItems(incomePageTransactionsDiv, "Recent Transactions",incPageIncGridContr, "", false, "No Transactions To Show", appState.transactions.length);
 

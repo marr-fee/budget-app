@@ -1,9 +1,10 @@
-import { addIncomeForm, addExpeditureForm, incFrequencyGroup, expFrequencyGroup, recurringIncCheckbox, recurringExpCheckbox,incomeFrequency, expenseFrequency, emptyTransactions, showMoreTrans, transactionGridContainer, expenditureFormWrapper, incomeFormWrapper, formOptToggleBackgr, expenseCategory, investmentGroup, investmentCategory, investmentCryptoGroup, cryptoUnitsDiv, cryptoUnitsInput, recentTransDiv } from "./addTrans-dom.js";
+import { addIncomeForm, addExpeditureForm, incFrequencyGroup, expFrequencyGroup, recurringIncCheckbox, recurringExpCheckbox,incomeFrequency, expenseFrequency, emptyTransactions, showMoreTrans, transactionGridContainer, expenditureFormWrapper, incomeFormWrapper, formOptToggleBackgr, expenseCategory, investmentGroup, investmentCategory, investmentCryptoGroup, cryptoUnitsDiv, cryptoUnitsInput, recentTransDiv, transHisPageTransDiv, transHisPageTransGridCntr } from "./addTrans-dom.js";
 
 import { appState } from "../../core/state.js";
 import { addBudgetForm, budgetFrequencyGroup } from "../add-budget/add-budget-dom.js";
 import { backgroundColors, displayGridItems } from "../../components/modal.js";
 import { loanPaymentGroup, loanSubCategory } from "../loans.js";
+import { updateTotalAvailableBalance } from "../../core/utils.js";
 // import { addBudgetForm, budgetFrequencyGroup } from "../add-budget.js";
 
 
@@ -59,24 +60,6 @@ export function setDefaultToday(input) {
   input.value = today.toISOString().split("T")[0];
 }
 
-//export function highlightErrors(inputs) {
-//  let hasError = false;
-//
-//  inputs.forEach(input => {
-//    if (!input.value.trim()) {
-//      input.classList.add('input-error');
-       // Shake only if there's an error
-//      input.classList.remove('shake'); // remove old animation
-//      void input.offsetWidth; // force reflow
-//      input.classList.add('shake'); // restart animation
-//      hasError = true;
-//    } else {
-//      input.classList.remove('input-error', 'shake');
-//    }
-//  });
-
-//  return !hasError; // returns true if all are valid
-//}
 
 export function clearErrorHighlights(form) {
   const inputs = form.querySelectorAll('.input-error');
@@ -108,7 +91,7 @@ export function createGridItem(item) {
         <h2 class="tran-category">${item.category}</h2>
       </div>
       <div class="amount-date-div">
-        <div class="amount-div ${colorClass}">${sign}$${Number(item.amount.toFixed(2)).toLocaleString("en-US")}</div>
+        <div class="amount-div ${colorClass}">${sign}${Number(item.amount.toFixed(2)).toLocaleString("en-US")} kr</div>
         <div class="date-div caption">${item.date}</div>
       </div>
     </div>`;
@@ -121,8 +104,9 @@ export function renderItems({ container, gridContainer, items, caption, showMore
     gridItems += createGridItem(item);
   });
 
+  
   // send it to your existing display function
-  displayGridItems(container, caption, gridContainer, gridItems, showMore, message, items.length);
+  displayGridItems(container, caption, gridContainer, gridItems, showMore, message, appState.transactions.length);
 
   // update totals if provided
   if (totalElem && totalCalcFn) {
@@ -139,51 +123,48 @@ export function assignColor(item) {
 }
 
 
-export function renderRecentTransactions() {
-  // UI toggles
-  // emptyTransactions.style.display = appState.transactions.length === 0 ? "flex" : "none";
-  // showMoreTrans.style.display = appState.transactions.length > 3 ? "flex" : "none";
+export function renderRecentTransactions({showAll = false} = {}) {
 
   // take first 3 (newest)
   const latestTransactions = appState.transactions.slice(0, 3);
 
-  renderItems({
-    container: recentTransDiv,
-    gridContainer: transactionGridContainer,
-    items: latestTransactions,
-    caption: "Recent Transactions",
-    showMore: appState.transactions.length > 3,
-    message: "No Transactions To Show"
-  });
+  const fullTransactionList = appState.transactions;
 
-  // let transactionGridItems = "";
-  // // build HTML (newest will be first element, so it appears at the top)
-  // latestTransactions.forEach((tr) => {
-  //   const randomIndex = Math.floor(Math.random() * backgroundColors.length);
-  //   let randomBackgroundColor = backgroundColors[randomIndex];
+  const transactionListToRender = showAll ? fullTransactionList : latestTransactions;
 
-  //   transactionGridItems += `
-  //   <div class="trans-grid-item" data-id="${tr.id}">
-  //     <div class="description-div">
-  //       <div class="trans-category-img-contr" style="background-color: ${randomBackgroundColor}">
-  //         <img src="assets/icons/freelancer.png" alt="icon" class="transaction-icon" />
-  //       </div>
-  //       <h2 class="tran-category">${tr.category}</h2>
-  //     </div>
-  //     <div class="amount-date-div">
-  //       <div class="amount-div">$${Number(tr.amount.toFixed(2)).toLocaleString("en-US")}</div>
-  //       <div class="date-div caption">${tr.date}</div>
-  //     </div>
-  //   </div>
-  // `
-  // })
-  
+  if (!showAll) {
+    const showMore = appState.transactions.length > 3;
 
-  // const showMore = appState.transactions.length > 3 ? true : false;
+    renderItems({
+      container: recentTransDiv,
+      gridContainer: transactionGridContainer,
+      items: transactionListToRender,
+      caption: "Recent Transactions",
+      showMore: appState.transactions.length > 3,
+      message: "No Transactions To Show",
+      totalElem: null,
+      totalCalcFn: updateTotalAvailableBalance
+    });
 
-  // // transactionGridContainer.innerHTML = transactionGridItems;
+    if (showMore) {
+      showMoreTrans.style.display = "block";
+      
+    } else {
+      showMoreTrans.style.display = "none";
+    }
+  } else{
+    renderItems({
+      container: transHisPageTransDiv,
+      gridContainer: transHisPageTransGridCntr,
+      items: transactionListToRender,
+      caption: "Recent Transactions",
+      showMore: false,
+      message: "No Transactions To Show",
+      totalElem: null,
+      totalCalcFn: updateTotalAvailableBalance
+    });
+  }
 
-  // displayGridItems(recentTransDiv, "Recent Transactions",transactionGridContainer, transactionGridItems, showMore, "No Transactions To Show", appState.transactions.length);
 }
 
 export function resetSubForms(){
@@ -211,17 +192,18 @@ export function resetForms() {
 recurringExpCheckbox.addEventListener("change", () => {
   expFrequencyGroup.style.display = recurringExpCheckbox.checked ? "block" : "none";
   if (recurringExpCheckbox.checked) {
-    expenseFrequency.setAttribute("required", "required"); // make it required
+    expenseFrequency.setAttribute("required", "required"); 
   } else {
-    expenseFrequency.removeAttribute("required"); // remove requirement
+    expenseFrequency.removeAttribute("required"); 
   }
 });
+
 recurringIncCheckbox.addEventListener("change", () => {
   incFrequencyGroup.style.display = recurringIncCheckbox.checked ? "block" : "none";
   if (recurringIncCheckbox.checked) {
-    incomeFrequency.setAttribute("required", "required"); // make it required
+    incomeFrequency.setAttribute("required", "required"); 
   } else {
-    incomeFrequency.removeAttribute("required"); // remove requirement
+    incomeFrequency.removeAttribute("required"); 
   }
 });
 
@@ -258,3 +240,4 @@ investmentCategory.addEventListener("change", () => {
   }
 });
 
+renderRecentTransactions()

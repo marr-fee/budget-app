@@ -103,7 +103,7 @@ export function renderIncomeChart(incomeData) {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => `$${value.toLocaleString()}`,
+            callback: (value) => `${value.toLocaleString()} kr`,
             autoSkip: false,
             maxRotation: 0
           },
@@ -141,7 +141,7 @@ export function renderExpenseChart(expenseData) {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => `$${value.toLocaleString()}`,
+            callback: (value) => `${value.toLocaleString()} kr`,
             autoSkip: false,
             maxRotation: 0
           },
@@ -230,7 +230,7 @@ export function renderComparisonChart(canvas) {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => `$${value.toLocaleString()}`,
+            callback: (value) => `${value.toLocaleString()} kr`,
           },
         },
       },

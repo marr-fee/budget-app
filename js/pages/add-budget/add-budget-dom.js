@@ -1,6 +1,4 @@
 
-
-export const addBudgetLink = document.getElementById('overview-page-add-budget-link');
 export const dashboardBudgetCntr = document.querySelector('.budget-contr');
 export const addBudgetBtn = document.getElementById('submit-budget-form-btn');
 export const addBudgetForm = document.getElementById('add-budget-form');

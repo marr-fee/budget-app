@@ -5,6 +5,7 @@ import { showNotification } from "../../core/utils.js";
 import { addBudgetForm, budgetAmount, budgetCategory, budgetDate, budgetFrequency, budgetOverviewGridContainer, dashboardBudgetCntr, recurringBudgetCheckbox } from "./add-budget-dom.js";
 import { setDefaultToday } from "../add-transaction/addTran-utils.js";
 import { displayGridItems } from "../../components/modal.js";
+import { renderBudgetOverview } from "./add-budget-util.js";
 
 
 export function addBudget(){
@@ -39,18 +40,12 @@ export function addBudget(){
   }
 
   appState.budgets.unshift(newBudget);
-  // addTransaction(newBudget);
   showNotification("Budget Added ✔", false);
   // updateTotalMonthlyIncBudget
-  // updateTotalMonthlyBalance();
-  // renderRecentTransactions();
-  addBudgetForm.reset();
-
   // saveAppState();
+  renderBudgetOverview();
   goBack();
   
 }
 
 setDefaultToday(budgetDate);
-
-// displayGridItems(dashboardBudgetCntr, "",budgetOverviewGridContainer, "", false, "No Budgets Added", appState.budgets.length);

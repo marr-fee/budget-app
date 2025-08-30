@@ -11,7 +11,7 @@ export const expPageExpGridContr = document.querySelector('.expense-page-trans-g
 export const addExpTranBtn = document.getElementById('exp-page-add-t-btn');
 export const expencePageTranDiv = document.getElementById('expense-page-tran-div');
 
-export function updateTotalMonthlyExpense(){
+export function updateTotalExpense(){
   let totalMonthlyExpense = 0;
   appState.expenditure.forEach((exp) =>{
     totalMonthlyExpense += Number(exp.amount);
@@ -31,7 +31,7 @@ export function renderExpenseItems() {
       showMore: false,
       message: "No Transactions To Show",
       totalElem: expPageTotalExpElem,
-      totalCalcFn: updateTotalMonthlyExpense
+      totalCalcFn: updateTotalExpense
     });
 
   // let expenseGridItems = '';
@@ -66,7 +66,7 @@ export function renderExpenseItems() {
 //   openExpenseForm();
 // })
 
-updateTotalMonthlyExpense();
+updateTotalExpense();
 
 displayGridItems(expencePageTranDiv, "Recent Transactions",expPageExpGridContr, "", false, "No Transactions To Show", appState.transactions.length);
 

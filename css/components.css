@@ -125,6 +125,14 @@
   padding-bottom: 5px;
 }
 
+.show-more-link{
+  font-size: 12px;
+  font-weight: 300;
+  color: rgb(151, 151, 151); 
+  text-align: right; 
+  margin: 10px 5px;
+  display: none;
+}
 
 
 .notification-container{

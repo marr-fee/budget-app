@@ -172,10 +172,11 @@
   color: #e45f00;
 } */
 
-.budget-summary-grid-container{
+.budget-summary-grid-container, .budget-page-grid-container{
   display: grid;
-  grid-template-columns: repeat(1, 1fr);width: 100%;
-  gap: 10px;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  gap: 15px;
 }
 
 .budget-summary-grid-item{
@@ -188,7 +189,7 @@
   gap: 10px;
   padding: 15px;
   border-radius: 15px;  
-  margin-bottom: 15px;
+  /* margin-bottom: 10px; */
 }
 
 .title-month-div, .spent-amt-div, .budget-amt-div{
@@ -306,6 +307,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .transaction-grid-container{
@@ -365,17 +367,6 @@
   color: rgb(185, 3, 3);
 }
 
-#show-more-trans, #show-more-budget{
-  width: 100%;
-  text-align: right;
-  padding-bottom: 5px;
-  margin-right: 5px;
-  text-decoration: underline;
-  display: none;
-}
-
-
-
 .no-transactions-div{
   display: flex;
   flex-direction: column;
@@ -385,10 +376,10 @@
   width: 100%;
   padding: 15px 0 ;
   background: #f4f5f557;
-  /* background: linear-gradient(150deg, rgb(248, 248, 248) , rgb(216, 214, 214) , white); */
   filter: blur(10%);
   border-radius: 10px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
+  margin: auto 0;
 }
 
 .placeholder-img{

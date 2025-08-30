@@ -52,6 +52,14 @@ export const expenseFrequency = document.getElementById('recurring-exp-frequency
 export const recentTransDiv = document.querySelector('.recent-transaction-div')
 export const transactionGridContainer = document.querySelector('.transaction-grid-container');
 
+
+// Recent transaction page
+export const transHistoryPage = document.getElementById('transaction-history-page');
+export const transHisPageTransDiv = document.getElementById('tran-history-page-tran-div');
+export const transHisPageTransGridCntr = document.querySelector('.trans-hist-pg-grid-container');
+
+
+
 // First grid item
 // export const transactionGridItem = document.querySelector('.trans-grid-item');
 

@@ -1,8 +1,6 @@
-import { showPage } from "../../core/navigetion.js";
-import { addBudgetBtn, addBudgetLink, budgetAmount, budgetCategory, budgetFrequency, budgetFrequencyGroup, recurringBudgetCheckbox } from "./add-budget-dom.js";
-import { addBudget } from "./add-budget-logic.js";
-import { renderBudgetOverview } from "./add-budget-util.js";
 
+import { addBudgetBtn, budgetFrequency, budgetFrequencyGroup, recurringBudgetCheckbox } from "./add-budget-dom.js";
+import { addBudget } from "./add-budget-logic.js";
 
 recurringBudgetCheckbox.addEventListener("change", () => {
   budgetFrequencyGroup.style.display = recurringBudgetCheckbox.checked ? "block" : "none";
@@ -16,6 +14,5 @@ recurringBudgetCheckbox.addEventListener("change", () => {
 addBudgetBtn.addEventListener('click', (event)=> {
   event.preventDefault();
   addBudget();
-  renderBudgetOverview();
 })
 

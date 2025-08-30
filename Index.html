@@ -192,12 +192,13 @@
                   <span
                     id="dashb-t-bal-currency-span"
                     class="balance-amount text-XXL"
-                    >$</span
+                  ></span
                   ><span
                     id="dashb-t-bal-amount-span"
                     class="balance-amount text-XXL"
                     >0.00</span
                   >
+                  kr
                 </div>
 
                 <div class="networth-section">
@@ -260,7 +261,7 @@
                 <div class="budget-summary-grid-container"></div>
               </div>
               <p
-                class="caption"
+                class="show-more-link"
                 id="show-more-budget"
                 data-page-link="budgetPage"
               >
@@ -341,33 +342,26 @@
 
               <!-- RECENT TRANSACTIONS -->
               <div class="recent-transaction-div">
-                <p class="caption">Recent Transactions</p>
-                <div class="transaction-grid-container">
-                  <!-- <div class="trans-grid-item">
-                  <div class="description-div">
-                    <img
-                      src="./assets/icons/download.png"
-                      alt="icon"
-                      class="transaction-icon"
-                    />
-                    <h2 id="tran-category">Transaction</h2>
-                  </div>
-                  <div class="amount-date-div">
-                    <div class="amount-div">$300.34</div>
-                    <div class="date-div caption">03-02-2025</div>
-                  </div>
-                </div> -->
-                </div>
-                <p class="caption" id="show-more-trans">Show More</p>
-                <!-- <div class="no-transactions-div">
-                <p class="caption">No Transactions To Show</p>
-              </div> -->
+                <div class="transaction-grid-container"></div>
               </div>
+              <p
+                class="show-more-link"
+                id="show-more-trans"
+                data-page-link="transHistoryPage"
+              >
+                Show More
+              </p>
             </div>
 
             <!-- stats page -->
             <div id="stats-page" class="main-page">
               <main class="stats-page-wrapper">
+                <div class="month-total-amount sub-page-total-display">
+                  <p class="total-amt-tag caption">Month's Total</p>
+                  <div class="stas-page-total-div page-total-div">
+                    <span id="month-totl">0</span> kr
+                  </div>
+                </div>
                 <canvas
                   class="mon-total-comparison-chart graph-background"
                   id="comparison-chart"
@@ -882,71 +876,67 @@
 
             <!-- budget page -->
             <div id="budget-page-div" class="sub-pages">
-              <div class="budget-page-wrapper">
+              <div class="budget-page-wrapper allow-overflow">
                 <div class="budget-page-grid-container"></div>
               </div>
             </div>
 
+            <!-- transaction history page -->
+            <div id="transaction-history-page" class="sub-pages allow-overflow">
+              <div
+                class="tran-history-page-tran-div transac-divs"
+                id="tran-history-page-tran-div"
+              >
+                <div
+                  class="trans-hist-pg-grid-container thin-grid-container"
+                ></div>
+              </div>
+            </div>
+
             <!-- income page -->
-            <div id="income-page-div" class="sub-pages">
-              <!-- <div class="add-trns-div sub-pages-add-btn">
-                <img
-                  src="./assets/icons/add.png"
-                  alt="Add"
-                  class="add-trans-icon"
-                  id="inc-page-add-t-btn"
-                />
-              </div> -->
-              <div class="income-summary">
-                <div class="month-total-income">
+            <div id="income-page-div" class="sub-pages allow-overflow">
+              <div class="income-summary finance-summary">
+                <div class="month-total-income sub-page-total-display">
                   <p class="income-tag caption">Month's Income Total</p>
-                  <div class="income-page-total-div">
-                    $<span id="income-totl">0</span>
+                  <div class="income-page-total-div page-total-div">
+                    <span id="income-totl">0</span> kr
                   </div>
                 </div>
                 <canvas
-                  class="mon-total-inc-chart graph-background"
+                  class="mon-total-inc-chart graph-background charts"
                   id="income-chart"
                 ></canvas>
               </div>
 
-              <div class="income-page-tran-div">
+              <div class="income-page-tran-div transac-divs">
                 <div class="recent-transaction-div" id="income-page-tran-div">
-                  <p class="caption">Recent Transactions</p>
-                  <div class="income-page-trans-grid-container"></div>
-                  <!-- <div class="no-transactions-div">
-                      <p class="caption">No Transactions To Show</p>
-                    </div> -->
+                  <div
+                    class="income-page-trans-grid-container thin-grid-container"
+                  ></div>
                 </div>
               </div>
             </div>
 
             <!-- expense page -->
-            <div id="expenditure-page-div" class="sub-pages">
-              <div class="expenditure-summary">
-                <div class="month-total-expense">
+            <div id="expenditure-page-div" class="sub-pages allow-overflow">
+              <div class="expenditure-summary finance-summary">
+                <div class="month-total-expense sub-page-total-display">
                   <p class="expense-tag caption">Month's Expenditure Total</p>
-                  <div class="expense-page-total-div">
-                    $<span id="expense-totl">0</span>
+                  <div class="expense-page-total-div page-total-div">
+                    <span id="expense-totl">0</span> kr
                   </div>
                 </div>
                 <canvas
-                  class="mon-total-exp-chart graph-background"
+                  class="mon-total-exp-chart graph-background charts"
                   id="expense-chart"
                 ></canvas>
               </div>
-              <!-- <div class="add-trns-div sub-pages-add-btn">
-                <img
-                  src="./assets/icons/add.png"
-                  alt="Add"
-                  class="add-trans-icon"
-                  id="exp-page-add-t-btn"
-                />
-              </div> -->
-              <div class="expense-page-tran-div">
+
+              <div class="expense-page-tran-div transac-divs">
                 <div class="recent-transaction-div" id="expense-page-tran-div">
-                  <p class="caption">Recent Transactions</p>
-                  <div class="expense-page-trans-grid-container"></div>
+                  <div
+                    class="expense-page-trans-grid-container thin-grid-container"
+                  ></div>
                   <!-- <div class="no-transactions-div">
                     <p class="caption">No Transactions To Show</p>
                   </div> -->

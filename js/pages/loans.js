@@ -3,15 +3,8 @@ import { goBack } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
 import { showNotification } from "../core/utils.js";
 import { expenseAmount, expenseCategory } from "./add-transaction/addTrans-dom.js";
-import { updateFinances } from "./networth.js";
+import { updateNetWorth } from "./networth.js";
 
-
-
-
-// Ensure loans array exists in appState
-if (!appState.loans) {
-  appState.loans = [];
-}
 
 export const loansPage = document.getElementById("loans-page");
 export const loansContainer = document.getElementById("loans-container");
@@ -24,7 +17,13 @@ export const loanMonthlyPayment = document.getElementById("loan-monthly-payment"
 export const loanPaymentGroup = document.querySelector('.loan-options-group');
 export const loanSubCategory = document.getElementById('loan-subcategory');
 
-// === RENDER LOANS ===
+
+// Ensure loans array exists in appState
+if (!appState.loans) {
+  appState.loans = [];
+}
+
+// === RENDER LOANS ON PAGE ===
 export function renderLoans() {
   let loanItemsHTML = "";
 
@@ -37,11 +36,11 @@ export function renderLoans() {
         <div class="loan-card-body">
           <div class="loan-info">
             <span class="label">Amount Left:</span>
-            <span class="value">$${loan.amountLeft.toLocaleString()}</span>
+            <span class="value">${loan.amountLeft.toLocaleString()} kr</span>
           </div>
           <div class="loan-info">
             <span class="label">Monthly Payment:</span>
-            <span class="value">$${loan.monthlyPayment.toLocaleString()}</span>
+            <span class="value">${loan.monthlyPayment.toLocaleString()} kr</span>
           </div>
         </div>
       </div>
@@ -85,7 +84,6 @@ submitLoanBtn.addEventListener("click", () => {
 
   appState.loans.push(newLoanObject);
   renderLoans();
-  updateLoanSubCategories();
 
   // hide form + clear
   loanForm.classList.add("hidden");
@@ -93,12 +91,14 @@ submitLoanBtn.addEventListener("click", () => {
   loanAmountLeft.value = "";
   loanMonthlyPayment.value = "";
 
+
   updateExpenseCategories();
-  updateFinances();
+  updateLoanSubCategories();
+  updateNetWorth();
   goBack()
 });
 
-// === UPDATE TRANSACTION FORM ===
+// === update expense category in expense form ===
 export function updateExpenseCategories() {
   const expCategorySelect = document.getElementById("exp-category");
   if (!expCategorySelect) return;
@@ -118,11 +118,9 @@ export function updateExpenseCategories() {
       loanPaymentGroup.style.display = "flex";
       loanSubCategory.setAttribute("required", "required");
 
-      // listen for sub-category change
       loanSubCategory.addEventListener("change", (event) => {
         const selectedCategory = event.target.value;
 
-        // find loan that matches the category
         const loan = appState.loans.find(l => l.category === selectedCategory);
 
         if (loan) {
@@ -134,23 +132,19 @@ export function updateExpenseCategories() {
       loanSubCategory.value = "";
       loanSubCategory.removeAttribute("required");
     }
-
-  
   });
-
 }
 
+// Update loan category options in add expense form
 export function updateLoanSubCategories() {
-  // clear existing options
+
   loanSubCategory.innerHTML = "";
 
-  // default placeholder option
   const defaultOpt = document.createElement("option");
   defaultOpt.value = "";
   defaultOpt.textContent = "-- Select Loan --";
   loanSubCategory.appendChild(defaultOpt);
 
-  // loop through loans and add each category as an option
   appState.loans.forEach((loan) => {
     const opt = document.createElement("option");
     opt.value = loan.category;
@@ -168,11 +162,11 @@ export function handleAddTransaction(transaction) {
       loan.amountLeft -= transaction.amount;
       if (loan.amountLeft < 0) loan.amountLeft = 0;
       renderLoans();
-      updateFinances();
+      updateNetWorth();
     }
   }
+  
 }
-
 
 displayGridItems(
   loansContainer,
@@ -180,7 +174,7 @@ displayGridItems(
   document.createElement("div"),
   "",
   false,
-  "You habe no active loans",
+  "You have no active loans",
   appState.loans.length
 );
 

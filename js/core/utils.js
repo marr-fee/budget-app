@@ -1,8 +1,8 @@
 // HELPER FUNCTIONS (FORMATTING, VALIDATIONS, ETC)
 // RESUSABLE MODAL MANAGEMENT {pop ups}
 import { notificationDiv, notificationMessageDiv, totalMonthlyBalance } from "../pages/dashboard.js";
-import { updateTotalMonthlyExpense } from "../pages/expenditure.js";
-import { updateTotalMonthlyIncome } from "../pages/income.js";
+import { updateTotalExpense } from "../pages/expenditure.js";
+import { updateTotalIncome } from "../pages/income.js";
 
 
 
@@ -25,9 +25,9 @@ export function highlightErrors(inputs) {
 
   return !hasError; // returns true if all are valid
 }
-export function updateTotalMonthlyBalance() {
-  let totalIncome = updateTotalMonthlyIncome();
-  let totalExpense = updateTotalMonthlyExpense();
+export function updateTotalAvailableBalance() {
+  let totalIncome = updateTotalIncome();
+  let totalExpense = updateTotalExpense();
 
   let difference = ((Number(totalIncome) - Number(totalExpense)).toFixed(2));
 
@@ -39,7 +39,7 @@ export function updateTotalMonthlyBalance() {
   return difference;
 }
 
-updateTotalMonthlyBalance();
+updateTotalAvailableBalance();
 
 
 export function showNotification(message, isError) {
@@ -55,5 +55,3 @@ export function showNotification(message, isError) {
 
 
 }
-
-// showNotification("Hello Mafi", false);

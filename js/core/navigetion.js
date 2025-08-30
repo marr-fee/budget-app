@@ -3,13 +3,13 @@
 import { hamNavBtn, backButton, pageTitle } from "../components/shared-dom.js";
 import { closeSidebar, sideNavbar } from "../components/sidebar.js";
 import { appState } from "./state.js";
-// import { resetForms } from "../pages/addTransaction.js";
-import { resetForms } from "../pages/add-transaction/addTran-utils.js";
+import { renderRecentTransactions, resetForms } from "../pages/add-transaction/addTran-utils.js";
 import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart, statsPageCanvas } from "../pages/stats.js";
 import { addBudgetPage } from "../pages/dashboard.js";
 import { budgetPage } from "../pages/add-budget/add-budget-dom.js";
 import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
 import { loanForm, loansPage } from "../pages/loans.js";
+import { transHistoryPage } from "../pages/add-transaction/addTrans-dom.js";
 // overviewPageCanvas
 
 
@@ -41,6 +41,8 @@ export const incomePageTapDiv = document.getElementById('income-page');
 export const expenditurePage = document.getElementById('expenditure-page-div');
 export const expenditurePageTapDiv = document.getElementById('expenditure-page');
 
+
+
 export const appPages = {
   dashboard: {
     element: dashboardPage,
@@ -49,6 +51,10 @@ export const appPages = {
   addTranscPage: {
     element: addTransactionPage,
     title: "Add Transaction"
+  },
+  transHistoryPage: {
+    element: transHistoryPage,
+    title: "Recent Transactions"
   },
   statsPage: {
     element: statsPage,
@@ -99,16 +105,12 @@ export function showPage(pageName) {
   if (pageName === "statsPage") {
     renderComparisonChart(statsPageCanvas); 
   }
-  if (pageName === "dashboard") {
-    // renderComparisonChart(overviewPageCanvas); 
-  }
+
   if (pageName === "dashboard" || pageName === "statsPage" || pageName === "investmentPage" || pageName === "profilePage") {
     appState.pageStack = [pageName];
     subPagesWrapper.classList.remove("active");
-    // bottomNav.style.display = "flex";
   } else if (appState.pageStack[appState.pageStack.length - 1] !== pageName) {
     appState.pageStack.push(pageName);
-    // bottomNav.style.display = "none";
     subPagesWrapper.classList.add("active");
   }
   
@@ -117,6 +119,7 @@ export function showPage(pageName) {
   hamNavBtn.style.display = appState.pageStack.length === 1 ? "flex" : "none";
   backButton.style.display = appState.pageStack.length > 1 ? "flex" : "none";
   
+  // To scroll back to the top of every page during navigation
   requestAnimationFrame(() => {
     subPages.forEach((p) => {
       p.scrollTop = 0;
@@ -133,7 +136,6 @@ export function goBack() {
     let lastPage = appState.pageStack.pop();
     if (lastPage === "addTranscPage" || lastPage === "addBudgetPage" || lastPage === "addLoansPage") {
       resetForms();
-      
     }
     const previousPage = appState.pageStack[appState.pageStack.length - 1]
     showPage(previousPage);
@@ -148,13 +150,6 @@ mainPages.forEach((page) =>{
   });
 });
 
-// incomePageTapDiv.addEventListener('click', () => {
-//   showPage('incomePage');
-// })
-
-// expenditurePageTapDiv.addEventListener('click', () => {
-//   showPage('expenditurePage');
-// })
 
 document.querySelectorAll("[data-page-link]").forEach(link => {
   
@@ -177,6 +172,9 @@ document.querySelectorAll("[data-page-link]").forEach(link => {
     }
     if (page === "budgetPage") {
       renderBudgetOverview({ showAll: true });
+    }
+    if (page === "transHistoryPage") {
+      renderRecentTransactions({ showAll: true })
     }
   })
 })
