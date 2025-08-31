@@ -5,6 +5,7 @@ import { addBudgetForm, budgetFrequencyGroup } from "../add-budget/add-budget-do
 import { backgroundColors, displayGridItems } from "../../components/modal.js";
 import { loanPaymentGroup, loanSubCategory } from "../loans.js";
 import { updateTotalAvailableBalance } from "../../core/utils.js";
+import { signInForm, signUpForm } from "../../core/log-in.js";
 // import { addBudgetForm, budgetFrequencyGroup } from "../add-budget.js";
 
 
@@ -183,9 +184,13 @@ export function resetForms() {
   clearErrorHighlights(addIncomeForm);
   clearErrorHighlights(addExpeditureForm);
   clearErrorHighlights(addBudgetForm);
+  clearErrorHighlights(signInForm);
+  clearErrorHighlights(signUpForm);
   addIncomeForm.reset();
   addExpeditureForm.reset();
   addBudgetForm.reset();
+  signInForm.reset();
+  signUpForm.reset()
   resetSubForms();
 }
 

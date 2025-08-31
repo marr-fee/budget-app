@@ -5,14 +5,19 @@
   transition: all 0.3s ease-in-out;
 }
 
-.sub-contents-wrapper{
+.sub-contents-wrapper, .auth-forms-wrapper{
   transform: translateX(100%);
   transition: all 0.3s ease-in-out;
 }
 
-.sub-contents-wrapper.active{
+.main-pages-wrapper.hidden, .launch-page-wrapper.hidden{
+  display: none;
+}
+
+.sub-contents-wrapper.active, .auth-forms-wrapper.active{
   transform: translateX(0);
 }
+
 .side-bar.active{
   transform: translateX(0);
 }
@@ -101,6 +106,16 @@ transition: all 0.3s ease-in-out;
   pointer-events: auto;
 }
 
+.authentification-launch-page-wrapper{
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  transform: translateX(0%);
+}
+
+.authentification-launch-page-wrapper.inactive{
+  transform: translateX(-100%);
+}
+
 .toggle-switch {
   transition: 0.4s;
 }
@@ -137,11 +152,11 @@ transition: all 0.3s ease-in-out;
 .notification-container{
   opacity: 0;
   transform: translateX(-50%) translateY(-100%);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .notification-container.active{
   opacity: 1;
   transform: translateX(-50%) translateY(0);
-  z-index: 30;
+  z-index: 300;
 }

@@ -23,5 +23,8 @@ export const appState = {
   netWorthLifetimeChange: 0,
   netWorthLifetimePercent: 0,
   networthHistory: [0],
-  initialNetWorth: null, 
+  initialNetWorth: null,
+  users: [],
+  currentUser: null,
+  isReturningUser: false
 };

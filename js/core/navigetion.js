@@ -10,10 +10,13 @@ import { budgetPage } from "../pages/add-budget/add-budget-dom.js";
 import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
 import { loanForm, loansPage } from "../pages/loans.js";
 import { transHistoryPage } from "../pages/add-transaction/addTrans-dom.js";
+import { authentFormWrapper, authentificationLaunchPage, signInPage, signUpPage } from "./log-in.js";
 // overviewPageCanvas
 
+export const appContainer = document.querySelector('.app-container')
+export const subPagesWrapper = document.querySelector('.sub-contents-wrapper');
+export const mainPagesWrapper = document.querySelector('.main-pages-wrapper');
 
-export const subPagesWrapper = document.querySelector('.sub-contents-wrapper')
 export const mainPages = document.querySelectorAll('.main-page');
 export const subPages = document.querySelectorAll('.sub-pages');
 export const dashboardPage = document.getElementById("dashboard-page");
@@ -91,9 +94,20 @@ export const appPages = {
   addLoansPage: {
     element: loanForm,
     title: "Add New Loan"
+  },
+  authentificationLaunchPage: {
+    element: authentificationLaunchPage,
+    title: ""
+  },
+  signUpPage: {
+    element: signUpPage,
+    title: ""
+  },
+  signInPage: {
+    element: signInPage,
+    title: ""
   }
 }
-
 
 
 export function showPage(pageName) {
@@ -102,11 +116,36 @@ export function showPage(pageName) {
   })
   const targetPage = appPages[pageName];
   targetPage.element.classList.add("active");
+
+  if (pageName === "authentificationLaunchPage") {
+    authentFormWrapper.classList.remove("active");
+    authentificationLaunchPage.classList.remove('hidden');
+  }
+
+  if (pageName === "signUpPage" ||
+     pageName === "signInPage" || 
+     pageName === "authentificationLaunchPage") {
+    mainPagesWrapper.classList.add("hidden");
+  } else{
+    mainPagesWrapper.classList.remove("hidden");
+  }
+
+  if (pageName === "signUpPage" || pageName === "signInPage") {
+    authentificationLaunchPage.classList.add('hidden');
+    authentFormWrapper.classList.add("active");
+    resetForms();
+  }
+
   if (pageName === "statsPage") {
     renderComparisonChart(statsPageCanvas); 
   }
 
   if (pageName === "dashboard" || pageName === "statsPage" || pageName === "investmentPage" || pageName === "profilePage") {
+    authentFormWrapper.classList.remove("active");
+    authentificationLaunchPage.classList.add('hidden');
+  }
+
+  if (pageName === "dashboard" || pageName === "statsPage" || pageName === "investmentPage" || pageName === "profilePage" || pageName === "authentificationLaunchPage" || pageName === "signUpPage" || pageName === "signInPage") {
     appState.pageStack = [pageName];
     subPagesWrapper.classList.remove("active");
   } else if (appState.pageStack[appState.pageStack.length - 1] !== pageName) {
@@ -160,8 +199,7 @@ document.querySelectorAll("[data-page-link]").forEach(link => {
       closeSidebar();
       return;
     } else {
-      showPage(page);
-      
+      showPage(page);    
     }
     // closeSidebar();
     if (page === "incomePage") {
@@ -192,4 +230,4 @@ document.querySelectorAll("[data-sidebar-link]").forEach(link => {
 })
 
 
-showPage('dashboard');
+showPage('authentificationLaunchPage');

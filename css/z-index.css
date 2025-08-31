@@ -1,4 +1,9 @@
 /* Z index stack */
+
+.app-container{
+  z-index: 1;
+}
+
 .bottom-nav-container{
   z-index: 3;
 }
@@ -48,5 +53,13 @@
 }
 
 .sub-pages-dd-btn{
+  z-index: 10;
+}
+
+.launch-page-wrapper{
+  z-index: 9999;
+}
+
+.auth-forms-wrapper{
   z-index: 10;
 }

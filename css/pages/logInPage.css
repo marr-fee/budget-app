@@ -1,74 +1,181 @@
-/* 
 
-#auth-page{
+
+/* .authentification-launch-page-wrapper{
+  display: none;
+} */
+.launch-page-wrapper{
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 25px;
-  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: white;
+  overflow: hidden;
+}
+
+.launch-img-container{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-note-form-nav-btns-cntr{
+  width: 100%;
+  height: 45%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 35px;
+}
+
+.intro-note-cntr{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-self: center;
+  gap: 10px;  
+  margin-bottom: 10px;
 }
 
 .app-name{
-  text-align: center;
-  width: 100%;
-  margin-bottom: 25px;
-} */
-
-/* Hide signup form initially */
-/* .hidden {
-  display: none;
-} */
-
-/* Tabs */
-/* .auth-tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.auth-tab {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
+  font-size: 30px;
   font-weight: 600;
-  opacity: 0.6;
+  color: black;
+  background-image: linear-gradient(to right,  #090c11, #e99856); 
+  -webkit-background-clip: text; 
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.auth-tab.active {
-  opacity: 1;
-  border-bottom: 2px solid currentColor;
+.form-nav-btns-cntr{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+/* authentification forms */
+.auth-forms-wrapper{
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.form-wrapper{
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 80%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-description-texts-cntr{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .auth-form {
+  width: 100%;
   flex-direction: column;
-  gap: 10px;
-  background-color: rgb(255, 255, 255);
+  gap: 5px;
 }
 
-#form-login.active{
-  display: flex;
-}
-#form-signup.active{
-  display: flex;
+.auth-form label{
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .auth-form input{
-  padding: 15px;
+  display: block;
+  width: 100%;
+  padding: 13px;
   font-size: 16px;
-  background-color: rgba(201, 199, 199, 0.192);
-  filter: blur(20%);
   border-radius: 5px;  
+  margin-bottom: 20px;
+  border: 2px solid black;
+  outline: none;
+  caret-color: black;
+  color: #000;
 }
 
-.auth-form button{
-  padding: 15px;
-  margin-top: 15px;
-  font-size: 16px;
-  border-radius: 40px;
-  background-color: rgb(94, 94, 241);
-  border: none;
-} */
+.auth-form input:focus {
+  outline: 2px solid #181c1f;
+}
+
+.auth-form input::placeholder{
+  font-size: 12px;
+}
+
+.form-switch-link{
+  font-weight: 600;
+  color: #e99856;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.password-actions-contr{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+.remember-password-contr{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 50;
+  text-align: left;
+}
+
+.remember-password-contr label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+
+.remember-password-contr input{
+  width: 15px;
+  margin: 0;
+  padding: 8px;
+  margin-right: 2px;
+}
+
+.forgot-password{
+  flex: 50;
+  text-align: right;
+}

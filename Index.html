@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rock+Salt&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/main.css" />
@@ -21,63 +21,162 @@
         <div class="notifiation-content"></div>
       </div>
 
-      <!-- Log in page -->
-      <!-- <main id="auth-page">
-        <h1 class="app-name">App Name</h1>
-         Tabs -->
-      <!-- <div class="auth-tabs">
-          <button id="tab-login" class="auth-tab active">Log in</button>
-          <button id="tab-signup" class="auth-tab">Sign up</button>
-        </div> -->
+      <!-- Launch pages -->
+      <div class="launch-page-wrapper">
+        <div class="launch-img-container">
+          <img src="assets/credit-card.png" alt="credit cards" />
+        </div>
+        <div class="intro-note-form-nav-btns-cntr">
+          <div class="intro-note-cntr">
+            <h1 class="app-name">BUDGETLY</h1>
+            <h3 class="text-L">Best way to keep track of your finances</h3>
+            <p class="text-XS">
+              Keep all areas of your finance in check, knowing where all your
+              cash goes. Your roadmap to financial discipline.
+            </p>
+          </div>
+          <div class="form-nav-btns-cntr">
+            <button
+              class="square-btn-M-colored button-edge-square"
+              id="sign-up-page-btn"
+              data-page-link="signUpPage"
+            >
+              SIGN UP
+            </button>
+            <button
+              class="square-btn-M-dark button-edge-square"
+              id="sign-in-page-btn"
+              data-page-link="signInPage"
+            >
+              SIGN IN
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <!-- Login form -->
-      <!-- <form id="form-login" class="auth-form active">
-          <label for="login-email">Email</label>
-          <input
-            type="email"
-            id="login-email"
-            placeholder="Enter Email Address"
-            required
-          />
-          <label for="login-password">Password</label>
-          <input
-            type="password"
-            id="login-password"
-            placeholder="Enter Password"
-            required
-          />
+      <div class="auth-forms-wrapper">
+        <!-- sign up page -->
+        <div class="sign-up-page-div sub-pages auth-page">
+          <div class="form-wrapper">
+            <div class="form-description-texts-cntr">
+              <h1 class="app-name">Sign Up</h1>
+              <p class="caption">Create a free account</p>
+            </div>
 
-          <button type="submit" id="login-submit">Log in</button>
-        </form> -->
+            <!-- form -->
+            <form id="sign-up-form" class="auth-form">
+              <label for="signup-firstname">First Name</label>
+              <input
+                type="text"
+                id="signup-firstname"
+                placeholder="First Name"
+                required
+              />
+              <label for="signup-firstname">Last Name</label>
+              <input
+                type="text"
+                id="signup-lastname"
+                placeholder="Last Name"
+                required
+              />
+              <label for="signup-email">Email address</label>
+              <input
+                type="email"
+                id="signup-email"
+                placeholder="Email address"
+                required
+              />
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                required
+                minlength="6"
+                placeholder="Password"
+              />
+              <!-- <label for="signup-confirm">Repeat password</label>
+              <input
+                type="password"
+                id="signup-confirm"
+                required
+                minlength="6"
+                placeholder="Repeat password"
+              /> -->
+              <button
+                type="submit"
+                id="sign-up-submit"
+                class="button-L-colored button-edge-square"
+              >
+                Sign up
+              </button>
+            </form>
+            <p class="caption">
+              Already have an account?
+              <span class="form-switch-link text-S" data-page-link="signInPage"
+                >Sign In</span
+              >
+            </p>
+          </div>
+        </div>
 
-      <!-- Signup form -->
-      <!-- <form id="form-signup" class="auth-form hidden">
-          <label for="signup-email">Email</label>
-          <input
-            type="email"
-            id="signup-email"
-            placeholder="Enter Email Address"
-            required
-          />
-          <label for="signup-password">Password</label>
-          <input
-            type="password"
-            id="signup-password"
-            required
-            minlength="6"
-            placeholder="Choose Password"
-          />
-          <label for="signup-confirm">Confirm password</label>
-          <input
-            type="password"
-            id="signup-confirm"
-            required
-            minlength="6"
-            placeholder="Confirm Password"
-          />
-          <button type="submit" id="signup-submit">Sign up</button>
-        </form>
-      </main> -->
+        <!-- Sign in page -->
+        <div class="sign-in-page-div sub-pages">
+          <div class="form-wrapper">
+            <div class="form-description-texts-cntr">
+              <h1 class="app-name">Sign In</h1>
+              <p class="caption">
+                Sign in to continue taking charge of your money
+              </p>
+            </div>
+
+            <!-- form -->
+            <form id="sign-in-form" class="auth-form">
+              <label for="signup-email">Email address</label>
+              <input
+                type="email"
+                id="signup-email"
+                placeholder="Email address"
+                required
+              />
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                required
+                minlength="6"
+                placeholder="Password"
+              />
+
+              <div class="password-actions-contr">
+                <div class="remember-password-contr">
+                  <label for="remember-password"
+                    ><input
+                      type="checkbox"
+                      name="remember-password"
+                      id="remember-password"
+                    />Remember</label
+                  >
+                </div>
+                <p class="forgot-password form-switch-link">Forgot Password</p>
+              </div>
+
+              <button
+                type="submit"
+                id="sign-in-submit"
+                class="button-L-dark button-edge-square"
+              >
+                Sign in
+              </button>
+            </form>
+            <p class="caption">
+              Don't have an account yet?
+              <span class="form-switch-link text-S" data-page-link="signUpPage"
+                >Sign Up</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
 
       <!-- ============== MAIN PAGES =============== -->
       <div class="main-pages-wrapper">
@@ -175,7 +274,11 @@
             <div class="main-page" id="dashboard-page">
               <div class="user-info-div">
                 <div class="user-image-container">
-                  <img src="assets/icons/user(1).png" alt="User image" />
+                  <img
+                    src="assets/icons/user(1).png"
+                    alt="User image"
+                    class="user-image"
+                  />
                 </div>
 
                 <div class="user-name-email-container">
@@ -239,14 +342,14 @@
                 <button
                   id="add-t-btn"
                   data-page-link="addTranscPage"
-                  class="button-M-colored"
+                  class="button-M-colored button-edge-round"
                 >
                   Add Transaction
                 </button>
                 <button
                   id="overview-page-add-budget-link"
                   data-page-link="addBudgetPage"
-                  class="button-M-dark"
+                  class="button-M-dark button-edge-round"
                 >
                   New Budget
                 </button>
@@ -380,8 +483,18 @@
               </div>
 
               <div class="crypto-investment-btns">
-                <button id="add-crypto-button">Add Crypto</button>
-                <button id="swap-crypto-button">Swap Crypto</button>
+                <button
+                  id="add-crypto-button"
+                  class="button-M-dark button-edge-round"
+                >
+                  Add Crypto
+                </button>
+                <button
+                  id="swap-crypto-button"
+                  class="button-M-colored button-edge-round"
+                >
+                  Swap Crypto
+                </button>
               </div>
 
               <!-- <h4 class="holdings-label">My coins</h4> -->
@@ -397,7 +510,46 @@
             </div>
 
             <!-- user profile page -->
-            <div id="user-profile-page" class="main-page"></div>
+            <div id="user-profile-page" class="main-page profile-page">
+              <!-- Hero Section -->
+              <div class="profile-hero">
+                <div class="profile-avatar">
+                  <img
+                    src="assets/icons/user(1).png"
+                    alt="User image"
+                    class="user-image"
+                  />
+                </div>
+                <h2 id="profile-user-name" class="profile-name">John Doe</h2>
+                <p id="profile-user-email" class="profile-email">
+                  johndoe@example.com
+                </p>
+              </div>
+
+              <!-- Profile Links -->
+              <div class="profile-links">
+                <button class="profile-link" data-page-link="">
+                  Edit Profile <span>></span>
+                </button>
+                <button class="profile-link" data-page-link="">
+                  Change Password <span>></span>
+                </button>
+                <button class="profile-link" data-page-link="">
+                  Notifications <span>></span>
+                </button>
+                <button class="profile-link" data-page-link="">
+                  Privacy Settings<span>></span>
+                </button>
+              </div>
+
+              <!-- Sign Out Button -->
+              <button
+                class="button-L-dark button-edge-square logout-btn"
+                data-page-link="authentificationLaunchPage"
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
           <!-- bottom nav -->
           <div class="bottom-nav-container" id="bottom-nav">
@@ -463,7 +615,7 @@
               <div id="loans-container"></div>
               <div
                 id="add-loan-btn"
-                class="button-L-colored"
+                class="button-L-colored button-edge-round"
                 data-page-link="addLoansPage"
               >
                 Add New Loan
@@ -497,7 +649,12 @@
                   required
                 />
 
-                <div id="submit-loan-btn" class="button-L-dark">Add Loan</div>
+                <div
+                  id="submit-loan-btn"
+                  class="button-L-dark button-edge-round"
+                >
+                  Add Loan
+                </div>
               </form>
             </div>
 
@@ -689,7 +846,7 @@
 
                     <button
                       id="submit-exp-form-btn"
-                      class="button-L-colored"
+                      class="button-L-colored button-edge-round"
                       type="submit"
                       form="add-expenditure-form"
                     >
@@ -774,7 +931,7 @@
 
                     <button
                       id="submit-inc-form-btn"
-                      class="button-L-dark"
+                      class="button-L-dark button-edge-round"
                       type="submit"
                       form="add-inc-form"
                     >
@@ -863,7 +1020,7 @@
 
                     <button
                       id="submit-budget-form-btn"
-                      class="button-L-dark"
+                      class="button-L-dark button-edge-round"
                       type="submit"
                       form="add-budget-form"
                     >
@@ -937,9 +1094,6 @@
                   <div
                     class="expense-page-trans-grid-container thin-grid-container"
                   ></div>
-                  <!-- <div class="no-transactions-div">
-                    <p class="caption">No Transactions To Show</p>
-                  </div> -->
                 </div>
               </div>
             </div>

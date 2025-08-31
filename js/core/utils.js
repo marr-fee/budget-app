@@ -47,7 +47,7 @@ export function showNotification(message, isError) {
   notificationMessageDiv.innerHTML = message;
 
   notificationDiv.classList.add('active');
-  notificationDiv.style.background = isError ? "linear-gradient(150deg, rgb(252, 252, 252), rgb(233, 232, 232))" : "linear-gradient(150deg, rgba(92, 179, 92, 0.64), rgba(34, 143, 34, 0.64))";
+  notificationDiv.style.background = isError ? "#e74c3c" : "#27ae60";
   notificationMessageDiv.style.color = isError ? "black" : "white";
   setTimeout(() => {
     notificationDiv.classList.remove('active');
@@ -55,3 +55,9 @@ export function showNotification(message, isError) {
 
 
 }
+
+export function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email.trim());
+}
+
