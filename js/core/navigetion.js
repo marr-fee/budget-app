@@ -44,6 +44,11 @@ export const incomePageTapDiv = document.getElementById('income-page');
 export const expenditurePage = document.getElementById('expenditure-page-div');
 export const expenditurePageTapDiv = document.getElementById('expenditure-page');
 
+// sub pages
+export const aboutPage = document.getElementById('about-page');
+export const helpPage = document.getElementById('help-page');
+
+
 
 
 export const appPages = {
@@ -106,6 +111,14 @@ export const appPages = {
   signInPage: {
     element: signInPage,
     title: ""
+  },
+  aboutPage: {
+    element: aboutPage,
+    title: "About Us"
+  },
+  helpPage: {
+    element: helpPage,
+    title: "Help"
   }
 }
 

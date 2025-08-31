@@ -21,6 +21,11 @@
         <div class="notifiation-content"></div>
       </div>
 
+      <!-- overlay -->
+      <div class="popup-overlay" id="popup-overlay"></div>
+      <!-- Pop ups -->
+      <div class="pop-up-confirm-contr" id="pop-up-confirm-cntr"></div>
+
       <!-- Launch pages -->
       <div class="launch-page-wrapper">
         <div class="launch-img-container">
@@ -248,7 +253,7 @@
                 />Reset App Data</a
               >
             </li>
-            <li class="s-b-items">
+            <li class="s-b-items" data-sidebar-link="aboutPage">
               <a href="#"
                 ><img
                   src="./assets/icons/info.png"
@@ -257,7 +262,7 @@
                 />About</a
               >
             </li>
-            <li class="s-b-items">
+            <li class="s-b-items" data-sidebar-link="helpPage">
               <a href="#"
                 ><img
                   src="./assets/icons/support.png"
@@ -543,10 +548,7 @@
               </div>
 
               <!-- Sign Out Button -->
-              <button
-                class="button-L-dark button-edge-square logout-btn"
-                data-page-link="authentificationLaunchPage"
-              >
+              <button class="button-L-dark button-edge-square logout-btn">
                 Sign Out
               </button>
             </div>
@@ -656,6 +658,80 @@
                   Add Loan
                 </div>
               </form>
+            </div>
+
+            <!-- ================= ABOUT PAGE ================= -->
+            <div class="about-div sub-pages" id="about-page">
+              <div id="about-container">
+                <p class="page-description">
+                  Budget App v1.0.<br />
+                  <br />
+                  Designed to help you track income, expenses, and grow your
+                  financial health.
+                </p>
+              </div>
+            </div>
+
+            <!-- ================= HELP PAGE ================= -->
+            <div class="help-div sub-pages" id="help-page">
+              <div id="help-container">
+                <p class="page-description">
+                  Need assistance? Check our guides or reach out to support.
+                </p>
+                <ul class="help-list">
+                  <li>📘 User Guide – Learn how to use Budget App</li>
+                  <li>❓ FAQs – Answers to common questions</li>
+                  <li>📩 Contact Support – support@budgetapp.com</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Edit Profile -->
+            <div class="profile-subpage sub-pages" id="edit-profile-page">
+              <div class="profile-container">
+                <h2 class="page-title">Edit Profile</h2>
+                <p class="page-description">
+                  Update your personal information below.
+                </p>
+                <form class="profile-form">
+                  <input type="text" placeholder="First Name" />
+                  <input type="text" placeholder="Last Name" />
+                  <input type="email" placeholder="Email" />
+                  <button class="button-L-dark button-edge-square">
+                    Save Changes
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Change Password -->
+            <div class="profile-subpage sub-pages" id="change-password-page">
+              <div class="profile-container">
+                <h2 class="page-title">Change Password</h2>
+                <form class="profile-form">
+                  <input type="password" placeholder="Current Password" />
+                  <input type="password" placeholder="New Password" />
+                  <input type="password" placeholder="Confirm New Password" />
+                  <button class="button-L-dark button-edge-square">
+                    Update Password
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Change Password -->
+            <div class="profile-subpage sub-pages" id="change-password-page">
+              <div class="profile-container">
+                <h2 class="page-title">Change Password</h2>
+                <form class="profile-form">
+                  <input type="password" placeholder="Current Password" />
+                  <input type="password" placeholder="New Password" />
+                  <input type="password" placeholder="Confirm New Password" />
+                  <button class="button-L-dark button-edge-square">
+                    Update Password
+                  </button>
+                </form>
+              </div>
             </div>
 
             <!-- add transaction page -->

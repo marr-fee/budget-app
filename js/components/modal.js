@@ -1,6 +1,8 @@
 // RESUSABLE MODAL MANAGEMENT {pop ups}
 
 export const backgroundColors = ["skyblue", "pink", "greenyellow"]
+export const popup = document.getElementById("pop-up-confirm-cntr");
+export const overlay = document.getElementById("popup-overlay");
 
 export function highlightErrors(inputs) {
   let hasError = false;
@@ -68,5 +70,49 @@ export function displayGridItems(container, containerCaption, gridContainer, gri
   gridContainer.innerHTML = gridItems;
 }
 
+export function showPopup() {
+  popup.classList.add("active");
+  overlay.classList.add("active");
+}
+
+export function hidePopup() {
+  popup.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+export function displayConfirmPopUp(text, confirmAction) {
+  
+  const popUpContainer = document.querySelector('.pop-up-confirm-contr');
+
+  popUpContainer.innerHTML = "";
+
+  const confirmText = document.createElement('p');
+  confirmText.textContent = text
+  confirmText.classList.add('confirm-text');
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.classList.add("action-btns");
+  const confirmBtn = document.createElement('button');
+  const cancelBtn = document.createElement('button');
+  confirmBtn.classList.add("button-M-dark", "button-edge-square", "confirm-btn");
+  cancelBtn.classList.add("button-M-colored", "button-edge-square", "cancel-btn");
+  confirmBtn.textContent = "CONFIRM";
+  cancelBtn.textContent = "CANCEL";
+
+  popUpContainer.appendChild(confirmText);
+  popUpContainer.appendChild(buttonsContainer);
+  buttonsContainer.appendChild(confirmBtn);
+  buttonsContainer.appendChild(cancelBtn);
+
+  showPopup();
+
+  confirmBtn.addEventListener('click', () => {
+    hidePopup();
+    if (typeof confirmAction === "function") {
+      confirmAction(); 
+    }
+  })
+
+  cancelBtn.addEventListener("click", hidePopup);
+}
 
   
