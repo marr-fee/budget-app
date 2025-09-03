@@ -16,3 +16,30 @@
   scrollbar-width: none;
   padding: 15px;
 }
+
+.networth-invitation {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.networth-invitation .caption {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.track-networth-link {
+  font-weight: 600;
+  color: #e99856;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.track-networth-link:hover {
+  color: #090c11;
+}
+

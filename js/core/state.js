@@ -26,5 +26,9 @@ export const appState = {
   initialNetWorth: null,
   users: [],
   currentUser: null,
-  isReturningUser: false
+  isReturningUser: false,
+  calcNetWorth: false,
+  isAssetAdded: false,
+  isLiabilitiesAdded: false,
+  needsInvestmentForm: false
 };

@@ -4,7 +4,7 @@ import { hamNavBtn, backButton, pageTitle } from "../components/shared-dom.js";
 import { closeSidebar, sideNavbar } from "../components/sidebar.js";
 import { appState } from "./state.js";
 import { renderRecentTransactions, resetForms } from "../pages/add-transaction/addTran-utils.js";
-import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart, statsPageCanvas } from "../pages/stats.js";
+import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart, statsPageCanvas, trackNetWorthPage } from "../pages/stats.js";
 import { addBudgetPage } from "../pages/dashboard.js";
 import { budgetPage } from "../pages/add-budget/add-budget-dom.js";
 import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
@@ -119,6 +119,10 @@ export const appPages = {
   helpPage: {
     element: helpPage,
     title: "Help"
+  },
+  trackNetworthPage: {
+    element: trackNetWorthPage,
+    title: ""
   }
 }
 
@@ -243,4 +247,4 @@ document.querySelectorAll("[data-sidebar-link]").forEach(link => {
 })
 
 
-showPage('authentificationLaunchPage');
+showPage('dashboard');

@@ -218,6 +218,8 @@ export function updateHoldings(prices) {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })} kr`;
+
+  appState.assets.investments = Number(totalValue);
 }
 
 
@@ -245,7 +247,10 @@ export async function monitorPortfolio() {
     updateHoldings(prices);
     renderPortfolio(prices);
     renderHoldings(prices);
-    updateNetWorth();
+
+    if (appState.calcNetWorth) {
+      updateNetWorth();
+    }
     // console.log('updated');
     
   } catch (err) {
@@ -266,7 +271,9 @@ setInterval(async () => {
     const prices = await fetchCurrentPrices("sek");
     updatePortfolio(prices); // just update numbers
     updateHoldings(prices);  // just update numbers
-    updateNetWorth();
+    if (appState.calcNetWorth) {
+      updateNetWorth();
+    }
   } catch (err) {
     console.error("Error refreshing portfolio:", err.message);
   }

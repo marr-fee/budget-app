@@ -39,10 +39,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
 }
 
-.crypto-investment-btns button{
+/* .crypto-investment-btns button{
   width: 120px;
   height: 40px;
   padding: 15px;
@@ -52,7 +51,7 @@
   font-size: 10px;
   background: linear-gradient(150deg, rgb(75, 74, 74), black);
   margin: 15px 0;
-}
+} */
 
 .holdings-label{
   padding-left: 15px;

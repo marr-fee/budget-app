@@ -1,6 +1,6 @@
 // --- IMPORTS ---
 import { appState } from "../core/state.js";
-import { updateTotalAvailableBalance } from "../core/utils.js";
+import { showNotification, updateTotalAvailableBalance } from "../core/utils.js";
 import { dashboardNetworthElem, networthChangeContr } from "./dashboard.js";
 
 // --- DOM ELEMENTS ---
@@ -9,6 +9,7 @@ export const hideItemsContainer = document.querySelectorAll(".amount-cover");
 const netWorthEl = document.getElementById("networth-amount");
 const changeEl = document.getElementById("networth-amount-change");
 const percentEl = document.getElementById("networth-change");
+const beginNetworthEvalBtn = document.getElementById('start-networth-btn');
 
 // --- TOGGLE VISIBILITY ---
 hideAmountToggleBtn.addEventListener("click", () => {
@@ -26,10 +27,11 @@ export function updateNetWorth() {
   if (cash < 0) cash = 0;
   appState.assets.cash = cash;
 
-  // Investments
-  let investments = appState.myCryptos.reduce((sum, c) => {
-    return sum + (c.unitsHeld * (c.purchaseCost || 0));
-  }, 0);
+  // // Investments
+  // let investments = appState.myCryptos.reduce((sum, c) => {
+  //   return sum + (c.unitsHeld * (c.purchaseCost || 0));
+  // }, 0);
+  let investments = appState.assets.investments;
   if (investments < 0) investments = 0;
   appState.assets.investments = Number(investments);
 
@@ -118,4 +120,10 @@ export function renderNetWorth() {
   percentEl.style.color = percent >= 0 ? "green" : "red";
 }
 
-
+beginNetworthEvalBtn.addEventListener('click', ()=>{
+  if (!appState.calcNetWorth) {
+    
+    showNotification("Please set your assets and liabilities first", true);
+    return;
+  }
+})

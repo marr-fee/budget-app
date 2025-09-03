@@ -4,6 +4,7 @@ import { appState } from "../core/state.js";
 
   // export const overviewPageCanvas = document.getElementById("overview-page-canvas").getContext("2d");
   export const statsPageCanvas = document.getElementById("comparison-chart").getContext("2d");
+  export const trackNetWorthPage = document.querySelector('.track-networth-div');
 
 
 export function groupTransactionsByMonth(transactions) {

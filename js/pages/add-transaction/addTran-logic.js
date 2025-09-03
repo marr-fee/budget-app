@@ -3,7 +3,7 @@ import { renderIncomeItems, updateTotalIncome } from "../income.js";
 import { renderExpenseItems, updateTotalExpense } from "../expenditure.js";
 import { openExpenseForm, openIncomeForm, renderRecentTransactions, resetForms, setDefaultToday, showForm } from "./addTran-utils.js";
 
-import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, recurringExpCheckbox, recurringIncCheckbox, showMoreTrans } from "./addTrans-dom.js";
+import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, investmentGroup, recurringExpCheckbox, recurringIncCheckbox, showMoreTrans } from "./addTrans-dom.js";
 import { showNotification, updateTotalAvailableBalance } from "../../core/utils.js";
 import { goBack } from "../../core/navigetion.js";
 import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart } from "../stats.js";
@@ -12,6 +12,7 @@ import { renderBudgetOverview } from "../add-budget/add-budget-util.js";
 import { monitorPortfolio } from "../investments/crypto-logic.js";
 import { handleAddTransaction, loanSubCategory } from "../loans.js";
 import {updateNetWorth } from "../networth.js";
+import { netWorthPageAddInvesBtn } from "../investments/crypto-dom.js";
 // overviewPageCanvas
 
 export function addTransaction(newTx) {
@@ -27,7 +28,12 @@ export function addTransaction(newTx) {
   handleAddTransaction(newTx);
   // saveAppState();
   renderRecentTransactions();
-  updateNetWorth();
+
+  appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
+
+  if (appState.calcNetWorth) {
+    updateNetWorth();
+  }
   updateTotalAvailableBalance();
   goBack();
 }
@@ -167,6 +173,8 @@ export function addExpenditure(){
     } else {
       appState.myCryptos.push(newCryptoObj);    
     }  
+
+    appState.isAssetAdded = true;
     
   }
   
@@ -231,6 +239,13 @@ document.querySelectorAll('input[type="checkbox"][data-group]').forEach(checkbox
     
   })
 
+})
+
+netWorthPageAddInvesBtn.addEventListener('click', () =>{
+  openExpenseForm();
+  expenseCategory.value = "investment";
+  investmentGroup.style.display = "flex";
+  investmentCategory.setAttribute("required", "required");
 })
 
 showForm(addIncomeForm, addExpeditureForm);

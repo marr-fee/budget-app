@@ -84,6 +84,8 @@ submitLoanBtn.addEventListener("click", () => {
 
   appState.loans.push(newLoanObject);
   renderLoans();
+  appState.isLiabilitiesAdded = true;
+  appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
 
   // hide form + clear
   loanForm.classList.add("hidden");
@@ -94,7 +96,10 @@ submitLoanBtn.addEventListener("click", () => {
 
   updateExpenseCategories();
   updateLoanSubCategories();
-  updateNetWorth();
+  
+  if (appState.calcNetWorth) {
+    updateNetWorth();
+  }
   goBack()
 });
 
@@ -161,8 +166,13 @@ export function handleAddTransaction(transaction) {
     if (loan) {
       loan.amountLeft -= transaction.amount;
       if (loan.amountLeft < 0) loan.amountLeft = 0;
+      
       renderLoans();
-      updateNetWorth();
+      appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
+
+      if (appState.calcNetWorth) {
+        updateNetWorth();
+      }
     }
   }
   
