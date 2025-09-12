@@ -22,7 +22,7 @@
 /* .loan-form label{
   margin-bottom: 5px;
 } */
-/* .loan-form {
+.loan-form {
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -34,7 +34,7 @@
 
 .loan-form.hidden {
   display: none;
-} */
+}
 
 .loan-card {
   background: #fff;

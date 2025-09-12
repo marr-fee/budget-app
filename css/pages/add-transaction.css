@@ -56,7 +56,7 @@
   scrollbar-width: none;
 }
 
-.investment-group, .crypto-options-group, .crypto-units-div, .loan-options-group{
+.investment-group, .crypto-options-group, .crypto-units-div, .loan-options-group, .savings-options-group{
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -121,14 +121,14 @@
   display: none;
 } */
 
-.transaction-form label, .investment-group label, .crypto-units-div label {
+.transaction-form label, .investment-group label, .crypto-units-div label, .savings-options-group label{
   font-size: 14px;
   font-weight: 500;
   color: #090c11;
 }
 
 .transaction-form input,
-.transaction-form select, .investment-group input, .investment-group select, .crypto-units-div input{
+.transaction-form select, .investment-group input, .investment-group select, .crypto-units-div input, .savings-options-group input{
   padding: 15px 12px;
   font-size: 16px;
   border: none;
@@ -138,6 +138,7 @@
   filter: blur(20%);
   transition: border 0.2s;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 
@@ -239,4 +240,12 @@
 .amount-expense {
   color: red !important;
   font-weight: bold;
+}
+
+.savings-options-group input{
+  width: 100%;
+}
+
+.savings-options-group label{
+  margin-bottom: 3px;
 }

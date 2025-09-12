@@ -171,3 +171,12 @@ transition: all 0.3s ease-in-out;
   opacity: 1;
   pointer-events: auto;
 }
+
+@keyframes bounceScale {
+  0%, 100% {
+    transform: scale(1); /* normal size */
+  }
+  50% {
+    transform: scale(1.1); /* scale up */
+  }
+}

@@ -1,10 +1,9 @@
 import { appState } from "../../core/state.js";
-import { renderIncomeItems, updateTotalIncome } from "../income.js";
-import { renderExpenseItems, updateTotalExpense } from "../expenditure.js";
+
 import { openExpenseForm, openIncomeForm, renderRecentTransactions, resetForms, setDefaultToday, showForm } from "./addTran-utils.js";
 
-import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, cryptoUnitsInput, expenditureFormWrapper, expenseAmount, expenseCategory, expenseDate, expenseFormOption, expenseFrequency, expenseNote, formOptToggleBackgr, incomeAmount, incomeCategory, incomeDate, incomeFormOption, incomeFormWrapper, incomeFrequency, incomeNote, investmentCategory, investmentCryptoGroup, investmentGroup, recurringExpCheckbox, recurringIncCheckbox, showMoreTrans } from "./addTrans-dom.js";
-import { showNotification, updateTotalAvailableBalance } from "../../core/utils.js";
+import { addExpeditureForm, addExpenditureBtn, addIncomeBtn, addIncomeForm, expenseCategory, expenseDate, expenseFormOption, incomeDate, incomeFormOption, investmentCategory, investmentGroup } from "./addTrans-dom.js";
+import { updateTotalAvailableBalance } from "../../core/utils.js";
 import { goBack } from "../../core/navigetion.js";
 import { getExpenseDataByMonth, getIncomeDataByMonth, renderComparisonChart, renderExpenseChart, renderIncomeChart } from "../stats.js";
 import { highlightErrors } from "../../core/utils.js";
@@ -13,181 +12,32 @@ import { monitorPortfolio } from "../investments/crypto-logic.js";
 import { handleAddTransaction, loanSubCategory } from "../loans.js";
 import {updateNetWorth } from "../networth.js";
 import { netWorthPageAddInvesBtn } from "../investments/crypto-dom.js";
+import { addExpenditure } from "./add-expenditure.js";
+import { addIncome } from "./add-income.js";
 // overviewPageCanvas
 
 export function addTransaction(newTx) {
-  // put newest at index 0
-  appState.transactions.unshift(newTx);
 
-  // keep array capped to MAX_HISTORY (e.g. 100)
-  const MAX_HISTORY = 100;
-  if (appState.transactions.length > MAX_HISTORY) {
-    appState.transactions.pop(); // remove oldest at the end
+  if (!appState.isSettingBaseValues) {
+    // put newest at index 0
+    appState.transactions.unshift(newTx);
+
+    // keep array capped to MAX_HISTORY (e.g. 100)
+    const MAX_HISTORY = 100;
+    if (appState.transactions.length > MAX_HISTORY) {
+      appState.transactions.pop(); // remove oldest at the end
+    }
+    
+    handleAddTransaction(newTx);
+    // saveAppState();
+    renderRecentTransactions();
+
+    if (appState.calcNetWorth) {
+      updateNetWorth();
+    }
+    updateTotalAvailableBalance();
   }
-  
-  handleAddTransaction(newTx);
-  // saveAppState();
-  renderRecentTransactions();
-
-  appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
-
-  if (appState.calcNetWorth) {
-    updateNetWorth();
-  }
-  updateTotalAvailableBalance();
   goBack();
-}
-
-export function addIncome(){
-
-  let isRecurring = recurringIncCheckbox.checked ? true : false;
-
-  const requiredFields = [incomeCategory, incomeAmount];
-
-  if (isRecurring) {
-    requiredFields.push(incomeFrequency);
-  } 
-
-  if (
-    !incomeCategory.value.trim() ||     
-    isNaN(parseFloat(incomeAmount.value)) ||     
-    parseFloat(incomeAmount.value) <= 0 ||  
-    (isRecurring && !incomeFrequency.value.trim())   
-  ) {
-    highlightErrors(requiredFields);
-    showNotification("Please fill the form properly", true);
-    return;
-  }
-  const newIncome = {
-    type: "income",
-    id: Date.now(),
-    category: incomeCategory.value.trim(),
-    amount: parseFloat(incomeAmount.value),
-    date: incomeDate.value || new Date().toISOString().split("T")[0],
-    transactionDay: new Date(expenseDate.value || new Date()).getDate(),
-    transactionMonth: new Date(incomeDate.value || new Date()).toLocaleString("default", { month: "long" }),
-    isRecurring: isRecurring,
-    frequency: incomeFrequency.value,
-    note: incomeNote.value
-  }
-
-  appState.income.push(newIncome);
-  addTransaction(newIncome);
-  showNotification("Transaction Added ✔", false);
-  updateTotalIncome();
-  renderIncomeItems();  
-  // saveAppState();
-
-}
-
-export function addExpenditure(){
-  let isInvestment = expenseCategory.value === "investment";
-  let isCryptoInvestment = isInvestment && investmentCategory.value === "crypto";
-  let passedCryptoValidation = false;
-  let isRecurring = recurringExpCheckbox.checked ? true : false;
-  let isLoanPayment = expenseCategory.value === "Loan Payment";
-  
-
-  const requiredFields = [expenseCategory, expenseAmount];
-    
-    if (isRecurring) {
-      requiredFields.push(expenseFrequency);
-    }
-
-    if (isInvestment) requiredFields.push(investmentCategory);
-    if (isLoanPayment) requiredFields.push(loanSubCategory);
-
-    // crypto group validation
-    if (isCryptoInvestment) {
-      const cryptoOptions = document.querySelectorAll('input[type="checkbox"][data-group="cryptos"]');
-      const oneChecked = Array.from(cryptoOptions).some(cb => cb.checked);
-
-      if (!oneChecked) {
-        investmentCryptoGroup.classList.add("input-error", "shake");
-        setTimeout(() => investmentCryptoGroup.classList.remove("shake"), 300);
-        showNotification("Please select a cryptocurrency", true);
-
-        return;
-      } else {
-
-        investmentCryptoGroup.classList.remove("input-error", "shake"); 
-        
-        passedCryptoValidation = true;
-      }
-
-      // requiredFields.push(cryptoUnitsInput);
-    }
-
-    // Normal input validation
-    if (
-      !expenseCategory.value.trim() ||
-      isNaN(parseFloat(expenseAmount.value)) ||
-      parseFloat(expenseAmount.value) <= 0 ||
-      (isRecurring && !expenseFrequency.value.trim()) ||
-      (isInvestment && !investmentCategory.value.trim())
-    ) {
-      highlightErrors(requiredFields);
-      showNotification("Please fill the form properly", true);
-      return;
-    }
-
-  const newExpense = {
-    type: "expenditure",
-    id: Date.now(),
-    category: expenseCategory.value,
-    amount: parseFloat(expenseAmount.value),
-    date: expenseDate.value || new Date().toISOString().split("T")[0],
-    transactionDay: new Date(expenseDate.value || new Date()).getDate(),
-    transactionMonth: new Date(expenseDate.value || new Date()).toLocaleString("default", { month: "long" }),
-    isRecurring: isRecurring,
-    frequency: expenseFrequency.value,
-    note: expenseNote.value,
-    loanCategory: isLoanPayment ? loanSubCategory.value : null
-  }
-
-  if (isCryptoInvestment && passedCryptoValidation) {
-    const imageObj = {
-        "ETH": 'assets/icons/ethereum(1).png',
-        "BTC": 'assets/icons/bitcoin.png',
-        "XRP": 'assets/icons/xrp.png',
-        "ADA": 'assets/icons/cardano.png',
-        "SOL": 'assets/icons/solana.png',
-        "BNB": 'assets/icons/money.png',
-        "USDC": 'assets/icons/usdc.png'
-      }
-      // Get only the checked ones
-      const checkedCrypto = Array.from(
-        document.querySelectorAll('input[type="checkbox"][data-group="cryptos"]:checked')
-      ).map(cb => cb.value)[0]; // pick the first checked value
-
-      const newCryptoObj = {
-        symbol: checkedCrypto, 
-        purchaseCost: Number(expenseAmount.value), 
-        unitsHeld: Number(cryptoUnitsInput.value), 
-        image: imageObj[checkedCrypto]
-      };
-
-    const existingCrypto = appState.myCryptos.findIndex(crypto => crypto.symbol === newCryptoObj.symbol)
-    if (existingCrypto !== -1) {
-    appState.myCryptos[existingCrypto].purchaseCost += newCryptoObj.purchaseCost;
-    } else {
-      appState.myCryptos.push(newCryptoObj);    
-    }  
-
-    appState.isAssetAdded = true;
-    
-  }
-  
-  appState.expenditure.unshift(newExpense);
-  addTransaction(newExpense);
-  showNotification("Transaction Added ✔", false);
-  renderExpenseItems();
-  updateTotalExpense();
-  renderBudgetOverview();
-  monitorPortfolio();
-
-  // saveAppState();
-
 }
 
 expenseFormOption.addEventListener('click', () => {
@@ -203,14 +53,11 @@ incomeFormOption.addEventListener('click', () => {
 addIncomeBtn.addEventListener('click', (event) => {
   event.preventDefault();
   addIncome();
-  // renderComparisonChart(overviewPageCanvas);
 })
 
 addExpenditureBtn.addEventListener('click', (event) => {
   event.preventDefault();
   addExpenditure();
-  // renderComparisonChart(overviewPageCanvas);
-
 })
 
 
@@ -242,6 +89,7 @@ document.querySelectorAll('input[type="checkbox"][data-group]').forEach(checkbox
 })
 
 netWorthPageAddInvesBtn.addEventListener('click', () =>{
+  appState.isSettingBaseValues = true;
   openExpenseForm();
   expenseCategory.value = "investment";
   investmentGroup.style.display = "flex";

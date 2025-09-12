@@ -1,9 +1,9 @@
 // HELPER FUNCTIONS (FORMATTING, VALIDATIONS, ETC)
 // RESUSABLE MODAL MANAGEMENT {pop ups}
+import { updateTotalExpense } from "../pages/add-transaction/add-expenditure.js";
+import { updateTotalIncome } from "../pages/add-transaction/add-income.js";
 import { notificationDiv, notificationMessageDiv, totalMonthlyBalance } from "../pages/dashboard.js";
-import { updateTotalExpense } from "../pages/expenditure.js";
-import { updateTotalIncome } from "../pages/income.js";
-
+import { appState } from "./state.js";
 
 
 
@@ -31,12 +31,16 @@ export function updateTotalAvailableBalance() {
 
   let difference = ((Number(totalIncome) - Number(totalExpense)).toFixed(2));
 
-  totalMonthlyBalance.textContent = Number(difference).toLocaleString("en-US", {
+  let cash = appState.assets.cash;
+
+  cash += Number(difference);
+
+  totalMonthlyBalance.textContent = Number(cash).toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-
-  return difference;
+  
+  return cash;
 }
 
 updateTotalAvailableBalance();

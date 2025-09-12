@@ -296,7 +296,7 @@
               <!-- hero section -->
               <section class="hero-section">
                 <div class="balance-main">
-                  <h2 class="balance-label">Available Balance</h2>
+                  <h2 class="balance-label">Available Cash Balance</h2>
                   <span
                     id="dashb-t-bal-currency-span"
                     class="balance-amount text-XXL"
@@ -310,35 +310,52 @@
                 </div>
 
                 <div class="networth-section">
-                  <div class="networth-info">
-                    <span class="networth-label text-XXS"
-                      >Current Net Worth</span
-                    >
-                    <span id="networth-amount" class="networth-amount text-L"
-                      >0.00 kr</span
-                    >
-                    <div class="amount-cover text-L">******</div>
-                  </div>
-                  <div class="hide-net-worth-change-contr">
-                    <!-- Eye toggle button -->
-                    <button id="toggle-networth" class="networth-eye">
-                      👁️
-                    </button>
-                    <div class="amount-cover text-XS">******</div>
-                    <div class="networth-changes-cntr">
-                      <div
-                        id="networth-change"
-                        class="networth-change text-XXS"
+                  <div class="networth-info-cntr">
+                    <div class="networth-info">
+                      <span class="networth-label text-XXS"
+                        >Current Net Worth</span
                       >
-                        0.0%
-                      </div>
-                      <div
-                        id="networth-amount-change"
-                        class="networth-amt-change text-XS"
+                      <span id="networth-amount" class="networth-amount text-L"
+                        >0.00 kr</span
                       >
-                        0.00 kr
+                      <div class="amount-cover text-L">******</div>
+                    </div>
+                    <div class="hide-net-worth-change-contr">
+                      <!-- Eye toggle button -->
+                      <button id="toggle-networth" class="networth-eye">
+                        👁️
+                      </button>
+                      <div class="amount-cover text-XS">******</div>
+                      <div class="networth-changes-cntr">
+                        <div
+                          id="networth-change"
+                          class="networth-change text-XXS"
+                        >
+                          0.0%
+                        </div>
+                        <div
+                          id="networth-amount-change"
+                          class="networth-amt-change text-XS"
+                        >
+                          0.00 kr
+                        </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="networth-invitation">
+                    <p class="caption">
+                      Want to understand your <strong>Net Worth</strong> and
+                      monitor your financial growth?
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        data-page-link="trackNetworthPage"
+                        class="track-networth-link"
+                      >
+                        Start Tracking Your Net Worth →
+                      </a>
+                    </p>
                   </div>
                 </div>
               </section>
@@ -375,18 +392,6 @@
               >
                 Show More
               </p>
-
-              <!-- TOTAL BALANCE -->
-              <!-- <div class="dashb-total-balance-div">
-                <div class="total-balnc-div">
-                  <p class="caption">Total Balance</p>
-                  <h1 class="t-bal">
-                    <span id="dashb-t-bal-currency-span">$</span
-                    ><span id="dashb-t-bal-amount-span">0.00</span>
-                  </h1>
-                </div>
-                <div class="estimated-t-b-div"></div>
-              </div> -->
 
               <!-- CARDS -->
               <div class="overview-cards">
@@ -474,22 +479,6 @@
                   class="mon-total-comparison-chart graph-background"
                   id="comparison-chart"
                 ></canvas>
-
-                <div class="networth-invitation">
-                  <p class="caption">
-                    Want to understand your <strong>Net Worth</strong> and
-                    monitor your financial growth?
-                  </p>
-                  <p>
-                    <a
-                      href="#"
-                      data-page-link="trackNetworthPage"
-                      class="track-networth-link"
-                    >
-                      Start Tracking Your Net Worth →
-                    </a>
-                  </p>
-                </div>
               </main>
             </div>
 
@@ -549,17 +538,14 @@
 
               <!-- Profile Links -->
               <div class="profile-links">
-                <button class="profile-link" data-page-link="">
+                <button class="profile-link" data-page-link="editProfilePage">
                   Edit Profile <span>></span>
                 </button>
-                <button class="profile-link" data-page-link="">
+                <button
+                  class="profile-link"
+                  data-page-link="changePasswordPage"
+                >
                   Change Password <span>></span>
-                </button>
-                <button class="profile-link" data-page-link="">
-                  Notifications <span>></span>
-                </button>
-                <button class="profile-link" data-page-link="">
-                  Privacy Settings<span>></span>
                 </button>
               </div>
 
@@ -637,6 +623,11 @@
                   <strong>own</strong> (cash, investments, assets) and what you
                   <strong>owe</strong> (loans, liabilities). Monitoring it over
                   time helps you see the big picture of your financial health.
+                </p>
+                <p class="intro-text">
+                  To start tracking your net worth, just add the cash you
+                  currently have and any loans or debts you owe. We’ll use this
+                  to give you a complete picture of your finances.
                 </p>
 
                 <section class="track-section">
@@ -736,11 +727,33 @@
               </form>
             </div>
 
+            <!-- add cash balance page -->
+
+            <div id="cash-bal-form" class="sub-pages">
+              <form class="transaction-form cash-bal-form">
+                <label>Enter Total Cash Amount</label>
+                <input
+                  type="number"
+                  id="cash-total-amount"
+                  placeholder="e.g. 10000"
+                  min="1"
+                  required
+                />
+
+                <div
+                  id="submit-cash-btn"
+                  class="button-L-dark button-edge-round"
+                >
+                  Add Cash
+                </div>
+              </form>
+            </div>
+
             <!-- ================= ABOUT PAGE ================= -->
             <div class="about-div sub-pages" id="about-page">
               <div id="about-container">
                 <p class="page-description">
-                  Budget App v1.0.<br />
+                  Budgetly v1.0.<br />
                   <br />
                   Designed to help you track income, expenses, and grow your
                   financial health.
@@ -765,15 +778,31 @@
             <!-- Edit Profile -->
             <div class="profile-subpage sub-pages" id="edit-profile-page">
               <div class="profile-container">
-                <h2 class="page-title">Edit Profile</h2>
                 <p class="page-description">
                   Update your personal information below.
                 </p>
-                <form class="profile-form">
-                  <input type="text" placeholder="First Name" />
-                  <input type="text" placeholder="Last Name" />
-                  <input type="email" placeholder="Email" />
-                  <button class="button-L-dark button-edge-square">
+                <form
+                  class="edit-profile-form auth-form"
+                  id="edit-profile-form"
+                >
+                  <label for="new-first-name"></label>
+                  <input
+                    id="new-first-name"
+                    type="text"
+                    placeholder="First Name"
+                  />
+                  <label for="new-last-name"></label>
+                  <input
+                    id="new-last-name"
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                  <label for="new-email"></label>
+                  <input id="new-email" type="email" placeholder="Email" />
+                  <button
+                    class="button-L-dark button-edge-square"
+                    id="change-proile-btn"
+                  >
                     Save Changes
                   </button>
                 </form>
@@ -783,27 +812,32 @@
             <!-- Change Password -->
             <div class="profile-subpage sub-pages" id="change-password-page">
               <div class="profile-container">
-                <h2 class="page-title">Change Password</h2>
-                <form class="profile-form">
-                  <input type="password" placeholder="Current Password" />
-                  <input type="password" placeholder="New Password" />
-                  <input type="password" placeholder="Confirm New Password" />
-                  <button class="button-L-dark button-edge-square">
-                    Update Password
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            <!-- Change Password -->
-            <div class="profile-subpage sub-pages" id="change-password-page">
-              <div class="profile-container">
-                <h2 class="page-title">Change Password</h2>
-                <form class="profile-form">
-                  <input type="password" placeholder="Current Password" />
-                  <input type="password" placeholder="New Password" />
-                  <input type="password" placeholder="Confirm New Password" />
-                  <button class="button-L-dark button-edge-square">
+                <form
+                  class="change-password-form auth-form"
+                  id="change-password-form"
+                >
+                  <label for="current-password">Current Password</label>
+                  <input
+                    id="current-password"
+                    type="password"
+                    placeholder="Current Password"
+                  />
+                  <label for="new-password">New Password</label>
+                  <input
+                    id="new-password"
+                    type="password"
+                    placeholder="New Password"
+                  />
+                  <label for="confirm-new-password">Confirm New Password</label>
+                  <input
+                    id="confirm-new-password"
+                    type="password"
+                    placeholder="Confirm New Password"
+                  />
+                  <button
+                    class="button-L-dark button-edge-square"
+                    id="update-password-btn"
+                  >
                     Update Password
                   </button>
                 </form>
@@ -941,6 +975,20 @@
                         id="loan-subcategory"
                         required
                       ></select>
+                    </div>
+
+                    <!-- Savings options -->
+                    <div class="savings-options-group" style="display: none">
+                      <label for="savings-title"
+                        >What are you saving for?</label
+                      >
+                      <input
+                        type="text"
+                        id="savings-title"
+                        name="savings-title"
+                        placeholder="e.g. Vacation, Emergency Fund"
+                        required
+                      />
                     </div>
 
                     <!-- Amount Input -->

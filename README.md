@@ -1,62 +1,94 @@
-📊 Budget & Crypto Tracker (Mobile Web App)
+📊 Finance Tracker (Mobile Web App)
 
 A mobile-first personal finance app built with HTML, CSS, and JavaScript.
-This app helps users track income, expenses, budgets, and crypto portfolios with a clean, mobile-optimized interface.
+This app helps users track income, expenses, budgets, and investent portfolios ( Cryptos only for now ) with a clean, mobile-optimized interface.
 
 🌟 Overview
 
 Managing money is hard — this app makes it easier.
 You can:
 
-Track daily financial habits
+- Track daily financial habits
+- Add **income and expenses** with categories (food, bills, investments, loans, etc.)
+- Review a full **transaction history**
+- Monitor **live cryptocurrency prices** _(via Coingecko API)_ and your portfolio growth
+- Compare **spending vs income** with bar charts
+- Create and manage **budgets** to stay on track
+- Keep an eye on your **net worth**
 
-Add income and expenses with categories (food, bills, investments, crypto, etc.)
+⚡️ Runs entirely in the browser and designed only for **mobile use** (open on your phone or in your browser’s mobile view).
 
-See a history of all transactions
+---
 
-Monitor live cryptocurrency prices and watch your portfolio growth
+## 🚀 Features
 
-Compare spending and income with bar charts
-
-Create and manage budgets to stay on track
-
-It’s lightweight, runs entirely in the browser, and is designed only for mobile use (open it on your phone or in a browser’s mobile view).
-
-🚀 Features
-
-✅ Add Income & Expenses – categorized by type (investments, crypto, etc.)
-✅ Transaction History – easily review your past entries
-✅ Crypto Portfolio Tracking – real-time crypto market integration
-✅ Budgeting Tool – set spending budgets for better control
-✅ Charts & Visuals – bar chart comparisons for financial insights
+✅ Add Income & Expenses – categorized by type (investments, crypto, etc.)  
+✅ Transaction History – easily review your past entries  
+✅ Crypto Portfolio Tracking – real-time crypto market integration _(via Coingecko API)_  
+✅ Loans Tracking – track mortgages, car loans, student loans, installment plans, etc.  
+✅ Budgeting Tool – set spending budgets for better control  
+✅ Charts & Visuals – bar chart comparisons for insights  
 ✅ Responsive & Mobile-Only – works best on mobile screens
 
-🔮 Roadmap / Future Enhancements
+---
 
-The app is still evolving. Upcoming features include:
+## 🔮 Roadmap / Future Enhancements
 
-🗓 Monthly & Yearly Savings Goals
+🗓 Monthly & Yearly Savings Goals  
+💹 Detailed financial statistics + expert advice  
+🔐 User Authentication (currently dummy login only)  
+⚙️ Customizable Settings  
+🌙 Light & Dark Theme Modes  
+☁️ Cloud Sync (data won’t be lost across devices)  
+💾 LocalStorage / Database support for data persistence (not implemented yet)
 
-🔐 User Authentication (Sign Up & Log In)
+---
 
-⚙️ Customizable Settings
+## 🛠 Tech Stack
 
-🌙 Light & Dark Theme Modes
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript
+- **UI Architecture:** Modular JS components (sidebar, topbar, modal, navigation, etc.)
+- **Data Visualization:** Native charts (extendable to Chart.js)
+- **APIs & Data:** [Coingecko API](https://www.coingecko.com/en/api) for live cryptocurrency prices
+- **Icons & Assets:** Flaticon, RemoveBg, Pexels
 
-☁️ Cloud Sync (so you don’t lose your data when switching devices)
+---
 
-🛠 Tech Stack
+## 📲 Getting Started
 
-- Frontend: HTML5, CSS3, Vanilla JavaScript
-- UI Architecture: Modular JS components (sidebar, topbar, modal, navigation)
-- Data Visualization: Native charts (extendable to Chart.js or D3.js)
-- Icons: Custom PNG assets (crypto & finance-related)
+### 1. Clone the Repository
 
-screenshots
-![Dashboard](assets\icons\screenshots\dashboard.png)
-![Add Transaction](assets\icons\screenshots\add-transaction-form.png)
-![Crypto Portfolio](assets\icons\screenshots\crypto-portfolio.png)
+```bash
+git clone https://github.com/marr-fee/finance-tracker.git
+cd finance-tracker
+
+### 1. Open in Browser
+- Simply open index.html in your mobile browser
+- Or use your desktop browser’s Dev Tools → Mobile View
+⚠️ Note: Currently, data does not persist ( no LocalStorage yet . Refreshing will reset your entries. )
+
+
+<details>
+<summary>📸 Screenshots</summary>
+
+![Dashboard](assets\screenshots\budget-dashboard.png)
+![Add Transaction](assets\screenshots\budget-add-transaction-page.png)
+![Add Loans](assets\screenshots\budget-loan-page.png)
+![Crypto Portfolio](assets\screenshots\budget-investment-page.png)
+![Launch](assets\screenshots\budget-launch-page.png)
+![Sign in](assets\screenshots\budget-signIn-page.png)
+![Sign Up](assets\screenshots\budget-signUp-page.png)
+![Profile](assets\screenshots\budget-profile-page.png)
+![Side bar](assets\screenshots\budget-sidebar.png)
+![Stats (Not completed)](assets\screenshots\budget-stats-page.png)
+
+</details>
+
+
 
 📜 License
 
-This project is licensed under the MIT License – free to use, modify, and distribute.
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
+
+```

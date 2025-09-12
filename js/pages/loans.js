@@ -9,7 +9,9 @@ import { updateNetWorth } from "./networth.js";
 export const loansPage = document.getElementById("loans-page");
 export const loansContainer = document.getElementById("loans-container");
 export const addLoanBtn = document.getElementById("add-loan-btn");
+
 export const loanForm = document.getElementById("loan-form");
+export const loanPageloansForm = document.querySelector(".loan-form");
 export const submitLoanBtn = document.getElementById("submit-loan-btn");
 export const loanCategory = document.getElementById("loan-category-input");
 export const loanAmountLeft = document.getElementById("loan-total-amount");
@@ -85,7 +87,6 @@ submitLoanBtn.addEventListener("click", () => {
   appState.loans.push(newLoanObject);
   renderLoans();
   appState.isLiabilitiesAdded = true;
-  appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
 
   // hide form + clear
   loanForm.classList.add("hidden");
@@ -161,6 +162,7 @@ export function updateLoanSubCategories() {
 
 // === HOOK INTO ADD TRANSACTION ===
 export function handleAddTransaction(transaction) {
+  
   if (transaction.category === "Loan Payment" && transaction.loanCategory) {
     const loan = appState.loans.find(l => l.category === transaction.loanCategory);
     if (loan) {
@@ -168,7 +170,7 @@ export function handleAddTransaction(transaction) {
       if (loan.amountLeft < 0) loan.amountLeft = 0;
       
       renderLoans();
-      appState.calcNetWorth = appState.isAssetAdded && appState.isLiabilitiesAdded;
+      appState.isLiabilitiesAdded = true
 
       if (appState.calcNetWorth) {
         updateNetWorth();

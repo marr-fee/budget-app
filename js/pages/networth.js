@@ -1,15 +1,20 @@
 // --- IMPORTS ---
+import { goBack } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
-import { showNotification, updateTotalAvailableBalance } from "../core/utils.js";
+import { highlightErrors, showNotification, updateTotalAvailableBalance } from "../core/utils.js";
 import { dashboardNetworthElem, networthChangeContr } from "./dashboard.js";
 
 // --- DOM ELEMENTS ---
 export const hideAmountToggleBtn = document.getElementById("toggle-networth");
 export const hideItemsContainer = document.querySelectorAll(".amount-cover");
-const netWorthEl = document.getElementById("networth-amount");
-const changeEl = document.getElementById("networth-amount-change");
-const percentEl = document.getElementById("networth-change");
-const beginNetworthEvalBtn = document.getElementById('start-networth-btn');
+export const netWorthEl = document.getElementById("networth-amount");
+export const changeEl = document.getElementById("networth-amount-change");
+export const percentEl = document.getElementById("networth-change");
+export const beginNetworthEvalBtn = document.getElementById('start-networth-btn');
+export const addCashBtn = document.getElementById('submit-cash-btn');
+export const addCashForm = document.querySelector('.cash-bal-form');
+export const trackNetWorthLink = document.querySelector('.networth-invitation')
+export const netWorthDisplayCntr = document.querySelector('.networth-info-cntr')
 
 // --- TOGGLE VISIBILITY ---
 hideAmountToggleBtn.addEventListener("click", () => {
@@ -24,14 +29,8 @@ hideAmountToggleBtn.addEventListener("click", () => {
 export function updateNetWorth() {
   // Cash
   let cash = Number(updateTotalAvailableBalance());
-  if (cash < 0) cash = 0;
-  appState.assets.cash = cash;
-
-  // // Investments
-  // let investments = appState.myCryptos.reduce((sum, c) => {
-  //   return sum + (c.unitsHeld * (c.purchaseCost || 0));
-  // }, 0);
   let investments = appState.assets.investments;
+
   if (investments < 0) investments = 0;
   appState.assets.investments = Number(investments);
 
@@ -41,7 +40,7 @@ export function updateNetWorth() {
 
   // --- Calculate Net Worth ---
   const netWorth = Number(
-    appState.assets.cash + appState.assets.investments - appState.liabilities.loans
+    cash + appState.assets.investments - appState.liabilities.loans
   ) || 0;
 
   appState.netWorth = netWorth;
@@ -51,41 +50,17 @@ export function updateNetWorth() {
 
 // --- CALCULATE CHANGES ---
 export function calcNetWorthChanges(netWorth) {
-  // Set initial baseline (for lifetime tracking)
-  if (appState.initialNetWorth == null) {
-    appState.initialNetWorth = netWorth;
-  }
 
-  // Track history for step change
-  if (appState.networthHistory[1] === netWorth) return;
+  const initialNW = Number(appState.initialNetWorth);
+  const currentNW = Number(netWorth);
 
-  if (appState.networthHistory.length >= 2) {
-    appState.networthHistory.shift();
-    appState.networthHistory.push(netWorth);
-  } else {
-    appState.networthHistory.push(netWorth);
-  }
+  const stepChange = currentNW - initialNW;
+  const stepPercent = initialNW > 0 ? (stepChange / initialNW) * 100 : null;
 
-  const previousNW = Number(appState.networthHistory[0]);
-  const currentNW = Number(appState.networthHistory[1]);
-
-  // --- Step Change (last vs current) ---
-  const stepChange = currentNW - previousNW;
-  const stepPercent = previousNW > 0 ? (stepChange / previousNW) * 100 : null;
-
-  // --- Lifetime Change (baseline vs current) ---
-  const lifetimeChange = currentNW - appState.initialNetWorth;
-  const lifetimePercent =
-    appState.initialNetWorth > 0
-      ? (lifetimeChange / appState.initialNetWorth) * 100
-      : null;
-
-  // Save in state
   appState.netWorth = currentNW;
   appState.netWorthChange = stepChange;
   appState.netWorthPercentChange = stepPercent;
-  appState.netWorthLifetimeChange = lifetimeChange;
-  appState.netWorthLifetimePercent = lifetimePercent;
+  
 }
 
 // --- RENDER TO DASHBOARD ---
@@ -121,9 +96,44 @@ export function renderNetWorth() {
 }
 
 beginNetworthEvalBtn.addEventListener('click', ()=>{
-  if (!appState.calcNetWorth) {
+
+  let proceedToCalcNetW = appState.isAssetAdded || appState.isLiabilitiesAdded;
+
+  if (!proceedToCalcNetW) {
     
-    showNotification("Please set your assets and liabilities first", true);
+    showNotification("Please set your assets or liabilities first", true);
     return;
   }
+  appState.calcNetWorth = true;
+  updateNetWorth();
+  trackNetWorthLink.style.display = 'none';
+  netWorthDisplayCntr.style.display = 'flex';
+  goBack();
+})
+
+addCashBtn.addEventListener('click', ()=>{
+  const cashAmount = document.getElementById('cash-total-amount');
+  const requiredFields = [cashAmount];
+
+  if (isNaN(parseFloat(cashAmount.value)) || parseFloat(cashAmount.value) <= 0) {
+    showNotification('Please enter a valid amount', true);
+    highlightErrors(requiredFields);
+
+    return;
+  } 
+  
+  appState.assets.cash += Number(cashAmount.value);
+  appState.isAssetAdded = true;
+  
+  if (appState.calcNetWorth) {
+    updateNetWorth();
+  }
+  if (appState.initialNetWorth === 0) {
+    appState.initialNetWorth = Number(cashAmount.value);
+  }
+
+  updateTotalAvailableBalance()
+  cashAmount.value = ""
+
+  goBack()
 })

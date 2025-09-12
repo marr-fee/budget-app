@@ -240,51 +240,30 @@ function getCoinFullName(symbol) {
 // === 5) Main monitoring function ===
 export async function monitorPortfolio() {
   try {
-    // 5.1) Fetch fresh prices
+
     const prices = await fetchCurrentPrices("sek");
-    // 5.2) Update the portfolio with those prices
+
     updatePortfolio(prices);
     updateHoldings(prices);
     renderPortfolio(prices);
     renderHoldings(prices);
+    
 
     if (appState.calcNetWorth) {
       updateNetWorth();
     }
-    // console.log('updated');
     
   } catch (err) {
-    // 5.3) Catch & log network or JSON‐parse errors
     console.error("Error updating portfolio:", err.message);
   }
 }
 
 
-// === 6) Schedule periodic updates ===
-// Call monitorPortfolio() once immediately…
-
 monitorPortfolio();
+setInterval(monitorPortfolio, 60 * 1000);
 
-// Then periodically
-setInterval(async () => {
-  try {
-    const prices = await fetchCurrentPrices("sek");
-    updatePortfolio(prices); // just update numbers
-    updateHoldings(prices);  // just update numbers
-    if (appState.calcNetWorth) {
-      updateNetWorth();
-    }
-  } catch (err) {
-    console.error("Error refreshing portfolio:", err.message);
-  }
-}, 60 * 1000);
-// …and then every 60 seconds (60 * 1000 ms) thereafter.
-// setInterval(monitorPortfolio, 60 * 1000);
-// displayGridItems(myCryptoCardsCntr, "",coinHoldingsGridCntr, "", false, "No Cryptos held yet", appState.myCryptos.length);
 
 addCryptoBtn.addEventListener('click', ()=>{
     showPage("addTranscPage");
     openExpenseForm();
-    // expenseCategory.value === "investment";
-    // investmentCategory.value === "crypto";
 })

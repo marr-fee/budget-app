@@ -1,11 +1,13 @@
-import { addIncomeForm, addExpeditureForm, incFrequencyGroup, expFrequencyGroup, recurringIncCheckbox, recurringExpCheckbox,incomeFrequency, expenseFrequency, emptyTransactions, showMoreTrans, transactionGridContainer, expenditureFormWrapper, incomeFormWrapper, formOptToggleBackgr, expenseCategory, investmentGroup, investmentCategory, investmentCryptoGroup, cryptoUnitsDiv, cryptoUnitsInput, recentTransDiv, transHisPageTransDiv, transHisPageTransGridCntr } from "./addTrans-dom.js";
+import { addIncomeForm, addExpeditureForm, incFrequencyGroup, expFrequencyGroup, recurringIncCheckbox, recurringExpCheckbox,incomeFrequency, expenseFrequency, emptyTransactions, showMoreTrans, transactionGridContainer, expenditureFormWrapper, incomeFormWrapper, formOptToggleBackgr, expenseCategory, investmentGroup, investmentCategory, investmentCryptoGroup, cryptoUnitsDiv, cryptoUnitsInput, recentTransDiv, transHisPageTransDiv, transHisPageTransGridCntr, savingsGroup, savingsTitle } from "./addTrans-dom.js";
 
 import { appState } from "../../core/state.js";
 import { addBudgetForm, budgetFrequencyGroup } from "../add-budget/add-budget-dom.js";
 import { backgroundColors, displayGridItems } from "../../components/modal.js";
-import { loanPaymentGroup, loanSubCategory } from "../loans.js";
+import { loanForm, loanPageloansForm, loanPaymentGroup, loanSubCategory } from "../loans.js";
 import { updateTotalAvailableBalance } from "../../core/utils.js";
 import { signInForm, signUpForm } from "../../core/log-in.js";
+import { addCashForm } from "../networth.js";
+import { changePasswordForm, editProfileform } from "../profile.js";
 // import { addBudgetForm, budgetFrequencyGroup } from "../add-budget.js";
 
 
@@ -178,6 +180,8 @@ export function resetSubForms(){
   investmentCategory.value = "";
   loanPaymentGroup.style.display = "none";
   loanSubCategory.value = "";
+  savingsGroup.style.display ="none";
+  savingsTitle.value = "";
 };
 
 export function resetForms() {
@@ -186,11 +190,19 @@ export function resetForms() {
   clearErrorHighlights(addBudgetForm);
   clearErrorHighlights(signInForm);
   clearErrorHighlights(signUpForm);
+  clearErrorHighlights(addCashForm);
+  clearErrorHighlights(editProfileform);
+  clearErrorHighlights(changePasswordForm);
+  clearErrorHighlights(loanPageloansForm);
   addIncomeForm.reset();
   addExpeditureForm.reset();
   addBudgetForm.reset();
   signInForm.reset();
-  signUpForm.reset()
+  signUpForm.reset();
+  addCashForm.reset();
+  loanPageloansForm.reset();
+  changePasswordForm.reset();
+  editProfileform.reset();
   resetSubForms();
 }
 
@@ -225,6 +237,9 @@ expenseCategory.addEventListener("change", () => {
     cryptoUnitsDiv.style.display = "none";
     cryptoUnitsInput.value = '';
 
+
+    savingsGroup.style.display = expenseCategory.value === "savings" ? "block" : "none";
+    
     document.querySelectorAll('input[type="checkbox"][data-group]').forEach(checkbox => {
 
       checkbox.checked = false;

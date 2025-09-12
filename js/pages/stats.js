@@ -239,4 +239,3 @@ export function renderComparisonChart(canvas) {
   });
 }
 
-// renderComparisonChart(overviewPageCanvas);

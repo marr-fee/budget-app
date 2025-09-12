@@ -58,11 +58,6 @@ export const transHistoryPage = document.getElementById('transaction-history-pag
 export const transHisPageTransDiv = document.getElementById('tran-history-page-tran-div');
 export const transHisPageTransGridCntr = document.querySelector('.trans-hist-pg-grid-container');
 
-
-
-// First grid item
-// export const transactionGridItem = document.querySelector('.trans-grid-item');
-
 // Description section
 export const descriptionDiv = document.querySelector('.description-div');
 export const emptyTransactions = document.querySelector('.no-transactions-div');
@@ -72,3 +67,6 @@ export const showMoreTrans = document.getElementById('show-more-trans');
 export const amountDateDiv = document.querySelector('.amount-date-div');
 export const amountDiv = document.querySelector('.amount-div');
 export const dateDiv = document.querySelector('.date-div');
+
+export const savingsTitle = document.getElementById("savings-title");
+export const savingsGroup = document.querySelector(".savings-options-group");

@@ -84,11 +84,24 @@
 .networth-section {
   display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+  background-color: rgba(223, 223, 218, 0.37);
+  border-radius: 10px;
+  position: relative;
+  gap: 0;
+}
+
+.networth-info-cntr{
+  display: none;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: rgba(223, 223, 218, 0.37);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   position: relative;
 }
 .networth-info{
@@ -392,3 +405,4 @@
   font-weight: 700 !important;
   scale: 1.2;
 }
+

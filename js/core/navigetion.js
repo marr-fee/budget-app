@@ -11,6 +11,7 @@ import { renderBudgetOverview } from "../pages/add-budget/add-budget-util.js";
 import { loanForm, loansPage } from "../pages/loans.js";
 import { transHistoryPage } from "../pages/add-transaction/addTrans-dom.js";
 import { authentFormWrapper, authentificationLaunchPage, signInPage, signUpPage } from "./log-in.js";
+import { changePasswordPage, editProfilePage } from "../pages/profile.js";
 // overviewPageCanvas
 
 export const appContainer = document.querySelector('.app-container')
@@ -47,6 +48,7 @@ export const expenditurePageTapDiv = document.getElementById('expenditure-page')
 // sub pages
 export const aboutPage = document.getElementById('about-page');
 export const helpPage = document.getElementById('help-page');
+export const addCashPage = document.getElementById('cash-bal-form');
 
 
 
@@ -123,6 +125,18 @@ export const appPages = {
   trackNetworthPage: {
     element: trackNetWorthPage,
     title: ""
+  },
+  addCashPage: {
+    element: addCashPage,
+    title: "Add Cash Balance"
+  },
+  changePasswordPage: {
+    element: changePasswordPage,
+    title: "Change Password"
+  },
+  editProfilePage: {
+    element: editProfilePage,
+    title: "Edit Profile"
   }
 }
 
@@ -190,12 +204,13 @@ export function goBack() {
   if (appState.pageStack.length > 1){
 
     let lastPage = appState.pageStack.pop();
-    if (lastPage === "addTranscPage" || lastPage === "addBudgetPage" || lastPage === "addLoansPage") {
-      resetForms();
-    }
+    resetForms();
     const previousPage = appState.pageStack[appState.pageStack.length - 1]
     showPage(previousPage);
   }
+
+  appState.isSettingBaseValues = false;
+  
 }
 
 mainPages.forEach((page) =>{
@@ -247,4 +262,4 @@ document.querySelectorAll("[data-sidebar-link]").forEach(link => {
 })
 
 
-showPage('dashboard');
+showPage('authentificationLaunchPage');

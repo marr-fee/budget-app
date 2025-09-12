@@ -37,9 +37,12 @@
   color: #e99856;
   text-decoration: none;
   transition: color 0.3s;
+  display: inline-block;
+  animation: bounceScale 1.5s infinite ease-in-out;
 }
 
 .track-networth-link:hover {
   color: #090c11;
 }
+
 

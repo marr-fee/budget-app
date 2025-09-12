@@ -138,7 +138,7 @@ signInBtn.addEventListener("click", (e) => {
   // Success
   appState.currentUser = user;
   clearErrorHighlights(signInForm);
-  showNotification(`Welcome back, ${user.email}`, false);
+  showNotification(`Welcome back, ${user.firstName.split(" ")[0]}`, false);
   showPage("dashboard");
 });
 
