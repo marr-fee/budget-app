@@ -1,6 +1,6 @@
 // LOCALSTORAGE
 
-import { appState } from "../core/state";
+import { appState } from "../core/state.js";
 
 export function saveData() {
   try {
