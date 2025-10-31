@@ -60,7 +60,7 @@ You can:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/marr-fee/finance-tracker.git
+git clone https://github.com/marr-fee/budget-app.git
 cd finance-tracker
 
 ### 1. Open in Browser
