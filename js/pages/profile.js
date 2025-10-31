@@ -3,6 +3,7 @@
 import { displayConfirmPopUp } from "../components/modal.js";
 import { goBack, showPage } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
+import { saveData } from "../core/storage.js";
 import { highlightErrors, showNotification } from "../core/utils.js";
 
 export const editProfileform = document.getElementById('edit-profile-form');
@@ -87,7 +88,9 @@ changeProfileBtn.addEventListener("click", updateProfile);
 
 logOutBtn.addEventListener('click', () => {
   displayConfirmPopUp("Are you sure you want to log out?", () => {
-  showPage("signInPage"); 
+  saveData()
+  showPage("signInPage");
+
 });
 })
 

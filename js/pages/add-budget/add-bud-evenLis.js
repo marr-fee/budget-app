@@ -1,4 +1,5 @@
 
+import { saveData } from "../../core/storage.js";
 import { addBudgetBtn, budgetFrequency, budgetFrequencyGroup, recurringBudgetCheckbox } from "./add-budget-dom.js";
 import { addBudget } from "./add-budget-logic.js";
 
@@ -14,5 +15,6 @@ recurringBudgetCheckbox.addEventListener("change", () => {
 addBudgetBtn.addEventListener('click', (event)=> {
   event.preventDefault();
   addBudget();
+  saveData()
 })
 

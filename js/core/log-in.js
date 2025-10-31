@@ -4,6 +4,7 @@ import { profileUserEmailElem, profileUserNameElem } from "../pages/profile.js";
 import { showPage } from "./navigetion.js";
 import { appState } from "./state.js";
 import { highlightErrors, isValidEmail, showNotification } from "./utils.js";
+import { loadData, saveData } from "./storage.js";
 
 
 
@@ -138,6 +139,7 @@ signInBtn.addEventListener("click", (e) => {
   // Success
   appState.currentUser = user;
   clearErrorHighlights(signInForm);
+  loadData()
   showNotification(`Welcome back, ${user.firstName.split(" ")[0]}`, false);
   showPage("dashboard");
 });

@@ -1,5 +1,6 @@
 import { displayGridItems } from "../../components/modal.js";
 import { appState } from "../../core/state.js";
+import { saveData } from "../../core/storage.js";
 import { highlightErrors, showNotification } from "../../core/utils.js";
 import { totalMonthlyIncomeElem } from "../dashboard.js";
 import { addTransaction } from "./addTran-logic.js";
@@ -54,6 +55,7 @@ export function addIncome(){
   updateTotalIncome();
   renderIncomeItems();  
   // saveAppState();
+  saveData()
 
 }
 

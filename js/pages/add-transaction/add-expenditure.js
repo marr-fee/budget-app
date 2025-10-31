@@ -1,5 +1,6 @@
 import { displayGridItems } from "../../components/modal.js";
 import { appState } from "../../core/state.js";
+import { saveData } from "../../core/storage.js";
 import { highlightErrors, showNotification } from "../../core/utils.js";
 import { renderBudgetOverview } from "../add-budget/add-budget-util.js";
 import { totalMonthlyExpElem } from "../dashboard.js";
@@ -146,7 +147,7 @@ export function addExpenditure(){
   updateTotalExpense();
   renderBudgetOverview();
   monitorPortfolio();
-  
+  saveData()
   // saveAppState();
 
 }

@@ -1,6 +1,7 @@
 import { displayGridItems, highlightErrors } from "../components/modal.js";
 import { goBack } from "../core/navigetion.js";
 import { appState } from "../core/state.js";
+import { saveData } from "../core/storage.js";
 import { showNotification } from "../core/utils.js";
 import { expenseAmount, expenseCategory } from "./add-transaction/addTrans-dom.js";
 import { updateNetWorth } from "./networth.js";
@@ -102,6 +103,7 @@ submitLoanBtn.addEventListener("click", () => {
     updateNetWorth();
   }
   goBack()
+  saveData()
 });
 
 // === update expense category in expense form ===

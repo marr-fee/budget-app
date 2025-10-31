@@ -26,7 +26,7 @@ export * from "./core/log-in.js";
 export * from "./pages/networth.js";
 export * from "./pages/add-transaction/add-expenditure.js";
 export * from "./pages/add-transaction/add-income.js";
-// export * from "";
+export * from "./core/storage.js";
 // export * from "";
 // export * from "";
 // export * from "";
