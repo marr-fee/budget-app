@@ -15,6 +15,6 @@ export function loadData() {
     let data = localStorage.getItem('appData')
     appState = JSON.parse(data)
   } catch (error) {
-    console.warn("Error Saving File");
+    console.warn("Error Loading File");
   }
 }
