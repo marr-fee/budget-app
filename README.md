@@ -2,7 +2,8 @@
 
 A mobile-first personal finance app built with HTML, CSS, and JavaScript.
 This app helps users track income, expenses, budgets, and investent portfolios ( Cryptos only for now ) with a clean, mobile-optimized interface.
-
+Test the features here https://marr-fee.github.io/budget-app/
+Note that the features are not completed nd work on it continues.
 🌟 Overview
 
 Managing money is hard — this app makes it easier.
